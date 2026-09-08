@@ -1,24 +1,20 @@
 {
-  "name": "@iai/component-generator",
+  "name": "@iai/component-library",
   "version": "0.0.1",
-  "description": "Generate framework component wrappers (Astro/React/Svelte/Solid) from HTML specs.",
+  "private": true,
+  "description": "i.AI GOV.UK component library — HTML specs generated into per-framework packages.",
   "type": "module",
-  "bin": {
-    "iai-generate-components": "./src/generate-components.mjs"
-  },
-  "files": [
-    "src",
-    "component-html"
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "generate": "node src/generate-components.mjs",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "node-html-parser": "^7.0.1"
+    "generate": "node generator/index.mjs",
+    "typecheck": "tsc --noEmit",
+    "release": "npm run generate && npm publish --workspaces --access public"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "node-html-parser": "^7.0.1",
     "typescript": "^5.6.0"
   }
 }

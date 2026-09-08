@@ -1,0 +1,17 @@
+{
+  "name": "@iai/astro",
+  "version": "0.0.1",
+  "description": "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./*": "./src/*"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "astro": ">=4"
+  },
+  "license": "MIT"
+}

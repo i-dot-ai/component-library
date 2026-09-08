@@ -1,0 +1,17 @@
+{
+  "name": "@iai/react",
+  "version": "0.0.1",
+  "description": "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
+  "files": [
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "license": "MIT"
+}
