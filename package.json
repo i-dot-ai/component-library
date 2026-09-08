@@ -1,0 +1,24 @@
+{
+  "name": "@iai/component-generator",
+  "version": "0.0.1",
+  "description": "Generate framework component wrappers (Astro/React/Svelte/Solid) from HTML specs.",
+  "type": "module",
+  "bin": {
+    "iai-generate-components": "./src/generate-components.mjs"
+  },
+  "files": [
+    "src",
+    "component-html"
+  ],
+  "scripts": {
+    "generate": "node src/generate-components.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "node-html-parser": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
