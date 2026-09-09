@@ -5,6 +5,8 @@ import { parse } from "node-html-parser";
  * @property {"element"|"text"|"slot"|"cond"} type
  * @property {string} [tag]
  * @property {Record<string,string>} [attrs]    static attributes (kept verbatim)
+ * @property {Record<string,string>} [variants]  per-element boolean variants (propName -> class)
+ * @property {Record<string,Record<string,string>>} [valueVariants]  per-element value variants
  * @property {boolean} [rest]                   this element carries data-rest
  * @property {boolean} [primary]                this element carries data-primary
  * @property {SpecNode[]} [children]
@@ -83,6 +85,10 @@ export function parseSpec(html) {
 
         /** @type {Record<string,string>} */
         const attrs = {};
+        /** @type {Record<string,string>} per-element boolean variants */
+        const elVariants = {};
+        /** @type {Record<string,Record<string,string>>} per-element value variants */
+        const elValueVariants = {};
         let rest = false;
         let primary = false;
         for (const [name, value] of Object.entries(node.attributes)) {
@@ -104,8 +110,13 @@ export function parseSpec(html) {
                 const prop = name.slice("data-variant:".length);
                 const raw = /** @type {string} */ (value);
                 const map = parseValueMap(raw);
-                if (map) valueVariants[prop] = map;
-                else variants[prop] = raw;
+                if (map) {
+                    valueVariants[prop] = map;
+                    elValueVariants[prop] = map;
+                } else {
+                    variants[prop] = raw;
+                    elVariants[prop] = raw;
+                }
                 continue;
             }
             if (name.startsWith("data-default:")) {
@@ -119,7 +130,16 @@ export function parseSpec(html) {
         const children = assemble(node.childNodes);
 
         /** @type {SpecNode} */
-        const el = { type: "element", tag, attrs, rest, primary, children };
+        const el = {
+            type: "element",
+            tag,
+            attrs,
+            rest,
+            primary,
+            children,
+            variants: elVariants,
+            valueVariants: elValueVariants,
+        };
         if (primary) primaryNode = el;
         return el;
     }

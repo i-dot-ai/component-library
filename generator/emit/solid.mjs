@@ -15,6 +15,7 @@ function renderMarkup(spec) {
             classExpr: "classes()",
             classAttr: "class",
             propRef: (name) => `local.${name}`,
+            classNameRef: "local.class ?? \"\"",
             boundProps: spec.logicProps,
             restSpread: "{...rest}",
             slot: (n, pad) => `${pad}{local.children ?? ${JSON.stringify(n.slotDefault ?? "")}}`,
@@ -146,13 +147,12 @@ function createComponentInit(spec) {
 export function emitSolid(spec, componentName) {
     const imports = solidImports(spec);
     const ref = spec.init ? REF : "";
-    const classes = createClasses(spec);
+    const classes = spec.hasLogic ? "" : createClasses(spec);
     const propType = createPropType(spec);
     const merge = mergePropsLine(spec);
     const split = splitPropsLine(spec);
     const componentInit = createComponentInit(spec);
     const markup = renderMarkup(spec);
-
     return `${AUTOGEN_HEADER}${imports}import type { JSX } from "solid-js";
 
 type ${componentName}Props = {

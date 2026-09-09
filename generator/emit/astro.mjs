@@ -13,6 +13,7 @@ function renderMarkup(spec) {
             classExpr: "classes",
             classAttr: "class",
             propRef: (name) => name,
+            classNameRef: "className ?? \"\"",
             boundProps: spec.logicProps,
             restSpread: "{...rest}",
             slot: (n, pad) =>
@@ -78,15 +79,16 @@ function createProps(spec) {
  * @returns {string}
  */
 export function emitAstro(spec, _componentName) {
-    const classes = createClasses(spec);
     const props = createProps(spec);
     const markup = renderMarkup(spec);
 
+    // Logic components compute their class per branch (inline); the hoisted
+    // `classes` const is only for the single-primary (no control-flow) case.
+    const classesBlock = spec.hasLogic ? "" : `\n\n${createClasses(spec)}`;
+
     return `---
 ${AUTOGEN_HEADER.trimEnd()}
-const { ${props} } = Astro.props;
-
-${classes}
+const { ${props} } = Astro.props;${classesBlock}
 ---
 
 ${markup}

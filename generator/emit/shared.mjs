@@ -37,6 +37,34 @@ export function valueVariantTerm(propRef, map) {
 }
 
 /**
+ * Build an inline class-merge expression for a single control-flow branch
+ * element, from *that element's* base class + its own variants + the consumer
+ * className. Unlike the hoisted `classes` const (used when there is no control
+ * flow), each data-if branch computes its class independently so divergent base
+ * classes (e.g. `<ol class="govuk-list govuk-list--number">` vs `<ul
+ * class="govuk-list">`) and branch-specific modifiers don't leak across
+ * branches.
+ *
+ * @param {import("../parse-spec.mjs").SpecNode} node   the branch element
+ * @param {Object} opts
+ * @param {(name: string) => string} opts.propRef   how to reference a prop
+ * @param {string} opts.classNameRef                expression for the consumer class (e.g. `className ?? ""`, `local.class ?? ""`, `className`)
+ * @returns {string}                                a single JS expression evaluating to the class string
+ */
+export function branchClass(node, { propRef, classNameRef }) {
+    const baseClass = node.attrs?.class ?? "";
+    const variants = node.variants ?? {};
+    const valueVariants = node.valueVariants ?? {};
+    const terms = [
+        JSON.stringify(baseClass),
+        ...Object.keys(variants).map((p) => `${propRef(p)} ? ${JSON.stringify(variants[p])} : ""`),
+        ...Object.keys(valueVariants).map((p) => valueVariantTerm(propRef(p), valueVariants[p])),
+        classNameRef,
+    ].join(", ");
+    return `[${terms}].filter(Boolean).join(" ")`;
+}
+
+/**
  * TypeScript union of a value-map's keys, e.g. `"grey" | "green"`.
  * @param {Record<string,string>} map
  * @returns {string}
@@ -166,6 +194,7 @@ export function mountInitBody(init, ref, pad, guardComment) {
  * @property {string} classExpr          merged-class expression (e.g. "classes", "classes()")
  * @property {string} classAttr          class attribute name ("class" | "className")
  * @property {(name: string) => string} propRef   how to reference prop `name` (condition)
+ * @property {string} classNameRef       expression for the consumer class in a branch (e.g. `className ?? ""`)
  * @property {string} restSpread         the rest-spread token ("{...rest}")
  * @property {(n: LogicNode, pad: string) => string} slot   render a slot node
  * @property {(condStr: string, thenStr: string, elseStr: string, pad: string, isRoot: boolean) => string} cond   render a conditional (isRoot: at the tree root, e.g. a return position)
@@ -207,9 +236,26 @@ export function renderLogicTree(root, d, baseIndent = 0) {
 
         /** @type {string[]} */
         const parts = [];
+        // A branch-root element merges the consumer class + variants (it carries
+        // data-rest and/or variants); nested static elements keep their class
+        // verbatim, exactly as in renderTree.
+        const mergesClass =
+            n.rest ||
+            Object.keys(n.variants ?? {}).length > 0 ||
+            Object.keys(n.valueVariants ?? {}).length > 0;
         for (const [k, v] of Object.entries(n.attrs ?? {})) {
             if (k === "class") {
-                parts.push(`${d.classAttr}={${d.classExpr}}`);
+                if (mergesClass) {
+                    // Each branch computes its own class from its own base class
+                    // + variants, so divergent branches don't share modifiers.
+                    const expr = branchClass(n, {
+                        propRef: d.propRef,
+                        classNameRef: d.classNameRef,
+                    });
+                    parts.push(`${d.classAttr}={${expr}}`);
+                } else {
+                    parts.push(`${d.classAttr}="${v}"`);
+                }
                 continue;
             }
             if (v === "" && boundProps.has(k)) {

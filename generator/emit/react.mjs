@@ -17,6 +17,7 @@ function renderMarkup(spec) {
             classAttr: "className",
             forAttr: "htmlFor",
             propRef: (name) => name,
+            classNameRef: "className ?? \"\"",
             boundProps: spec.logicProps,
             restSpread: "{...rest}",
             slot: (n, pad) => `${pad}{children ?? ${JSON.stringify(n.slotDefault ?? "")}}`,
@@ -129,7 +130,9 @@ function createComponentInit(spec) {
 export function emitReact(spec, componentName) {
     const imports = spec.init ? IMPORT_STATEMENT : "";
     const ref = spec.init ? REF : "";
-    const classes = createClasses(spec);
+    // Logic components compute their class per branch (inline); the hoisted
+    // `classes` const is only for the single-primary (no control-flow) case.
+    const classes = spec.hasLogic ? "" : createClasses(spec);
     const propType = createPropType(spec);
     const props = createProps(spec);
     const componentInit = createComponentInit(spec);

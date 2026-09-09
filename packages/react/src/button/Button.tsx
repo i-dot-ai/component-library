@@ -11,23 +11,14 @@ type ButtonProps = {
 };
 
 export default function Button({ secondary, warning, inverse, href, class: className, children, ...rest }: ButtonProps) {
-    const classes = [
-        "govuk-button",
-        secondary ? "govuk-button--secondary" : "",
-        warning ? "govuk-button--warning" : "",
-        inverse ? "govuk-button--inverse" : "",
-        className ?? "",
-    ]
-        .filter(Boolean)
-        .join(" ");
 
     return (
         href ? (
-        <a href={href} role="button" className={classes} {...rest}>
+        <a href={href} role="button" className={["govuk-button", secondary ? "govuk-button--secondary" : "", warning ? "govuk-button--warning" : "", inverse ? "govuk-button--inverse" : "", className ?? ""].filter(Boolean).join(" ")} {...rest}>
             {children ?? ""}
         </a>
         ) : (
-        <button className={classes} data-module="govuk-button" {...rest}>
+        <button className={["govuk-button", secondary ? "govuk-button--secondary" : "", warning ? "govuk-button--warning" : "", inverse ? "govuk-button--inverse" : "", className ?? ""].filter(Boolean).join(" ")} data-module="govuk-button" {...rest}>
             {children ?? ""}
         </button>
         )

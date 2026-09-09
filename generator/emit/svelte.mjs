@@ -13,6 +13,7 @@ function renderMarkup(spec) {
             classExpr: "classes",
             classAttr: "class",
             propRef: (name) => name,
+            classNameRef: "className",
             boundProps: spec.logicProps,
             restSpread: "{...rest}",
             slot: (n, pad) =>
@@ -105,16 +106,17 @@ function createComponentInit(spec) {
  * @returns {string}
  */
 export function emitSvelte(spec, _componentName) {
-    const classes = createClasses(spec);
     const props = createProps(spec);
     const componentInit = createComponentInit(spec);
     const markup = renderMarkup(spec);
 
+    // Logic components compute their class per branch (inline); the hoisted
+    // `classes` $derived is only for the single-primary (no control-flow) case.
+    const classesBlock = spec.hasLogic ? "" : `\n\n${createClasses(spec)}`;
+
     return `<!-- AUTO-GENERATED from HTML spec. Do not edit by hand. -->
 <script>
-${componentInit}    let { ${props} } = $props();
-
-${classes}
+${componentInit}    let { ${props} } = $props();${classesBlock}
 </script>
 
 ${markup}
