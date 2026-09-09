@@ -23,6 +23,30 @@ export function pascalCase(name) {
 export const AUTOGEN_HEADER = "// AUTO-GENERATED from HTML spec. Do not edit by hand.\n";
 
 /**
+ * Build the class-array term for a value-map variant: an object lookup keyed by
+ * the prop's value, e.g. `({ grey: "govuk-tag--grey", ... }[colour] ?? "")`.
+ * @param {string} propRef        how to reference the prop (e.g. "colour", "local.colour")
+ * @param {Record<string,string>} map   value -> class
+ * @returns {string}
+ */
+export function valueVariantTerm(propRef, map) {
+    const entries = Object.entries(map)
+        .map(([value, cls]) => `${JSON.stringify(value)}: ${JSON.stringify(cls)}`)
+        .join(", ");
+    return `({ ${entries} }[${propRef}] ?? "")`;
+}
+
+/**
+ * TypeScript union of a value-map's keys, e.g. `"grey" | "green"`.
+ * @param {Record<string,string>} map
+ * @returns {string}
+ */
+export function valueVariantUnion(map) {
+    return Object.keys(map).map((k) => JSON.stringify(k)).join(" | ");
+}
+
+
+/**
  * Serialise a static attributes object to a JSX/HTML attribute string,
  * applying per-framework name remapping (for -> htmlFor in React).
  * The `class` attribute is handled separately (merged with the consumer prop).

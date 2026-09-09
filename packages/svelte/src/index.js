@@ -11,3 +11,4 @@ export { default as RadioDivider } from "./radios/RadioDivider.svelte";
 export { default as RadioInput } from "./radios/RadioInput.svelte";
 export { default as RadioItem } from "./radios/RadioItem.svelte";
 export { default as Radios } from "./radios/Radios.svelte";
+export { default as Tag } from "./tag/Tag.svelte";

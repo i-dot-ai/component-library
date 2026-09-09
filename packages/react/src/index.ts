@@ -11,3 +11,4 @@ export { default as RadioDivider } from "./radios/RadioDivider";
 export { default as RadioInput } from "./radios/RadioInput";
 export { default as RadioItem } from "./radios/RadioItem";
 export { default as Radios } from "./radios/Radios";
+export { default as Tag } from "./tag/Tag";

@@ -1,4 +1,4 @@
-import { AUTOGEN_HEADER, renderTree, renderLogicTree } from "./shared.mjs";
+import { AUTOGEN_HEADER, renderTree, renderLogicTree, valueVariantTerm } from "./shared.mjs";
 
 /** @typedef {import("../parse-spec.mjs").Spec} Spec */
 /** @typedef {import("../parse-spec.mjs").SpecNode} SpecNode */
@@ -36,16 +36,18 @@ function renderMarkup(spec) {
 function createClasses(spec) {
     const baseClass = spec.primary.attrs?.class ?? "";
     const variantProps = Object.keys(spec.variants);
-    if (!variantProps.length) {
+    const valueProps = Object.keys(spec.valueVariants ?? {});
+    if (!variantProps.length && !valueProps.length) {
         return `const classes = ["${baseClass}", className ?? ""].filter(Boolean).join(" ");`;
     }
-    const variantClassExpr = variantProps
-        .map((p) => `${p} ? "${spec.variants[p]}" : ""`)
-        .join(",\n    ");
+    const terms = [
+        ...variantProps.map((p) => `${p} ? "${spec.variants[p]}" : ""`),
+        ...valueProps.map((p) => valueVariantTerm(p, spec.valueVariants[p])),
+    ].join(",\n    ");
     return (
         `const classes = [\n` +
         `    "${baseClass}",\n` +
-        `    ${variantClassExpr},\n` +
+        `    ${terms},\n` +
         `    className ?? "",\n` +
         `]\n` +
         `    .filter(Boolean)\n` +
@@ -61,6 +63,7 @@ function createClasses(spec) {
 function createProps(spec) {
     return [
         ...Object.keys(spec.variants).map((p) => `${p} = false`),
+        ...Object.keys(spec.valueVariants ?? {}),
         ...(spec.logicProps ?? []),
         `class: className`,
         ...(spec.hasLogic || spec.primary.rest ? ["...rest"] : []),

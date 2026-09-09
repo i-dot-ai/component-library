@@ -19,7 +19,8 @@ import { parse } from "node-html-parser";
  * @typedef {Object} Spec
  * @property {SpecNode} root
  * @property {SpecNode} primary                 element receiving merged class + rest
- * @property {Record<string,string>} variants   propName -> modifier class
+ * @property {Record<string,string>} variants   boolean propName -> modifier class
+ * @property {Record<string,Record<string,string>>} valueVariants  propName -> { value -> modifier class }
  * @property {boolean} hasSlot
  * @property {string|null} init                 govuk-frontend component to self-init, or null
  * @property {boolean} [hasLogic]               tree contains control-flow (data-if) nodes
@@ -33,6 +34,12 @@ import { parse } from "node-html-parser";
  * conditional rendered only when `prop` is truthy; an immediately-following
  * sibling with `data-else` is its else branch. `data-if` takes a bare prop name
  * only (no expressions) — computed conditions are out of scope by design.
+ *
+ * Variants: `data-variant:<prop>` adds a modifier class. Two forms, auto-detected:
+ *   - boolean:   data-variant:small="govuk-checkboxes--small"   (prop truthy -> class)
+ *   - value-map: data-variant:colour="grey:govuk-tag--grey; green:govuk-tag--green"
+ *                (prop's value selects the class; a value-map is detected by the
+ *                presence of ":" pairs)
  *
  * @param {string} html
  * @returns {Spec}
@@ -48,6 +55,8 @@ export function parseSpec(html) {
 
     /** @type {Record<string,string>} */
     const variants = {};
+    /** @type {Record<string,Record<string,string>>} */
+    const valueVariants = {};
     let hasSlot = false;
     /** @type {string|null} */
     let init = null;
@@ -86,7 +95,10 @@ export function parseSpec(html) {
             }
             if (name.startsWith("data-variant:")) {
                 const prop = name.slice("data-variant:".length);
-                variants[prop] = /** @type {string} */ (value);
+                const raw = /** @type {string} */ (value);
+                const map = parseValueMap(raw);
+                if (map) valueVariants[prop] = map;
+                else variants[prop] = raw;
                 continue;
             }
             attrs[name] = /** @type {string} */ (value);
@@ -180,11 +192,34 @@ export function parseSpec(html) {
         root,
         primary: primaryNode,
         variants,
+        valueVariants,
         hasSlot,
         init,
         hasLogic,
         logicProps: [...logicProps],
     };
+}
+
+/**
+ * Detect and parse a value-map variant. A value-map is `key:class` pairs
+ * separated by `;` (e.g. "grey:govuk-tag--grey; green:govuk-tag--green").
+ * Returns null when the string is a plain class (the boolean-variant form),
+ * detected by the absence of a `:` — govuk class names never contain a colon.
+ * @param {string} raw
+ * @returns {Record<string,string>|null}
+ */
+function parseValueMap(raw) {
+    if (!raw.includes(":")) return null;
+    /** @type {Record<string,string>} */
+    const map = {};
+    for (const pair of raw.split(";")) {
+        const t = pair.trim();
+        if (!t) continue;
+        const i = t.indexOf(":");
+        if (i === -1) continue;
+        map[t.slice(0, i).trim()] = t.slice(i + 1).trim();
+    }
+    return map;
 }
 
 /**
