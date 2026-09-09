@@ -1,0 +1,16 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { hidden = false, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-tabs__panel",
+    hidden ? "govuk-tabs__panel--hidden" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={classes} {...rest}>
+    <slot />
+</div>

@@ -7,6 +7,7 @@ import { parse } from "node-html-parser";
  * @property {Record<string,string>} [attrs]    static attributes (kept verbatim)
  * @property {Record<string,string>} [variants]  per-element boolean variants (propName -> class)
  * @property {Record<string,Record<string,string>>} [valueVariants]  per-element value variants
+ * @property {Record<string,string>} [bindings]  per-element attribute bindings (attrName -> propName)
  * @property {boolean} [rest]                   this element carries data-rest
  * @property {boolean} [primary]                this element carries data-primary
  * @property {SpecNode[]} [children]
@@ -28,6 +29,7 @@ import { parse } from "node-html-parser";
  * @property {string|null} init                 govuk-frontend component to self-init, or null
  * @property {boolean} [hasLogic]               tree contains control-flow (data-if) nodes
  * @property {string[]} [logicProps]            prop names referenced by data-if
+ * @property {string[]} [bindProps]             prop names referenced by data-bind
  */
 
 /**
@@ -73,6 +75,8 @@ export function parseSpec(html) {
     let primaryNode = null;
     /** @type {Set<string>} */
     const logicProps = new Set();
+    /** @type {Set<string>} prop names referenced by data-bind */
+    const bindProps = new Set();
 
     /**
      * Turn a raw element node into a normalised element SpecNode (no control
@@ -89,6 +93,8 @@ export function parseSpec(html) {
         const elVariants = {};
         /** @type {Record<string,Record<string,string>>} per-element value variants */
         const elValueVariants = {};
+        /** @type {Record<string,string>} per-element attribute bindings (attr -> prop) */
+        const elBindings = {};
         let rest = false;
         let primary = false;
         for (const [name, value] of Object.entries(node.attributes)) {
@@ -124,6 +130,15 @@ export function parseSpec(html) {
                 defaults[prop] = /** @type {string} */ (value);
                 continue;
             }
+            if (name.startsWith("data-bind:")) {
+                const attr = name.slice("data-bind:".length);
+                const prop = /** @type {string} */ (value);
+                if (!attr) throw new Error("data-bind requires an attribute name (data-bind:href).");
+                if (!prop) throw new Error(`data-bind:${attr} requires a prop name.`);
+                elBindings[attr] = prop;
+                bindProps.add(prop);
+                continue;
+            }
             attrs[name] = /** @type {string} */ (value);
         }
 
@@ -139,6 +154,7 @@ export function parseSpec(html) {
             children,
             variants: elVariants,
             valueVariants: elValueVariants,
+            bindings: elBindings,
         };
         if (primary) primaryNode = el;
         return el;
@@ -230,6 +246,7 @@ export function parseSpec(html) {
         init,
         hasLogic,
         logicProps: [...logicProps],
+        bindProps: [...bindProps],
     };
 }
 

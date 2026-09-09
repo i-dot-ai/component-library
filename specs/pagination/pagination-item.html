@@ -1,0 +1,8 @@
+<li data-if="ellipsis" class="govuk-pagination__item govuk-pagination__item--ellipsis">
+    <slot>&ctdot;</slot>
+</li>
+<li data-else class="govuk-pagination__item" data-variant:current="govuk-pagination__item--current">
+    <a class="govuk-link govuk-pagination__link" data-primary data-rest>
+        <slot></slot>
+    </a>
+</li>

@@ -1,0 +1,10 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { class: className, ...rest } = Astro.props;
+
+const classes = ["govuk-fieldset", className ?? ""].filter(Boolean).join(" ");
+---
+
+<fieldset class={classes} {...rest}>
+    <slot />
+</fieldset>

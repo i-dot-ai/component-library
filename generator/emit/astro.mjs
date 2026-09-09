@@ -23,6 +23,7 @@ function renderMarkup(spec) {
     }
     return renderTree(spec.root, spec.primary, {
         primaryClass: "classes",
+        propRef: (name) => name,
         slot: (n, pad) =>
             n.slotDefault ? `${pad}<slot>${n.slotDefault}</slot>` : `${pad}<slot />`,
     }, false);
@@ -36,14 +37,16 @@ function renderMarkup(spec) {
  */
 function createClasses(spec) {
     const baseClass = spec.primary.attrs?.class ?? "";
-    const variantProps = Object.keys(spec.variants);
-    const valueProps = Object.keys(spec.valueVariants ?? {});
+    const variants = spec.primary.variants ?? {};
+    const valueVariants = spec.primary.valueVariants ?? {};
+    const variantProps = Object.keys(variants);
+    const valueProps = Object.keys(valueVariants);
     if (!variantProps.length && !valueProps.length) {
         return `const classes = ["${baseClass}", className ?? ""].filter(Boolean).join(" ");`;
     }
     const terms = [
-        ...variantProps.map((p) => `${p} ? "${spec.variants[p]}" : ""`),
-        ...valueProps.map((p) => valueVariantTerm(p, spec.valueVariants[p])),
+        ...variantProps.map((p) => `${p} ? "${variants[p]}" : ""`),
+        ...valueProps.map((p) => valueVariantTerm(p, valueVariants[p])),
     ].join(",\n    ");
     return (
         `const classes = [\n` +
@@ -68,6 +71,7 @@ function createProps(spec) {
             spec.defaults?.[p] !== undefined ? `${p} = ${JSON.stringify(spec.defaults[p])}` : p,
         ),
         ...(spec.logicProps ?? []),
+        ...(spec.bindProps ?? []),
         `class: className`,
         ...(spec.hasLogic || spec.primary.rest ? ["...rest"] : []),
     ].join(", ");

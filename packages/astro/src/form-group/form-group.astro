@@ -1,0 +1,16 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { inline = false, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-form-group",
+    inline ? "govuk-form-group--inline" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={classes} {...rest}>
+    <slot />
+</div>

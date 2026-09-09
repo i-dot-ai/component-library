@@ -1,0 +1,10 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { class: className, ...rest } = Astro.props;
+
+const classes = ["", className ?? ""].filter(Boolean).join(" ");
+---
+
+<option class={classes} {...rest}>
+    <slot />
+</option>

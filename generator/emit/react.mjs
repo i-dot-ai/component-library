@@ -33,6 +33,7 @@ function renderMarkup(spec) {
         primaryClass: "classes",
         primaryRef: "ref={ref}",
         baseIndent: 2,
+        propRef: (name) => name,
         slot: (n, pad) => `${pad}{children ?? ${JSON.stringify(n.slotDefault ?? "")}}`,
     }, Boolean(spec.init));
 }
@@ -45,14 +46,16 @@ function renderMarkup(spec) {
  */
 function createClasses(spec) {
     const baseClass = spec.primary.attrs?.class ?? "";
-    const variantProps = Object.keys(spec.variants);
-    const valueProps = Object.keys(spec.valueVariants ?? {});
+    const variants = spec.primary.variants ?? {};
+    const valueVariants = spec.primary.valueVariants ?? {};
+    const variantProps = Object.keys(variants);
+    const valueProps = Object.keys(valueVariants);
     if (!variantProps.length && !valueProps.length) {
         return `    const classes = ["${baseClass}", className ?? ""].filter(Boolean).join(" ");\n`;
     }
     const terms = [
-        ...variantProps.map((p) => `${p} ? "${spec.variants[p]}" : ""`),
-        ...valueProps.map((p) => valueVariantTerm(p, spec.valueVariants[p])),
+        ...variantProps.map((p) => `${p} ? "${variants[p]}" : ""`),
+        ...valueProps.map((p) => valueVariantTerm(p, valueVariants[p])),
     ].join(",\n        ");
     return (
         `    const classes = [\n` +
@@ -77,6 +80,7 @@ function createProps(spec) {
             spec.defaults?.[p] !== undefined ? `${p} = ${JSON.stringify(spec.defaults[p])}` : p,
         ),
         ...(spec.logicProps ?? []),
+        ...(spec.bindProps ?? []),
         `class: className`,
         ...(spec.hasSlot ? ["children"] : []),
         ...(spec.hasLogic || spec.primary.rest ? ["...rest"] : []),
@@ -95,6 +99,7 @@ function createPropType(spec) {
             ([p, map]) => `    ${p}?: ${valueVariantUnion(map)};`,
         ),
         ...(spec.logicProps ?? []).map((p) => `    ${p}?: string;`),
+        ...(spec.bindProps ?? []).map((p) => `    ${p}?: string;`),
         `    class?: string;`,
         ...(spec.hasSlot ? [`    children?: React.ReactNode;`] : []),
     ].join("\n");

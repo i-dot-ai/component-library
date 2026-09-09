@@ -29,6 +29,7 @@ function renderMarkup(spec) {
         primaryClass: "classes()",
         primaryRef: "ref={el}",
         baseIndent: 2,
+        propRef: (name) => `local.${name}`,
         slot: (n, pad) => `${pad}{local.children ?? ${JSON.stringify(n.slotDefault ?? "")}}`,
     }, Boolean(spec.init));
 }
@@ -41,14 +42,16 @@ function renderMarkup(spec) {
  */
 function createClasses(spec) {
     const baseClass = spec.primary.attrs?.class ?? "";
-    const variantProps = Object.keys(spec.variants);
-    const valueProps = Object.keys(spec.valueVariants ?? {});
+    const variants = spec.primary.variants ?? {};
+    const valueVariants = spec.primary.valueVariants ?? {};
+    const variantProps = Object.keys(variants);
+    const valueProps = Object.keys(valueVariants);
     if (!variantProps.length && !valueProps.length) {
         return `    const classes = () =>\n        ["${baseClass}", local.class ?? ""].filter(Boolean).join(" ");\n`;
     }
     const terms = [
-        ...variantProps.map((p) => `local.${p} ? "${spec.variants[p]}" : ""`),
-        ...valueProps.map((p) => valueVariantTerm(`local.${p}`, spec.valueVariants[p])),
+        ...variantProps.map((p) => `local.${p} ? "${variants[p]}" : ""`),
+        ...valueProps.map((p) => valueVariantTerm(`local.${p}`, valueVariants[p])),
     ].join(",\n            ");
     return (
         `    const classes = () =>\n` +
@@ -72,6 +75,7 @@ function splitPropsLine(spec) {
         ...Object.keys(spec.variants).map((p) => `"${p}"`),
         ...Object.keys(spec.valueVariants ?? {}).map((p) => `"${p}"`),
         ...(spec.logicProps ?? []).map((p) => `"${p}"`),
+        ...(spec.bindProps ?? []).map((p) => `"${p}"`),
         `"class"`,
         ...(spec.hasSlot ? [`"children"`] : []),
     ].join(", ");
@@ -116,6 +120,7 @@ function createPropType(spec) {
             ([p, map]) => `    ${p}?: ${valueVariantUnion(map)};`,
         ),
         ...(spec.logicProps ?? []).map((p) => `    ${p}?: string;`),
+        ...(spec.bindProps ?? []).map((p) => `    ${p}?: string;`),
         `    class?: string;`,
         ...(spec.hasSlot ? [`    children?: JSX.Element;`] : []),
     ].join("\n");

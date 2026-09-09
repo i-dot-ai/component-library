@@ -59,7 +59,7 @@ export function branchClass(node, { propRef, classNameRef }) {
         JSON.stringify(baseClass),
         ...Object.keys(variants).map((p) => `${propRef(p)} ? ${JSON.stringify(variants[p])} : ""`),
         ...Object.keys(valueVariants).map((p) => valueVariantTerm(propRef(p), valueVariants[p])),
-        classNameRef,
+        ...(classNameRef ? [classNameRef] : []),
     ].join(", ");
     return `[${terms}].filter(Boolean).join(" ")`;
 }
@@ -106,12 +106,15 @@ export function renderAttrs(attrs, { forAttr }) {
  * @property {string} [forAttr]       for/label attribute name. Default "for" (React: "htmlFor")
  * @property {string} [primaryRef]    ref binding on the primary element when init is set. Default "" (none)
  * @property {number} [baseIndent]    indent level of the root element. Default 0 (React/Solid: 2)
+ * @property {(name: string) => string} [propRef]   how to reference a prop, for a non-primary element's own variants
  */
 
 /**
  * Render a spec node tree to framework markup. The primary element receives the
- * merged class expression, the ref binding, and the spread rest; every other
- * element keeps its verbatim tag, class and static attributes.
+ * merged class expression (base + its variants + consumer className), the ref
+ * binding, and the spread rest. A non-primary element with its own variants
+ * computes an inline class from its base class + those variants; other elements
+ * keep their static class verbatim.
  * @param {SpecNode} root
  * @param {SpecNode} primary
  * @param {Dialect} dialect
@@ -123,6 +126,7 @@ export function renderTree(root, primary, dialect, hasInit) {
     const forAttr = dialect.forAttr ?? "for";
     const primaryRef = dialect.primaryRef ?? "";
     const baseIndent = dialect.baseIndent ?? 0;
+    const propRef = dialect.propRef ?? ((name) => name);
 
     /**
      * @param {SpecNode} n
@@ -137,12 +141,27 @@ export function renderTree(root, primary, dialect, hasInit) {
         const isPrimary = n === primary;
         const staticAttrs = renderAttrs(n.attrs ?? {}, { forAttr });
         const baseClass = n.attrs?.class ?? "";
+        // A non-primary element may carry its own variants (e.g. a wrapper <li>
+        // whose modifier depends on a prop, while the interactive <a> is primary).
+        const ownVariants =
+            Object.keys(n.variants ?? {}).length > 0 ||
+            Object.keys(n.valueVariants ?? {}).length > 0;
 
         /** @type {string[]} */
         const parts = [];
-        if (isPrimary) parts.push(`${classAttr}={${dialect.primaryClass}}`);
-        else if (baseClass) parts.push(`${classAttr}="${baseClass}"`);
+        if (isPrimary) {
+            parts.push(`${classAttr}={${dialect.primaryClass}}`);
+        } else if (ownVariants) {
+            // Inline class from this element's own base + variants (no className).
+            const expr = branchClass(n, { propRef, classNameRef: "" });
+            parts.push(`${classAttr}={${expr}}`);
+        } else if (baseClass) {
+            parts.push(`${classAttr}="${baseClass}"`);
+        }
         if (staticAttrs) parts.push(staticAttrs);
+        for (const [attr, prop] of Object.entries(n.bindings ?? {})) {
+            parts.push(`${attr === "for" ? forAttr : attr}={${propRef(prop)}}`);
+        }
         if (isPrimary && hasInit && primaryRef) parts.push(primaryRef);
         if (isPrimary && n.rest) parts.push("{...rest}");
 
@@ -236,21 +255,21 @@ export function renderLogicTree(root, d, baseIndent = 0) {
 
         /** @type {string[]} */
         const parts = [];
-        // A branch-root element merges the consumer class + variants (it carries
-        // data-rest and/or variants); nested static elements keep their class
-        // verbatim, exactly as in renderTree.
-        const mergesClass =
-            n.rest ||
+        // A branch element computes its class from its own base + variants when
+        // it carries data-rest or its own variants; nested static elements keep
+        // their class verbatim. The consumer className merges only onto the
+        // rest-bearing element (the branch's primary), so a variant-only wrapper
+        // doesn't also absorb className.
+        const hasOwnVariants =
             Object.keys(n.variants ?? {}).length > 0 ||
             Object.keys(n.valueVariants ?? {}).length > 0;
+        const mergesClass = n.rest || hasOwnVariants;
         for (const [k, v] of Object.entries(n.attrs ?? {})) {
             if (k === "class") {
                 if (mergesClass) {
-                    // Each branch computes its own class from its own base class
-                    // + variants, so divergent branches don't share modifiers.
                     const expr = branchClass(n, {
                         propRef: d.propRef,
-                        classNameRef: d.classNameRef,
+                        classNameRef: n.rest ? d.classNameRef : "",
                     });
                     parts.push(`${d.classAttr}={${expr}}`);
                 } else {
@@ -265,6 +284,9 @@ export function renderLogicTree(root, d, baseIndent = 0) {
             }
             const name = k === "for" ? forAttr : k;
             parts.push(`${name}="${v}"`);
+        }
+        for (const [attr, prop] of Object.entries(n.bindings ?? {})) {
+            parts.push(`${attr === "for" ? forAttr : attr}={${d.propRef(prop)}}`);
         }
         if (n.rest) parts.push(d.restSpread);
 
