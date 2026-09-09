@@ -6,6 +6,9 @@ export { default as AccordionSectionSummary } from "./accordion/AccordionSection
 export { default as AccordionSection } from "./accordion/AccordionSection";
 export { default as Accordion } from "./accordion/Accordion";
 export { default as Button } from "./button/Button";
+export { default as DateInputField } from "./date-input/DateInputField";
+export { default as DateInputItem } from "./date-input/DateInputItem";
+export { default as DateInput } from "./date-input/DateInput";
 export { default as PhaseBanner } from "./phase-banner/PhaseBanner";
 export { default as RadioDivider } from "./radios/RadioDivider";
 export { default as RadioInput } from "./radios/RadioInput";

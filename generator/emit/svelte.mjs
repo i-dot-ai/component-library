@@ -70,7 +70,9 @@ function createClasses(spec) {
 function createProps(spec) {
     return [
         ...Object.keys(spec.variants).map((p) => `${p} = false`),
-        ...Object.keys(spec.valueVariants ?? {}),
+        ...Object.keys(spec.valueVariants ?? {}).map((p) =>
+            spec.defaults?.[p] !== undefined ? `${p} = ${JSON.stringify(spec.defaults[p])}` : p,
+        ),
         ...(spec.logicProps ?? []),
         `class: className = ""`,
         ...(spec.hasSlot ? ["children"] : []),

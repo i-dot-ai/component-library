@@ -6,6 +6,9 @@ export { default as AccordionSectionSummary } from "./accordion/AccordionSection
 export { default as AccordionSection } from "./accordion/AccordionSection.svelte";
 export { default as Accordion } from "./accordion/Accordion.svelte";
 export { default as Button } from "./button/Button.svelte";
+export { default as DateInputField } from "./date-input/DateInputField.svelte";
+export { default as DateInputItem } from "./date-input/DateInputItem.svelte";
+export { default as DateInput } from "./date-input/DateInput.svelte";
 export { default as PhaseBanner } from "./phase-banner/PhaseBanner.svelte";
 export { default as RadioDivider } from "./radios/RadioDivider.svelte";
 export { default as RadioInput } from "./radios/RadioInput.svelte";

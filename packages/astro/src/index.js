@@ -6,6 +6,9 @@ export { default as AccordionSectionSummary } from "./accordion/accordion-sectio
 export { default as AccordionSection } from "./accordion/accordion-section.astro";
 export { default as Accordion } from "./accordion/accordion.astro";
 export { default as Button } from "./button/button.astro";
+export { default as DateInputField } from "./date-input/date-input-field.astro";
+export { default as DateInputItem } from "./date-input/date-input-item.astro";
+export { default as DateInput } from "./date-input/date-input.astro";
 export { default as PhaseBanner } from "./phase-banner/phase-banner.astro";
 export { default as RadioDivider } from "./radios/radio-divider.astro";
 export { default as RadioInput } from "./radios/radio-input.astro";

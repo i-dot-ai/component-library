@@ -21,6 +21,7 @@ import { parse } from "node-html-parser";
  * @property {SpecNode} primary                 element receiving merged class + rest
  * @property {Record<string,string>} variants   boolean propName -> modifier class
  * @property {Record<string,Record<string,string>>} valueVariants  propName -> { value -> modifier class }
+ * @property {Record<string,string>} defaults    propName -> default value (value-variant props)
  * @property {boolean} hasSlot
  * @property {string|null} init                 govuk-frontend component to self-init, or null
  * @property {boolean} [hasLogic]               tree contains control-flow (data-if) nodes
@@ -41,6 +42,10 @@ import { parse } from "node-html-parser";
  *                (prop's value selects the class; a value-map is detected by the
  *                presence of ":" pairs)
  *
+ * Defaults: `data-default:<prop>="value"` gives a value-variant prop a default,
+ * so the prop destructures as `prop = value` and the value-map lookup applies
+ * even when the consumer omits it (e.g. date-input width defaulting to 2).
+ *
  * @param {string} html
  * @returns {Spec}
  */
@@ -57,6 +62,8 @@ export function parseSpec(html) {
     const variants = {};
     /** @type {Record<string,Record<string,string>>} */
     const valueVariants = {};
+    /** @type {Record<string,string>} */
+    const defaults = {};
     let hasSlot = false;
     /** @type {string|null} */
     let init = null;
@@ -99,6 +106,11 @@ export function parseSpec(html) {
                 const map = parseValueMap(raw);
                 if (map) valueVariants[prop] = map;
                 else variants[prop] = raw;
+                continue;
+            }
+            if (name.startsWith("data-default:")) {
+                const prop = name.slice("data-default:".length);
+                defaults[prop] = /** @type {string} */ (value);
                 continue;
             }
             attrs[name] = /** @type {string} */ (value);
@@ -193,6 +205,7 @@ export function parseSpec(html) {
         primary: primaryNode,
         variants,
         valueVariants,
+        defaults,
         hasSlot,
         init,
         hasLogic,

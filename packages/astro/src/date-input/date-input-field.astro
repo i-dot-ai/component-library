@@ -1,0 +1,14 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { width = "2", class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-input govuk-date-input__input",
+    ({ "2": "govuk-input--width-2", "3": "govuk-input--width-3", "4": "govuk-input--width-4" }[width] ?? ""),
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<input class={classes} type="text" inputmode="numeric" {...rest} />

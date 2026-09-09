@@ -3,7 +3,6 @@ import { AUTOGEN_HEADER, mountInitBody, renderTree, renderLogicTree, valueVarian
 /** @typedef {import("../parse-spec.mjs").Spec} Spec */
 /** @typedef {import("../parse-spec.mjs").SpecNode} SpecNode */
 
-const IMPORT_STATEMENT = `import { splitProps, onMount } from "solid-js";\n`;
 const REF = `    let el: HTMLElement | undefined;\n`;
 
 /**
@@ -75,9 +74,33 @@ function splitPropsLine(spec) {
         `"class"`,
         ...(spec.hasSlot ? [`"children"`] : []),
     ].join(", ");
+    const source = hasDefaults(spec) ? "merged" : "props";
     return spec.hasLogic || spec.primary.rest
-        ? `    const [local, rest] = splitProps(props, [${splitKeys}]);\n`
-        : `    const [local] = splitProps(props, [${splitKeys}]);\n`;
+        ? `    const [local, rest] = splitProps(${source}, [${splitKeys}]);\n`
+        : `    const [local] = splitProps(${source}, [${splitKeys}]);\n`;
+}
+
+/**
+ * Whether any value-variant prop declares a default.
+ * @param {Spec} spec
+ * @returns {boolean}
+ */
+function hasDefaults(spec) {
+    return Object.keys(spec.defaults ?? {}).length > 0;
+}
+
+/**
+ * A `mergeProps` line applying value-variant defaults, or "" when there are
+ * none. Solid props are reactive, so defaults are merged (not destructured).
+ * @param {Spec} spec
+ * @returns {string}
+ */
+function mergePropsLine(spec) {
+    if (!hasDefaults(spec)) return "";
+    const entries = Object.entries(spec.defaults)
+        .map(([p, v]) => `${p}: ${JSON.stringify(v)}`)
+        .join(", ");
+    return `    const merged = mergeProps({ ${entries} }, props);\n`;
 }
 
 /**
@@ -121,10 +144,11 @@ function createComponentInit(spec) {
  * @returns {string}
  */
 export function emitSolid(spec, componentName) {
-    const imports = spec.init ? IMPORT_STATEMENT : `import { splitProps } from "solid-js";\n`;
+    const imports = solidImports(spec);
     const ref = spec.init ? REF : "";
     const classes = createClasses(spec);
     const propType = createPropType(spec);
+    const merge = mergePropsLine(spec);
     const split = splitPropsLine(spec);
     const componentInit = createComponentInit(spec);
     const markup = renderMarkup(spec);
@@ -137,10 +161,22 @@ ${propType}
 };
 
 export default function ${componentName}(props: ${componentName}Props) {
-${ref}${split}${classes}${componentInit}
+${ref}${merge}${split}${classes}${componentInit}
     return (
 ${markup}
     );
 }
 `;
+}
+
+/**
+ * The solid-js import line, pulling in only the helpers this component uses.
+ * @param {Spec} spec
+ * @returns {string}
+ */
+function solidImports(spec) {
+    const names = ["splitProps"];
+    if (spec.init) names.push("onMount");
+    if (hasDefaults(spec)) names.push("mergeProps");
+    return `import { ${names.join(", ")} } from "solid-js";\n`;
 }
