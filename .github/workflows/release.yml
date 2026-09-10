@@ -8,7 +8,6 @@ concurrency: release
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   release:
@@ -46,6 +45,14 @@ jobs:
       - name: Generate packages
         if: steps.check.outputs.publish == 'true'
         run: pnpm run generate
+
+      - name: Debug auth (temporary)
+        if: steps.check.outputs.publish == 'true'
+        run: |
+          echo "token length: ${#NODE_AUTH_TOKEN}"   # 0 = secret not reaching this step
+          npm whoami || echo "npm whoami failed (anonymous or bad/wrong-scope token)"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish all packages
         if: steps.check.outputs.publish == 'true'
