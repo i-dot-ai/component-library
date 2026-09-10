@@ -1,7 +1,7 @@
 {
-  "name": "@iai/react",
+  "name": "@i-dot-ai-npm/component-library-react",
   "version": "0.0.1",
-  "description": "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+  "description": "React components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
@@ -11,7 +11,8 @@
     "src"
   ],
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "govuk-frontend": ">=6"
   },
   "license": "MIT"
 }

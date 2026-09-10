@@ -3,3 +3,9 @@ node_modules/
 # local context files for opencode
 context/
 CONVERSATION.md
+
+# generated files by the generator
+packages/astro/src/
+packages/react/src/
+packages/solid/src/
+packages/svelte/src/

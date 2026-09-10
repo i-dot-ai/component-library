@@ -1,7 +1,7 @@
 {
-  "name": "@iai/svelte",
+  "name": "@i-dot-ai-npm/component-library-svelte",
   "version": "0.0.1",
-  "description": "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+  "description": "Svelte components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {
     ".": "./src/index.js",
@@ -11,7 +11,8 @@
     "src"
   ],
   "peerDependencies": {
-    "svelte": ">=5"
+    "svelte": ">=5",
+    "govuk-frontend": ">=6"
   },
   "license": "MIT"
 }

@@ -24,10 +24,10 @@ const { version } = JSON.parse(readFileSync(join(ROOT, "package.json"), "utf8"))
  * package entry file (barrel) generated alongside the components.
  */
 const FRAMEWORKS = {
-    react: { pkg: "@iai/react", peer: { react: ">=18" }, entry: "src/index.ts" },
-    solid: { pkg: "@iai/solid", peer: { "solid-js": ">=1.8" }, entry: "src/index.ts" },
-    svelte: { pkg: "@iai/svelte", peer: { svelte: ">=5" }, entry: "src/index.js" },
-    astro: { pkg: "@iai/astro", peer: { astro: ">=4" }, entry: "src/index.js" },
+    react: { pkg: "@i-dot-ai-npm/component-library-react", desc: "React components for i.AI GOV.UK (auto-generated from HTML specs).", peer: { react: ">=18", "govuk-frontend": ">=6" }, entry: "src/index.ts" },
+    solid: { pkg: "@i-dot-ai-npm/component-library-solid", desc: "Solid.js components for i.AI GOV.UK (auto-generated from HTML specs).", peer: { "solid-js": ">=1.8", "govuk-frontend": ">=6" }, entry: "src/index.ts" },
+    svelte: { pkg: "@i-dot-ai-npm/component-library-svelte", desc: "Svelte components for i.AI GOV.UK (auto-generated from HTML specs).", peer: { svelte: ">=5", "govuk-frontend": ">=6" }, entry: "src/index.js" },
+    astro: { pkg: "@i-dot-ai-npm/component-library-astro", desc: "Astro components for i.AI GOV.UK (auto-generated from HTML specs).", peer: { astro: ">=4", "govuk-frontend": ">=6" }, entry: "src/index.js" },
 };
 
 for (const [framework, meta] of Object.entries(FRAMEWORKS)) {
@@ -51,14 +51,14 @@ for (const [framework, meta] of Object.entries(FRAMEWORKS)) {
 /**
  * Build a per-package package.json. All packages share the root version and
  * ship source only (consumer bundler handles compilation).
- * @param {{ pkg: string, peer: Record<string,string>, entry: string }} meta
+ * @param {{ pkg: string, desc: string, peer: Record<string,string>, entry: string }} meta
  * @param {string} version
  */
 function packageJson(meta, version) {
     return {
         name: meta.pkg,
         version,
-        description: "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+        description: meta.desc,
         type: "module",
         exports: {
             ".": `./${meta.entry}`,

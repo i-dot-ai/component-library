@@ -1,7 +1,7 @@
 {
-  "name": "@iai/astro",
+  "name": "@i-dot-ai-npm/component-library-astro",
   "version": "0.0.1",
-  "description": "i.AI GOV.UK component wrappers (auto-generated from HTML specs).",
+  "description": "Astro components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {
     ".": "./src/index.js",
@@ -11,7 +11,8 @@
     "src"
   ],
   "peerDependencies": {
-    "astro": ">=4"
+    "astro": ">=4",
+    "govuk-frontend": ">=6"
   },
   "license": "MIT"
 }
