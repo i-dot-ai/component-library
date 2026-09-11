@@ -8,6 +8,7 @@ concurrency: release
 
 permissions:
   contents: read
+  id-token: write # Required for npm trusted publishing (OIDC)
 
 jobs:
   release:
@@ -25,6 +26,12 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
           cache: pnpm
+
+      - name: Upgrade npm for trusted publishing
+        run: |
+          # Node 22 bundles an npm older than the 11.5.1 OIDC floor.
+          npm install -g npm@11.5.1
+          npm -v
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -64,7 +71,6 @@ jobs:
               echo "::notice::$name@$version already published — skipping."
               continue
             fi
-            pnpm --filter "$name" publish --no-git-checks --access public
+            # Publish with the npm CLI, as pnpm publish does not support OIDC.
+            ( cd "packages/$fw" && npm publish --access public )
           done
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
