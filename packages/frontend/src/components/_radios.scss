@@ -1,0 +1,45 @@
+// Radios overrides, including the i.AI card-style radios variant.
+
+.govuk-radios__item {
+    align-content: flex-start;
+}
+
+.govuk-radios--cards {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (width > 48rem) {
+    .govuk-radios--cards {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+}
+
+.govuk-radios--cards .govuk-radios__item {
+    border: 2px solid transparent;
+    background-color: var(--govuk-surface-background-colour);
+    flex: 1;
+    box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-shadow:
+        0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+        0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+}
+
+.govuk-radios--cards .govuk-radios__item:has(.govuk-radios__input:checked) {
+    border-color: var(--govuk-brand-colour);
+    background-color: #d2e2f1;
+}
+
+.govuk-radios--cards .govuk-radios__input:checked + .govuk-radios__label:after {
+    right: 22px;
+    left: auto;
+}
+
+.govuk-radios--cards .govuk-radios__label::before {
+    right: 15px;
+    left: auto;
+}

@@ -1,0 +1,6 @@
+// Checkboxes overrides.
+
+.govuk-checkboxes--subtle .govuk-checkboxes__label::before {
+    border: 1px solid #858686;
+    background-color: #fff;
+}
