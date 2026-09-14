@@ -1,0 +1,17 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { smallTextUntilTablet = false, subtle = false, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-table",
+    smallTextUntilTablet ? "govuk-table--small-text-until-tablet" : "",
+    subtle ? "govuk-table--subtle" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<table class={classes} {...rest}>
+    <slot />
+</table>

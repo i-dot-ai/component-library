@@ -1,0 +1,12 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { href, class: className, ...rest } = Astro.props;
+
+const classes = ["side-nav__item", className ?? ""].filter(Boolean).join(" ");
+---
+
+<li class={classes} {...rest}>
+    <a class="govuk-link govuk-link--no-visited-state govuk-!-font-size-16 govuk-link--no-underline" href={href}>
+        <slot />
+    </a>
+</li>

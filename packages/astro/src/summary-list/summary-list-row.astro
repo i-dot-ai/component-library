@@ -1,0 +1,16 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { noActions = false, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-summary-list__row",
+    noActions ? "govuk-summary-list__row--no-actions" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={classes} {...rest}>
+    <slot />
+</div>

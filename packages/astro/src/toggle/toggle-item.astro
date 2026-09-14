@@ -1,0 +1,10 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { class: className, ...rest } = Astro.props;
+
+const classes = ["iai-toggle__item", className ?? ""].filter(Boolean).join(" ");
+---
+
+<div class={classes} data-module="govuk-toggle" {...rest}>
+    <slot />
+</div>
