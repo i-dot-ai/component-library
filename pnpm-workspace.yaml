@@ -2,10 +2,10 @@ packages:
   - "packages/*"
   - "frontend"
 
-onlyBuiltDependencies:
-  - esbuild
-  - "@parcel/watcher"
-  - "@sentry/cli"
-  - sharp
+allowBuilds:
+  esbuild: true
+  "@parcel/watcher": true
+  "@sentry/cli": true
+  sharp: true
 
 autoInstallPeers: false
