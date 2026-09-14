@@ -25,5 +25,14 @@
     "esbuild": "^0.25.0",
     "sass": "^1.103.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-dot-ai/component-library.git",
+    "directory": "packages/frontend"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "license": "MIT"
 }
