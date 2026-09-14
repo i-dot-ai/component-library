@@ -36,21 +36,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check whether this version is already published
-        id: check
-        run: |
-          version=$(node -p "require('./package.json').version")
-          name="@i-dot-ai-npm/component-library-react"
-          if npm view "$name@$version" version >/dev/null 2>&1; then
-            echo "::notice::$name@$version already on npm — skipping publish."
-            echo "publish=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-          fi
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-
       - name: Debug auth (temporary)
-        if: steps.check.outputs.publish == 'true'
         run: |
           echo "token length: ${#NODE_AUTH_TOKEN}"   # 0 = secret not reaching this step
           npm whoami || echo "npm whoami failed (anonymous or bad/wrong-scope token)"
@@ -58,19 +44,21 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Build packages that need it
-        if: steps.check.outputs.publish == 'true'
         run: pnpm --filter @i-dot-ai-npm/component-library-frontend build
 
-      - name: Publish all packages
-        if: steps.check.outputs.publish == 'true'
+      - name: Publish changed packages
         run: |
-          version="${{ steps.check.outputs.version }}"
+          # Each package is versioned independently. Publish any whose own
+          # package.json version is not yet on npm; skip the rest.
           for fw in react solid svelte astro frontend; do
-            name="@i-dot-ai-npm/component-library-$fw"
+            dir="packages/$fw"
+            name=$(node -p "require('./$dir/package.json').name")
+            version=$(node -p "require('./$dir/package.json').version")
             if npm view "$name@$version" version >/dev/null 2>&1; then
               echo "::notice::$name@$version already published — skipping."
               continue
             fi
+            echo "Publishing $name@$version"
             # Publish with the npm CLI, as pnpm publish does not support OIDC.
-            ( cd "packages/$fw" && npm publish --access public )
+            ( cd "$dir" && npm publish --access public )
           done
