@@ -42,7 +42,7 @@ for (const [framework, meta] of Object.entries(FRAMEWORKS)) {
 
     writeFileSync(
         join(pkgDir, "package.json"),
-        JSON.stringify(packageJson(meta, version), null, 2) + "\n",
+        JSON.stringify(packageJson(framework, meta, version), null, 2) + "\n",
     );
 
     console.log(`${meta.pkg}@${version}: ${count} components -> packages/${framework}/src`);
@@ -51,10 +51,17 @@ for (const [framework, meta] of Object.entries(FRAMEWORKS)) {
 /**
  * Build a per-package package.json. All packages share the root version and
  * ship source only (consumer bundler handles compilation).
+ *
+ * `repository` and `publishConfig` are required for npm trusted publishing
+ * (OIDC): npm rejects an OIDC publish whose `repository.url` does not match the
+ * GitHub repository, and `publishConfig` keeps the scoped package public on the
+ * npm registry.
+ *
+ * @param {string} framework Framework key, used for the repository directory.
  * @param {{ pkg: string, desc: string, peer: Record<string,string>, entry: string }} meta
  * @param {string} version
  */
-function packageJson(meta, version) {
+function packageJson(framework, meta, version) {
     return {
         name: meta.pkg,
         version,
@@ -66,6 +73,15 @@ function packageJson(meta, version) {
         },
         files: ["src"],
         peerDependencies: meta.peer,
+        repository: {
+            type: "git",
+            url: "git+https://github.com/i-dot-ai/component-library.git",
+            directory: `packages/${framework}`,
+        },
+        publishConfig: {
+            access: "public",
+            registry: "https://registry.npmjs.org",
+        },
         license: "MIT",
     };
 }

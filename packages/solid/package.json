@@ -14,5 +14,14 @@
     "solid-js": ">=1.8",
     "govuk-frontend": ">=6"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-dot-ai/component-library.git",
+    "directory": "packages/solid"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "license": "MIT"
 }
