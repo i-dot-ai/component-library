@@ -1,0 +1,16 @@
+---
+// AUTO-GENERATED from HTML spec. Do not edit by hand.
+const { secondary = false, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "iai-card",
+    secondary ? "iai-card--secondary" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={classes} {...rest}>
+    <slot />
+</div>
