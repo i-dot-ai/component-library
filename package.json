@@ -10,8 +10,9 @@
   ],
   "scripts": {
     "generate": "node generator/index.mjs",
+    "build": "pnpm --filter @i-dot-ai-npm/component-library-frontend build",
     "typecheck": "tsc --noEmit",
-    "release": "npm run generate && npm publish --workspaces --access public"
+    "release": "npm run generate && npm run build && npm publish --workspaces --access public"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

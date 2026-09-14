@@ -1,0 +1,21 @@
+// Table overrides.
+
+.govuk-table--subtle {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.govuk-table--subtle .govuk-table__header {
+    font-size: 1rem;
+    color: #484949;
+    border-color: #484949;
+}
+
+.govuk-table--subtle .govuk-table__cell {
+    padding: 0;
+    vertical-align: middle;
+}
+
+.govuk-table__row:hover {
+    background-color: #f2f2f2;
+}

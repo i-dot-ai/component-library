@@ -49,10 +49,6 @@ jobs:
           fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
 
-      - name: Generate packages
-        if: steps.check.outputs.publish == 'true'
-        run: pnpm run generate
-
       - name: Debug auth (temporary)
         if: steps.check.outputs.publish == 'true'
         run: |
@@ -61,11 +57,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Build packages that need it
+        if: steps.check.outputs.publish == 'true'
+        run: pnpm --filter @i-dot-ai-npm/component-library-frontend build
+
       - name: Publish all packages
         if: steps.check.outputs.publish == 'true'
         run: |
           version="${{ steps.check.outputs.version }}"
-          for fw in react solid svelte astro; do
+          for fw in react solid svelte astro frontend; do
             name="@i-dot-ai-npm/component-library-$fw"
             if npm view "$name@$version" version >/dev/null 2>&1; then
               echo "::notice::$name@$version already published — skipping."

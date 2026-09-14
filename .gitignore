@@ -2,10 +2,62 @@ node_modules/
 
 # local context files for opencode
 context/
-CONVERSATION.md
 
 # generated files by the generator
 packages/astro/src/
 packages/react/src/
 packages/solid/src/
 packages/svelte/src/
+
+venv
+.DS_Store
+.idea
+.gcloudignore
+.git
+.venv
+__pycache__/
+/setup.cfg
+.ipynb_checkpoints
+*.ipynb
+.env
+Brewfile.lock.json
+*.pdf
+
+# Terraform
+**/.terraform/*
+**/terraform/terraform.tfstate.d
+**/.terraform*
+# Terraform lock files
+*/.terraform.lock.hcl
+.terraform.lock.hcl
+*.terraform.lock.hcl 
+
+# Data
+*.csv
+*.xlsx
+*.xls
+*.pkl
+*.parquet
+*.zip
+*.ods
+
+# outputs
+*.pdf
+*.jpg
+*.png
+*.pptx
+*.ppt
+*.docx
+
+# Rendered presentations
+*.html
+*_files/
+
+# Docker cache
+.build-cache
+
+# Python package manager lock files
+poetry.lock
+
+# Frontend dependencies (applies to all frontend frameworks)
+frontend/node_modules/

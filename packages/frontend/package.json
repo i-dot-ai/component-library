@@ -1,0 +1,29 @@
+{
+  "name": "@i-dot-ai-npm/component-library-frontend",
+  "version": "0.0.1",
+  "description": "i.AI GOV.UK design-system override layer (SCSS + JS). Layered on top of govuk-frontend.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js",
+    "./scss": "./src/index.scss",
+    "./css": "./dist/i-ai-design-system.min.css",
+    "./min.js": "./dist/i-ai-design-system.min.js"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "sass --no-source-map --style=compressed src/index.scss dist/i-ai-design-system.min.css",
+    "build:js": "esbuild src/index.js --bundle --minify --format=esm --outfile=dist/i-ai-design-system.min.js"
+  },
+  "peerDependencies": {
+    "govuk-frontend": ">=6"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "sass": "^1.103.0"
+  },
+  "license": "MIT"
+}
