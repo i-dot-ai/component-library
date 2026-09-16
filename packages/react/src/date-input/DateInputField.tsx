@@ -1,5 +1,3 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
-
 type DateInputFieldProps = {
     width?: "2" | "3" | "4";
     class?: string;
@@ -16,6 +14,6 @@ export default function DateInputField({ width = "2", class: className, ...rest 
         .join(" ");
 
     return (
-        <input className={classes} type="text" inputmode="numeric" {...rest} />
+        <input className={classes} type="text" inputMode="numeric" {...rest} />
     );
 }

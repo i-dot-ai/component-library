@@ -1,4 +1,3 @@
-<!-- AUTO-GENERATED from HTML spec. Do not edit by hand. -->
 <script>
     let { secondary = false, warning = false, inverse = false, href, class: className = "", children, ...rest } = $props();
 </script>

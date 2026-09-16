@@ -1,5 +1,3 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
-
 type ToggleProps = {
     class?: string;
     [key: string]: unknown;

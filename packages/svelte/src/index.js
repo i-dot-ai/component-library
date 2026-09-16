@@ -1,4 +1,4 @@
-// AUTO-GENERATED barrel. Do not edit by hand.
+
 export { default as AccordionSectionContent } from "./accordion/AccordionSectionContent.svelte";
 export { default as AccordionSectionHeader } from "./accordion/AccordionSectionHeader.svelte";
 export { default as AccordionSectionHeading } from "./accordion/AccordionSectionHeading.svelte";

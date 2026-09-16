@@ -11,8 +11,8 @@
     "src"
   ],
   "peerDependencies": {
-    "svelte": ">=5",
-    "govuk-frontend": ">=6"
+    "govuk-frontend": ">=6",
+    "svelte": ">=5"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "govuk-frontend": "^6.5.0",
+    "svelte": "^5.57.0"
+  }
 }

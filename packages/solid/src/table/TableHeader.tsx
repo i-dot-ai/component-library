@@ -1,4 +1,5 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+/** @jsxImportSource solid-js */
+
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 

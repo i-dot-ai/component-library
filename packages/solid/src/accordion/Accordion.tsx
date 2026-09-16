@@ -1,4 +1,5 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+/** @jsxImportSource solid-js */
+
 import { splitProps, onMount } from "solid-js";
 import type { JSX } from "solid-js";
 
@@ -9,7 +10,7 @@ type AccordionProps = {
 };
 
 export default function Accordion(props: AccordionProps) {
-    let el: HTMLElement | undefined;
+    let el: HTMLDivElement | undefined;
     const [local, rest] = splitProps(props, ["class", "children"]);
     const classes = () =>
         ["govuk-accordion", local.class ?? ""].filter(Boolean).join(" ");

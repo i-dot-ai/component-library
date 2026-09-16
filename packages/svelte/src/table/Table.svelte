@@ -1,4 +1,3 @@
-<!-- AUTO-GENERATED from HTML spec. Do not edit by hand. -->
 <script>
     let { smallTextUntilTablet = false, subtle = false, class: className = "", children, ...rest } = $props();
 

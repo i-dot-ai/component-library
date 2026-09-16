@@ -11,8 +11,8 @@
     "src"
   ],
   "peerDependencies": {
-    "solid-js": ">=1.8",
-    "govuk-frontend": ">=6"
+    "govuk-frontend": ">=6",
+    "solid-js": ">=1.8"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "govuk-frontend": "^6.5.0",
+    "solid-js": "^1.9.15"
+  }
 }

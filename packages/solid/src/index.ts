@@ -1,4 +1,3 @@
-// AUTO-GENERATED barrel. Do not edit by hand.
 export { default as AccordionSectionContent } from "./accordion/AccordionSectionContent";
 export { default as AccordionSectionHeader } from "./accordion/AccordionSectionHeader";
 export { default as AccordionSectionHeading } from "./accordion/AccordionSectionHeading";

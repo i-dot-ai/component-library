@@ -1,10 +1,10 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 
 type PaginationItemProps = {
     current?: boolean;
     ellipsis?: string;
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 
@@ -12,15 +12,15 @@ export default function PaginationItem({ current, ellipsis, class: className, ch
 
     return (
         ellipsis ? (
-        <li className="govuk-pagination__item govuk-pagination__item--ellipsis">
-            {children ?? "⋯"}
-        </li>
+            <li className="govuk-pagination__item govuk-pagination__item--ellipsis">
+                {children ?? "⋯"}
+            </li>
         ) : (
-        <li className={["govuk-pagination__item", current ? "govuk-pagination__item--current" : ""].filter(Boolean).join(" ")}>
-            <a className={["govuk-link govuk-pagination__link", className ?? ""].filter(Boolean).join(" ")} {...rest}>
-                {children ?? ""}
-            </a>
-        </li>
+            <li className={["govuk-pagination__item", current ? "govuk-pagination__item--current" : ""].filter(Boolean).join(" ")}>
+                <a className={["govuk-link govuk-pagination__link", className ?? ""].filter(Boolean).join(" ")} {...rest}>
+                    {children ?? ""}
+                </a>
+            </li>
         )
     );
 }

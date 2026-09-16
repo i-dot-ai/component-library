@@ -12,9 +12,14 @@
   "dependencies": {
     "@astrojs/node": "^11.1.5",
     "@astrojs/react": "^6.0.5",
-    "@i-dot-ai-npm/utilities": "^1.0.0",
-    "@i-dot-ai-npm/component-library-react": "workspace:*",
+    "@astrojs/solid-js": "^7.0.2",
+    "@astrojs/svelte": "^9.0.1",
+    "@i-dot-ai-npm/component-library-astro": "workspace:*",
     "@i-dot-ai-npm/component-library-frontend": "workspace:*",
+    "@i-dot-ai-npm/component-library-react": "workspace:*",
+    "@i-dot-ai-npm/component-library-solid": "workspace:*",
+    "@i-dot-ai-npm/component-library-svelte": "workspace:*",
+    "@i-dot-ai-npm/utilities": "^1.0.0",
     "@sentry/astro": "^10.74.0",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.2.18",
@@ -26,7 +31,10 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sass": "^1.103.1",
-    "tailwindcss": "^4.1.11"
+    "solid-js": "^1.9.15",
+    "svelte": "^5.57.0",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",

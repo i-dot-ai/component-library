@@ -1,4 +1,5 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+/** @jsxImportSource solid-js */
+
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
@@ -17,13 +18,13 @@ export default function Button(props: ButtonProps) {
 
     return (
         local.href ? (
-        <a href={local.href} role="button" class={["govuk-button", local.secondary ? "govuk-button--secondary" : "", local.warning ? "govuk-button--warning" : "", local.inverse ? "govuk-button--inverse" : "", local.class ?? ""].filter(Boolean).join(" ")} {...rest}>
-            {local.children ?? ""}
-        </a>
+            <a href={local.href} role="button" class={["govuk-button", local.secondary ? "govuk-button--secondary" : "", local.warning ? "govuk-button--warning" : "", local.inverse ? "govuk-button--inverse" : "", local.class ?? ""].filter(Boolean).join(" ")} {...rest}>
+                {local.children ?? ""}
+            </a>
         ) : (
-        <button class={["govuk-button", local.secondary ? "govuk-button--secondary" : "", local.warning ? "govuk-button--warning" : "", local.inverse ? "govuk-button--inverse" : "", local.class ?? ""].filter(Boolean).join(" ")} data-module="govuk-button" {...rest}>
-            {local.children ?? ""}
-        </button>
+            <button class={["govuk-button", local.secondary ? "govuk-button--secondary" : "", local.warning ? "govuk-button--warning" : "", local.inverse ? "govuk-button--inverse" : "", local.class ?? ""].filter(Boolean).join(" ")} data-module="govuk-button" {...rest}>
+                {local.children ?? ""}
+            </button>
         )
     );
 }

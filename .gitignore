@@ -53,7 +53,7 @@ Brewfile.lock.json
 # Python package manager lock files
 poetry.lock
 
-# Frontend dependencies (applies to all frontend frameworks)
-frontend/node_modules/
-frontend/dist/
-frontend/.astro/
+# Gallery dependencies (applies to all frontend frameworks)
+gallery/node_modules/
+gallery/dist/
+gallery/.astro/

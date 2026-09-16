@@ -1,5 +1,3 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
-
 type CheckboxInputProps = {
     class?: string;
     [key: string]: unknown;
