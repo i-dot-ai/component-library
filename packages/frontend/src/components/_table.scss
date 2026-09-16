@@ -1,6 +1,27 @@
 // Table overrides.
 
+@use "pkg:govuk-frontend" as govuk;
+
 .govuk-table--subtle .govuk-table__header {
     font-size: 1rem;
     color: #484949;
+}
+
+.govuk-table__cell--stretch {
+    width: 100%;
+}
+
+.govuk-table__cell--no-wrap {
+    white-space: nowrap;
+}
+
+.govuk-table__cell--small {
+    font-size: 0.875rem;
+}
+
+// table summary pattern
+.govuk-table--summary {
+    .govuk-table__cell {
+        vertical-align: middle;
+    }
 }

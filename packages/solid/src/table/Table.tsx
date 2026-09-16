@@ -6,18 +6,20 @@ import type { JSX } from "solid-js";
 type TableProps = {
     smallTextUntilTablet?: boolean;
     subtle?: boolean;
+    summary?: boolean;
     class?: string;
     children?: JSX.Element;
     [key: string]: unknown;
 };
 
 export default function Table(props: TableProps) {
-    const [local, rest] = splitProps(props, ["smallTextUntilTablet", "subtle", "class", "children"]);
+    const [local, rest] = splitProps(props, ["smallTextUntilTablet", "subtle", "summary", "class", "children"]);
     const classes = () =>
         [
             "govuk-table",
             local.smallTextUntilTablet ? "govuk-table--small-text-until-tablet" : "",
             local.subtle ? "govuk-table--subtle" : "",
+            local.summary ? "govuk-table--summary" : "",
             local.class ?? "",
         ]
             .filter(Boolean)

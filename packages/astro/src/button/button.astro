@@ -1,8 +1,10 @@
 ---
 const {
     secondary = false,
+    tertiary = false,
     warning = false,
     inverse = false,
+    small = false,
     href,
     class: className,
     ...rest
@@ -19,6 +21,8 @@ const {
                 secondary ? "govuk-button--secondary" : "",
                 warning ? "govuk-button--warning" : "",
                 inverse ? "govuk-button--inverse" : "",
+                tertiary ? "govuk-button--tertiary" : "",
+                small ? "govuk-button--small" : "",
                 className ?? "",
             ]
                 .filter(Boolean)
@@ -34,6 +38,8 @@ const {
                 secondary ? "govuk-button--secondary" : "",
                 warning ? "govuk-button--warning" : "",
                 inverse ? "govuk-button--inverse" : "",
+                tertiary ? "govuk-button--tertiary" : "",
+                small ? "govuk-button--small" : "",
                 className ?? "",
             ]
                 .filter(Boolean)

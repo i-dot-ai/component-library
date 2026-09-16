@@ -20,3 +20,13 @@
         0 4px var(--govuk-focus-text-colour, #0b0c0c);
     text-decoration: none;
 }
+
+// table summary pattern
+.govuk-table--summary {
+    .govuk-table__cell--stretch {
+        .govuk-link {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}

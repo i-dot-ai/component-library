@@ -1,6 +1,6 @@
 // Button overrides.
 
-.govuk-button--tertiary {
+.govuk-button.govuk-button--tertiary {
     background-color: #ffffff;
     border: 1px solid var(--govuk-border-colour);
     border-bottom: 3px solid transparent;
@@ -8,12 +8,12 @@
     color: var(--govuk-link-colour);
 }
 
-.govuk-button--tertiary:hover {
+.govuk-button.govuk-button--tertiary:hover {
     background-color: #f4f8fb;
     color: var(--govuk-link-colour);
 }
 
-.govuk-button--small {
+.govuk-button.govuk-button--small {
     padding: 6px 8px 4px;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -28,4 +28,11 @@
 .govuk-button-group .govuk-button--small {
     margin-bottom: 0;
     margin-right: 2px;
+}
+
+// summary table pattern
+.govuk-table--summary {
+    .govuk-button-group {
+        flex-wrap: nowrap;
+    }
 }

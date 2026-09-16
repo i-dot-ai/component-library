@@ -2,6 +2,7 @@
 const {
     smallTextUntilTablet = false,
     subtle = false,
+    summary = false,
     class: className,
     ...rest
 } = Astro.props;
@@ -10,6 +11,7 @@ const classes = [
     "govuk-table",
     smallTextUntilTablet ? "govuk-table--small-text-until-tablet" : "",
     subtle ? "govuk-table--subtle" : "",
+    summary ? "govuk-table--summary" : "",
     className ?? "",
 ]
     .filter(Boolean)
