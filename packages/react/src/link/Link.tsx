@@ -1,11 +1,11 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 
 type LinkProps = {
     noUnderline?: boolean;
     noVisitedState?: boolean;
     variant?: "warning" | "inverse";
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 

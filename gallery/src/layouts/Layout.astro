@@ -1,24 +1,34 @@
 ---
 // govuk-frontend base styles + i.AI override layer.
-import '../styles/i-dot-ai.scss';
-import '../styles/global.css';
+import "../styles/i-dot-ai.scss";
 ---
 
 <!doctype html>
 <html lang="en" class="govuk-template">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, viewport-fit=cover"
+		/>
 		<meta name="theme-color" content="#16548a" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>i.AI App</title>
 	</head>
 	<body class="govuk-template__body">
 		<script is:inline>
-			document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+			document.body.className +=
+				" js-enabled" +
+				("noModule" in HTMLScriptElement.prototype
+					? " govuk-frontend-supported"
+					: "");
 		</script>
 
-		<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+		<a
+			href="#main-content"
+			class="govuk-skip-link"
+			data-module="govuk-skip-link">Skip to main content</a
+		>
 
 		<div class="govuk-width-container">
 			<main class="govuk-main-wrapper" id="main-content">
@@ -27,8 +37,8 @@ import '../styles/global.css';
 		</div>
 
 		<script>
-			import { initAll } from 'govuk-frontend';
-			import { initAllIAIDesignSystem } from '@i-dot-ai-npm/component-library-frontend';
+			import { initAll } from "govuk-frontend";
+			import { initAllIAIDesignSystem } from "@i-dot-ai-npm/component-library-frontend";
 			initAll();
 			initAllIAIDesignSystem();
 		</script>

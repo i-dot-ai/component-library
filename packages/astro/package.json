@@ -1,10 +1,13 @@
 {
   "name": "@i-dot-ai-npm/component-library-astro",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Astro components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {
-    ".": "./src/index.js",
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
     "./*": "./src/*"
   },
   "files": [
@@ -23,5 +26,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "astro": "^7.3.2",
+    "govuk-frontend": "^6.5.0"
+  }
 }

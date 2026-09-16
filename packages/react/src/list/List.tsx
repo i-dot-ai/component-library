@@ -1,10 +1,10 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 
 type ListProps = {
     spaced?: boolean;
     numbered?: string;
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 
@@ -12,13 +12,13 @@ export default function List({ spaced, numbered, class: className, children, ...
 
     return (
         numbered ? (
-        <ol className={["govuk-list govuk-list--number", spaced ? "govuk-list--spaced" : "", className ?? ""].filter(Boolean).join(" ")} {...rest}>
-            {children ?? ""}
-        </ol>
+            <ol className={["govuk-list govuk-list--number", spaced ? "govuk-list--spaced" : "", className ?? ""].filter(Boolean).join(" ")} {...rest}>
+                {children ?? ""}
+            </ol>
         ) : (
-        <ul className={["govuk-list", spaced ? "govuk-list--spaced" : "", className ?? ""].filter(Boolean).join(" ")} {...rest}>
-            {children ?? ""}
-        </ul>
+            <ul className={["govuk-list", spaced ? "govuk-list--spaced" : "", className ?? ""].filter(Boolean).join(" ")} {...rest}>
+                {children ?? ""}
+            </ul>
         )
     );
 }

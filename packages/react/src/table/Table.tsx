@@ -1,18 +1,21 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+/** @jsxImportSource react */
+import { ReactNode } from 'react';
 
 type TableProps = {
     smallTextUntilTablet?: boolean;
     subtle?: boolean;
+    summary?: boolean;
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 
-export default function Table({ smallTextUntilTablet, subtle, class: className, children, ...rest }: TableProps) {
+export default function Table({ smallTextUntilTablet, subtle, summary, class: className, children, ...rest }: TableProps) {
     const classes = [
         "govuk-table",
         smallTextUntilTablet ? "govuk-table--small-text-until-tablet" : "",
         subtle ? "govuk-table--subtle" : "",
+        summary ? "govuk-table--summary" : "",
         className ?? "",
     ]
         .filter(Boolean)

@@ -1,6 +1,13 @@
-// Checkboxes overrides.
+// @import "../utils/mixins";
 
 .govuk-checkboxes--subtle .govuk-checkboxes__label::before {
     border: 1px solid #858686;
     background-color: #fff;
+}
+
+// table summary pattern
+.govuk-table--summary {
+    .govuk-checkboxes__label {
+        padding: 0;
+    }
 }

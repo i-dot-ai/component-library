@@ -1,6 +1,10 @@
-<!-- AUTO-GENERATED from HTML spec. Do not edit by hand. -->
 <script>
-    let { error = false, subtle = false, class: className = "", ...rest } = $props();
+    let {
+        error = false,
+        subtle = false,
+        class: className = "",
+        ...rest
+    } = $props();
 
     let classes = $derived(
         [

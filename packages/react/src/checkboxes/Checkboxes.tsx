@@ -1,10 +1,10 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 
 type CheckboxesProps = {
     small?: boolean;
     subtle?: boolean;
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 

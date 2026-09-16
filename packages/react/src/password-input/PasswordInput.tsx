@@ -1,8 +1,8 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 
 type PasswordInputProps = {
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 
@@ -11,8 +11,8 @@ export default function PasswordInput({ class: className, children, ...rest }: P
 
     return (
         <div className="govuk-input__wrapper govuk-password-input__wrapper">
-            <input className={classes} type="password" spellcheck="false" autocomplete="current-password" autocapitalize="none" {...rest} />
-            <button className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle" type="button" data-module="govuk-button" aria-label="Show password" hidden="">
+            <input className={classes} type="password" spellCheck="false" autoComplete="current-password" autoCapitalize="none" {...rest} />
+            <button className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle" type="button" data-module="govuk-button" aria-label="Show password" hidden>
                 {children ?? "Show"}
             </button>
         </div>

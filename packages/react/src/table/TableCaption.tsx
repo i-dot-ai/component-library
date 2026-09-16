@@ -1,9 +1,11 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+/** @jsxImportSource react */
+
+import { ReactNode } from 'react';
 
 type TableCaptionProps = {
     size?: "small" | "medium" | "large" | "xl";
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 

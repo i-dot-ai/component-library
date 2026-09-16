@@ -1,14 +1,14 @@
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
+import { ReactNode } from 'react';
 import { useEffect, useRef } from "react";
 
 type AccordionProps = {
     class?: string;
-    children?: React.ReactNode;
+    children?: ReactNode;
     [key: string]: unknown;
 };
 
 export default function Accordion({ class: className, children, ...rest }: AccordionProps) {
-    const ref = useRef<HTMLElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
     const classes = ["govuk-accordion", className ?? ""].filter(Boolean).join(" ");
     useEffect(() => {
         const el = ref.current;

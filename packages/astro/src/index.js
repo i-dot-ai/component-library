@@ -1,4 +1,4 @@
-// AUTO-GENERATED barrel. Do not edit by hand.
+
 export { default as AccordionSectionContent } from "./accordion/accordion-section-content.astro";
 export { default as AccordionSectionHeader } from "./accordion/accordion-section-header.astro";
 export { default as AccordionSectionHeading } from "./accordion/accordion-section-heading.astro";

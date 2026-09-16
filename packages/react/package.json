@@ -1,10 +1,10 @@
 {
   "name": "@i-dot-ai-npm/component-library-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
-"exports": {
-  ".": {
+  "exports": {
+    ".": {
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
@@ -18,8 +18,9 @@
     "src"
   ],
   "peerDependencies": {
+    "govuk-frontend": ">=6",
     "react": ">=18",
-    "govuk-frontend": ">=6"
+    "react-dom": ">=18"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "govuk-frontend": "^6.5.0"
+  }
 }

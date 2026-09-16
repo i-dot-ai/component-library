@@ -1,8 +1,9 @@
 ---
-// AUTO-GENERATED from HTML spec. Do not edit by hand.
 const { href, class: className, ...rest } = Astro.props;
 
-const classes = ["govuk-breadcrumbs__list-item", className ?? ""].filter(Boolean).join(" ");
+const classes = ["govuk-breadcrumbs__list-item", className ?? ""]
+    .filter(Boolean)
+    .join(" ");
 ---
 
 <li class={classes} {...rest}>
