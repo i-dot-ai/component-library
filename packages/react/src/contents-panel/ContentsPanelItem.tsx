@@ -16,8 +16,8 @@ export default function ContentsPanelItem({
     ...rest
 }: ContentsPanelItemProps) {
     const itemClasses = [
-        "contents-panel__section-item",
-        current ? "contents-panel__section-item--current" : "",
+        "contents-panel__list-item",
+        current ? "contents-panel__list-item--current" : "",
         className ?? "",
     ]
         .filter(Boolean)

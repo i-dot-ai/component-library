@@ -1,7 +1,7 @@
 ---
 const { class: className, ...rest } = Astro.props;
 
-const classes = ["contents-panel__theme", className ?? ""].filter(Boolean).join(" ");
+const classes = ["contents-panel__list-heading", className ?? ""].filter(Boolean).join(" ");
 ---
 
 <h3 class={classes} {...rest}>

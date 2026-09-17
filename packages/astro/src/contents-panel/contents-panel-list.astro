@@ -1,7 +1,7 @@
 ---
 const { class: className, ...rest } = Astro.props;
 
-const classes = ["contents-panel__section", className ?? ""].filter(Boolean).join(" ");
+const classes = ["contents-panel__list", className ?? ""].filter(Boolean).join(" ");
 ---
 
 <ul class={classes} {...rest}>
