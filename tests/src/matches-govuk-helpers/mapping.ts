@@ -8,6 +8,13 @@ export type RenderInput = {
 export type ComponentMapping = {
     passthrough?: string[];
     defaultText?: string;
+    /**
+     * Option keys that supply the component's text child, tried in order.
+     * Defaults to `["text", "html"]` (govuk's usual convention). Override for
+     * components whose macro names the content differently (e.g. generic-header
+     * uses `logoText` / `logoHtml`).
+     */
+    textFrom?: string[];
     classesToProps?: (classes: string) => Record<string, unknown>;
     transform?: (
         options: Record<string, unknown>,
@@ -39,12 +46,14 @@ export function mapOptions(
 
     mapping.transform?.(options, props);
 
-    const text =
-        typeof options.text === "string"
-            ? options.text
-            : typeof options.html === "string"
-              ? options.html
-              : (mapping.defaultText ?? "");
+    const textKeys = mapping.textFrom ?? ["text", "html"];
+    let text = mapping.defaultText ?? "";
+    for (const key of textKeys) {
+        if (typeof options[key] === "string") {
+            text = options[key] as string;
+            break;
+        }
+    }
 
     return { props, text };
 }

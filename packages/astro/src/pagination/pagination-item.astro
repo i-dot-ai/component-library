@@ -1,5 +1,5 @@
 ---
-const { current = false, ellipsis, class: className, ...rest } = Astro.props;
+const { current = false, ellipsis = false, ariaLabel, class: className, ...rest } = Astro.props;
 ---
 
 {
@@ -20,6 +20,8 @@ const { current = false, ellipsis, class: className, ...rest } = Astro.props;
                 class={["govuk-link govuk-pagination__link", className ?? ""]
                     .filter(Boolean)
                     .join(" ")}
+                aria-label={ariaLabel}
+                aria-current={current ? "page" : undefined}
                 {...rest}
             >
                 <slot />

@@ -4,8 +4,14 @@
     let classes = $derived(["govuk-breadcrumbs__list-item", className].filter(Boolean).join(" "));
 </script>
 
-<li class={classes} {...rest}>
-    <a class="govuk-breadcrumbs__link" href={href}>
+{#if href === undefined}
+    <li class={classes} aria-current="page" {...rest}>
         {@render children?.()}
-    </a>
-</li>
+    </li>
+{:else}
+    <li class={classes} {...rest}>
+        <a class="govuk-breadcrumbs__link" href={href}>
+            {@render children?.()}
+        </a>
+    </li>
+{/if}

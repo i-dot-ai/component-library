@@ -5,7 +5,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { textareaFixtures } from "../match-govuk-mappings.js";
 import TextareaField from "../examples/TextareaField.svelte";
 
-describe("Textarea — Svelte matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Textarea", () => {
     for (const field of textareaFixtures()) {
         it(field.name, () => {
             const html = renderSvelte(TextareaField as never, { field });

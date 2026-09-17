@@ -10,7 +10,7 @@ import { renderRadios } from "../examples/radios.react.js";
 // example) to exercise RadioConditional. Svelte/Astro cover the rest.
 const REPRESENTATIVE_CONDITIONAL = "with conditional items";
 
-describe("Radios — React matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Radios", () => {
     for (const data of radiosFixtures()) {
         if (data.hasHtmlLabel) continue;
         if (data.hasConditional && data.name !== REPRESENTATIVE_CONDITIONAL) continue;

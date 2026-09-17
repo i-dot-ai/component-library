@@ -4,7 +4,7 @@ import { renderReact } from "../../../render/react.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { warningTextMapping } from "../match-govuk-mappings.js";
 
-describe("WarningText — React matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - WarningText", () => {
     for (const testCase of casesFor("warning-text", warningTextMapping, { skipHtmlContent: true })) {
         it(testCase.name, () => {
             const html = renderReact(WarningText, testCase.input.props, testCase.input.text);

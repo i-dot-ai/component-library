@@ -24,12 +24,30 @@ const NOISE_ATTRS = new Set<string>([
     "data-svelte-h",
 ]);
 
+/**
+ * Canonicalise an inline `style` string so that framework serialisation
+ * differences (spacing, trailing semicolons, declaration order) don't cause
+ * false mismatches. `"white-space: nowrap;"` and `"white-space:nowrap"` become
+ * the same value.
+ */
+function normaliseStyle(value: string): string {
+    return value
+        .split(";")
+        .map((decl) => decl.trim())
+        .filter(Boolean)
+        .map((decl) => {
+            const [prop, ...rest] = decl.split(":");
+            return `${prop.trim()}:${rest.join(":").trim()}`;
+        })
+        .sort()
+        .join(";");
+}
+
 function stripNoiseFromShape(shape: Shape): Shape {
     const attrs: Record<string, string> = {};
     for (const [name, value] of Object.entries(shape.attrs)) {
         if (NOISE_ATTRS.has(name)) continue;
-        // Drop empty-string boolean-ish noise only if it's a known marker.
-        attrs[name] = value;
+        attrs[name] = name === "style" ? normaliseStyle(value) : value;
     }
 
     return {

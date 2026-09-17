@@ -12,7 +12,7 @@ type PhaseBannerProps = {
 export default function PhaseBanner(props: PhaseBannerProps) {
     const [local, rest] = splitProps(props, ["class", "children"]);
     const classes = () =>
-        ["govuk-phase-banner", local.class ?? ""].filter(Boolean).join(" ");
+        ["govuk-phase-banner govuk-width-container", local.class ?? ""].filter(Boolean).join(" ");
 
     return (
         <div class={classes()} {...rest}>

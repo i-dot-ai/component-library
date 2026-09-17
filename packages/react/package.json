@@ -1,6 +1,6 @@
 {
   "name": "@i-dot-ai-npm/component-library-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {

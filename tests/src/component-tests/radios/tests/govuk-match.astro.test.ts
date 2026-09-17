@@ -5,7 +5,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { radiosFixtures } from "../match-govuk-mappings.js";
 import RadiosField from "../examples/RadiosField.astro";
 
-describe("Radios — Astro matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Radios", () => {
     for (const data of radiosFixtures()) {
         it(data.name, async () => {
             const html = await renderAstro(RadiosField as never, { data });

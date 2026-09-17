@@ -5,13 +5,14 @@ import type { JSX } from "solid-js";
 
 type TableHeaderProps = {
     numeric?: boolean;
+    scope?: "col" | "row" | "colgroup" | "rowgroup";
     class?: string;
     children?: JSX.Element;
     [key: string]: unknown;
 };
 
 export default function TableHeader(props: TableHeaderProps) {
-    const [local, rest] = splitProps(props, ["numeric", "class", "children"]);
+    const [local, rest] = splitProps(props, ["numeric", "scope", "class", "children"]);
     const classes = () =>
         [
             "govuk-table__header",
@@ -22,7 +23,7 @@ export default function TableHeader(props: TableHeaderProps) {
             .join(" ");
 
     return (
-        <th class={classes()} scope="col" {...rest}>
+        <th class={classes()} scope={local.scope ?? "col"} {...rest}>
             {local.children ?? ""}
         </th>
     );

@@ -7,7 +7,7 @@ type PhaseBannerProps = {
 };
 
 export default function PhaseBanner({ class: className, children, ...rest }: PhaseBannerProps) {
-    const classes = ["govuk-phase-banner", className ?? ""].filter(Boolean).join(" ");
+    const classes = ["govuk-phase-banner govuk-width-container", className ?? ""].filter(Boolean).join(" ");
 
     return (
         <div className={classes} {...rest}>

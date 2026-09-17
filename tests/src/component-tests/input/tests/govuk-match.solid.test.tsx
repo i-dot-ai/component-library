@@ -6,7 +6,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { inputFixtures } from "../match-govuk-mappings.js";
 import { renderInput } from "../examples/input.solid.js";
 
-describe("Input — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Input", () => {
     for (const field of inputFixtures()) {
         it(field.name, () => {
             const html = renderSolid(() => renderInput(field), {});

@@ -4,7 +4,7 @@ import { renderSolid } from "../../../render/solid.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { buttonMapping } from "../match-govuk-mappings.js";
 
-describe("Button — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Button", () => {
     for (const testCase of casesFor("button", buttonMapping)) {
         it(testCase.name, () => {
             const html = renderSolid(Button, testCase.input.props, testCase.input.text);

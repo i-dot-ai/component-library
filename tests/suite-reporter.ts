@@ -13,9 +13,9 @@ export class SuiteReporter implements Reporter {
     private failed = 0;
 
     private suiteKey(suite: TestSuite | TestModule): string {
-        const project = suite.project?.name ? `[${suite.project.name}] ` : "";
+        const framework = suite.project?.name ? ` [${suite.project.name}]` : "";
         const name = "name" in suite ? suite.name : "";
-        return `${project}${name}`;
+        return `${name}${framework}`;
     }
 
     onTestCaseResult(testCase: TestCase): void {
@@ -25,10 +25,9 @@ export class SuiteReporter implements Reporter {
 
         const parent = testCase.parent;
         // Only decorate real describe() suites (not the module root).
-        const suiteName =
-            "name" in parent && !("moduleId" in parent)
-                ? this.suiteKey(parent as TestSuite)
-                : this.suiteKey(testCase.module);
+        const isSuite = "name" in parent && !("moduleId" in parent);
+        const suiteObj = isSuite ? (parent as TestSuite) : testCase.module;
+        const suiteName = this.suiteKey(suiteObj);
 
         if (!this.seenSuites.has(suiteName)) {
             this.seenSuites.add(suiteName);

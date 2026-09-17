@@ -1,24 +1,25 @@
 /** @jsxImportSource solid-js */
 
-import { splitProps } from "solid-js";
+import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
 type ErrorSummaryItemProps = {
+    href?: string;
     class?: string;
     children?: JSX.Element;
     [key: string]: unknown;
 };
 
 export default function ErrorSummaryItem(props: ErrorSummaryItemProps) {
-    const [local, rest] = splitProps(props, ["class", "children"]);
-    const classes = () =>
-        ["", local.class ?? ""].filter(Boolean).join(" ");
+    const [local, rest] = splitProps(props, ["href", "class", "children"]);
 
     return (
         <li>
-            <a class={classes()} {...rest}>
-                {local.children ?? ""}
-            </a>
+            <Show when={local.href !== undefined} fallback={local.children ?? ""}>
+                <a href={local.href} class={local.class} {...rest}>
+                    {local.children ?? ""}
+                </a>
+            </Show>
         </li>
     );
 }

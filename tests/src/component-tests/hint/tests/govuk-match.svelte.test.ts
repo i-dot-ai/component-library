@@ -4,7 +4,7 @@ import { renderSvelte } from "../../../render/svelte.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { hintMapping } from "../match-govuk-mappings.js";
 
-describe("Hint — Svelte matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Hint", () => {
     for (const testCase of casesFor("hint", hintMapping)) {
         it(testCase.name, () => {
             const html = renderSvelte(Hint, testCase.input.props, testCase.input.text);

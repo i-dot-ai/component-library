@@ -54,7 +54,36 @@ Test files are discovered by the `*.<framework>.test.*` suffix
 
 Run everything with `make run_unit_tests` (or `pnpm test` inside `tests/`).
 
+## Scaffolding a new component's tests
+
+The four per-framework test files are near-identical boilerplate (they differ
+only by framework). Generate them instead of copy-pasting:
+
+```
+pnpm --filter @i-dot-ai-npm/component-library-tests scaffold <component>
+```
+
+`<component>` is the kebab-case folder name (matching `packages/*/src/<component>`
+and the govuk fixtures.json name), e.g. `phase-banner`.
+
+This writes, under `tests/src/component-tests/<component>/`:
+
+- `match-govuk-mappings.ts` — a starter `ComponentMapping` to fill in
+- `tests/govuk-match.{react,solid,svelte,astro}.test.*` — the four test files
+
+Useful flags:
+
+- `--dry-run` — print what would be written without touching disk
+- `--export=<Name>` — set the imported component export (defaults to the
+  PascalCase of the folder name, e.g. `phase-banner` -> `PhaseBanner`)
+- `--force` — overwrite existing files
+
+After scaffolding you still fill in the mapping by hand (below), and composite
+(Tier 2) components need their `examples/`/`content/` files authored manually.
+The scaffold only produces the Tier 1 skeleton.
+
 ## Two kinds of component
+
 
 ### Tier 1 — single-element components (e.g. Button)
 
@@ -84,7 +113,7 @@ Add:
    import { casesFor, toShape } from "../../cases.js";
    import { buttonMapping } from "../mapping.js";
 
-   describe("Button — React matches govuk fixture shape", () => {
+   describe("Button — Matches govuk fixture shape", () => {
        for (const testCase of casesFor("button", buttonMapping)) {
            it(testCase.name, () => {
                const html = renderReact(Button, testCase.input.props, testCase.input.text);

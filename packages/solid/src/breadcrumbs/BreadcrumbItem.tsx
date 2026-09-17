@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { splitProps } from "solid-js";
+import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
 type BreadcrumbItemProps = {
@@ -16,10 +16,19 @@ export default function BreadcrumbItem(props: BreadcrumbItemProps) {
         ["govuk-breadcrumbs__list-item", local.class ?? ""].filter(Boolean).join(" ");
 
     return (
-        <li class={classes()} {...rest}>
-            <a class="govuk-breadcrumbs__link" href={local.href}>
-                {local.children ?? ""}
-            </a>
-        </li>
+        <Show
+            when={local.href !== undefined}
+            fallback={
+                <li class={classes()} aria-current="page" {...rest}>
+                    {local.children ?? ""}
+                </li>
+            }
+        >
+            <li class={classes()} {...rest}>
+                <a class="govuk-breadcrumbs__link" href={local.href}>
+                    {local.children ?? ""}
+                </a>
+            </li>
+        </Show>
     );
 }

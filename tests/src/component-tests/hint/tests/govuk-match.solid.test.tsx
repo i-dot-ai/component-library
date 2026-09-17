@@ -4,7 +4,7 @@ import { renderSolid } from "../../../render/solid.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { hintMapping } from "../match-govuk-mappings.js";
 
-describe("Hint — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Hint", () => {
     for (const testCase of casesFor("hint", hintMapping, { skipHtmlContent: true })) {
         it(testCase.name, () => {
             const html = renderSolid(Hint, testCase.input.props, testCase.input.text);

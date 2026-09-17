@@ -1,18 +1,46 @@
 /** @jsxImportSource solid-js */
 
-import { splitProps } from "solid-js";
+import { splitProps, Show, mergeProps } from "solid-js";
 import type { JSX } from "solid-js";
 
 type ServiceNavigationProps = {
     sideNav?: boolean;
     inverse?: boolean;
+    serviceName?: string;
+    serviceUrl?: string;
+    navigationId?: string;
+    menuButtonText?: string;
+    ariaLabel?: string;
+    hasNavigation?: boolean;
+    collapseNavigationOnMobile?: boolean;
+    endSlot?: JSX.Element;
+    endSlotInline?: boolean;
     class?: string;
     children?: JSX.Element;
     [key: string]: unknown;
 };
 
-export default function ServiceNavigation(props: ServiceNavigationProps) {
-    const [local, rest] = splitProps(props, ["sideNav", "inverse", "class", "children"]);
+export default function ServiceNavigation(rawProps: ServiceNavigationProps) {
+    const props = mergeProps(
+        { navigationId: "navigation", menuButtonText: "Menu", hasNavigation: true },
+        rawProps,
+    );
+    const [local, rest] = splitProps(props, [
+        "sideNav",
+        "inverse",
+        "serviceName",
+        "serviceUrl",
+        "navigationId",
+        "menuButtonText",
+        "ariaLabel",
+        "hasNavigation",
+        "collapseNavigationOnMobile",
+        "endSlot",
+        "endSlotInline",
+        "class",
+        "children",
+    ]);
+
     const classes = () =>
         [
             "govuk-service-navigation",
@@ -23,17 +51,71 @@ export default function ServiceNavigation(props: ServiceNavigationProps) {
             .filter(Boolean)
             .join(" ");
 
-    return (
-        <div class={classes()} data-module="govuk-service-navigation" {...rest}>
-            <div class="govuk-width-container">
-                <div class="govuk-service-navigation__container">
-                    <nav class="govuk-service-navigation__wrapper" aria-label="Menu">
-                        <ul class="govuk-service-navigation__list" id="navigation">
+    const navLabel = () => local.ariaLabel ?? local.menuButtonText;
+    const containerClasses = () =>
+        [
+            "govuk-width-container",
+            local.endSlotInline ? "govuk-service-navigation__inlining-container" : "",
+        ]
+            .filter(Boolean)
+            .join(" ");
+    const useSection = () => local.serviceName !== undefined || local.endSlot !== undefined;
+
+    const inner = () => (
+        <div class={containerClasses()}>
+            <div class="govuk-service-navigation__container">
+                <Show when={local.serviceName !== undefined}>
+                    <span class="govuk-service-navigation__service-name">
+                        <Show
+                            when={local.serviceUrl !== undefined}
+                            fallback={<span class="govuk-service-navigation__text">{local.serviceName}</span>}
+                        >
+                            <a href={local.serviceUrl} class="govuk-service-navigation__link">
+                                {local.serviceName}
+                            </a>
+                        </Show>
+                    </span>
+                </Show>
+                <Show when={local.hasNavigation}>
+                    <nav aria-label={navLabel()} class="govuk-service-navigation__wrapper">
+                        <Show when={local.collapseNavigationOnMobile}>
+                            <button
+                                type="button"
+                                class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle"
+                                aria-controls={local.navigationId}
+                                hidden
+                                aria-hidden="true"
+                            >
+                                {local.menuButtonText}
+                            </button>
+                        </Show>
+                        <ul class="govuk-service-navigation__list" id={local.navigationId}>
                             {local.children ?? ""}
                         </ul>
                     </nav>
-                </div>
+                </Show>
             </div>
+            {local.endSlot}
         </div>
+    );
+
+    return (
+        <Show
+            when={useSection()}
+            fallback={
+                <div class={classes()} data-module="govuk-service-navigation" {...rest}>
+                    {inner()}
+                </div>
+            }
+        >
+            <section
+                aria-label={local.ariaLabel ?? "Service information"}
+                class={classes()}
+                data-module="govuk-service-navigation"
+                {...rest}
+            >
+                {inner()}
+            </section>
+        </Show>
     );
 }

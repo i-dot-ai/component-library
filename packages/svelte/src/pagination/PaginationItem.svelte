@@ -1,5 +1,5 @@
 <script>
-    let { current = false, ellipsis, class: className = "", children, ...rest } = $props();
+    let { current = false, ellipsis = false, ariaLabel, class: className = "", children, ...rest } = $props();
 </script>
 
 {#if ellipsis}
@@ -8,7 +8,7 @@
 </li>
 {:else}
 <li class={["govuk-pagination__item", current ? "govuk-pagination__item--current" : ""].filter(Boolean).join(" ")}>
-    <a class={["govuk-link govuk-pagination__link", className].filter(Boolean).join(" ")} {...rest}>
+    <a class={["govuk-link govuk-pagination__link", className].filter(Boolean).join(" ")} aria-label={ariaLabel} aria-current={current ? "page" : undefined} {...rest}>
         {@render children?.()}
     </a>
 </li>

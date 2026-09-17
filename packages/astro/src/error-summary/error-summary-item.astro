@@ -1,11 +1,15 @@
 ---
-const { class: className, ...rest } = Astro.props;
-
-const classes = ["", className ?? ""].filter(Boolean).join(" ");
+const { href, class: className, ...rest } = Astro.props;
 ---
 
 <li>
-    <a class={classes} {...rest}>
-        <slot />
-    </a>
+    {
+        href !== undefined ? (
+            <a href={href} class={className} {...rest}>
+                <slot />
+            </a>
+        ) : (
+            <slot />
+        )
+    }
 </li>

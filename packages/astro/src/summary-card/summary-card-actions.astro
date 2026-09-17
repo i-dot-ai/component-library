@@ -1,0 +1,19 @@
+---
+const { single, class: className, ...rest } = Astro.props;
+
+const classes = ["govuk-summary-card__actions", className ?? ""]
+    .filter(Boolean)
+    .join(" ");
+---
+
+{
+    single ? (
+        <div class={classes} {...rest}>
+            <slot />
+        </div>
+    ) : (
+        <ul class={classes} {...rest}>
+            <slot />
+        </ul>
+    )
+}

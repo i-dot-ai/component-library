@@ -1,5 +1,5 @@
 <script>
-    let { size, class: className = "", children, ...rest } = $props();
+    let { size, isPageHeading, class: className = "", children, ...rest } = $props();
 
     let classes = $derived(
         [
@@ -13,5 +13,11 @@
 </script>
 
 <legend class={classes} {...rest}>
-    {@render children?.()}
+    {#if isPageHeading}
+        <h1 class="govuk-fieldset__heading">
+            {@render children?.()}
+        </h1>
+    {:else}
+        {@render children?.()}
+    {/if}
 </legend>

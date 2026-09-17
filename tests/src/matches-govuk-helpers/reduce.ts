@@ -40,7 +40,10 @@ function elementToShape(el: HTMLElement): Shape {
     const attrs: Record<string, string> = {};
     for (const [name, value] of Object.entries(el.attributes)) {
         if (name === "class") continue;
-        attrs[name] = value;
+        // HTML attribute names are case-insensitive; lower-case them so that
+        // framework prop casing (e.g. React's `inputMode`) matches govuk's
+        // lower-case output (`inputmode`).
+        attrs[name.toLowerCase()] = value;
     }
 
     const classes = (el.getAttribute("class") ?? "")
