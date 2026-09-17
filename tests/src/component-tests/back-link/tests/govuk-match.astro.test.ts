@@ -4,7 +4,7 @@ import { renderAstro } from "../../../render/astro.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { backLinkMapping } from "../match-govuk-mappings.js";
 
-describe("BackLink — Astro matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - BackLink", () => {
     for (const testCase of casesFor("back-link", backLinkMapping)) {
         it(testCase.name, async () => {
             const html = await renderAstro(BackLink, testCase.input.props, testCase.input.text);

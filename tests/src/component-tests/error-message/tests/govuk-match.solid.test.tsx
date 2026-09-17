@@ -4,7 +4,7 @@ import { renderSolid } from "../../../render/solid.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { errorMessageMapping } from "../match-govuk-mappings.js";
 
-describe("ErrorMessage — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - ErrorMessage", () => {
     for (const testCase of casesFor("error-message", errorMessageMapping, { skipHtmlContent: true })) {
         it(testCase.name, () => {
             const html = renderSolid(ErrorMessage, testCase.input.props, testCase.input.text);

@@ -1,11 +1,11 @@
 <script>
-    let { class: className = "", children, ...rest } = $props();
-
-    let classes = $derived(["", className].filter(Boolean).join(" "));
+    let { href, class: className, children, ...rest } = $props();
 </script>
 
 <li>
-    <a class={classes} {...rest}>
+    {#if href !== undefined}
+        <a {href} class={className} {...rest}>{@render children?.()}</a>
+    {:else}
         {@render children?.()}
-    </a>
+    {/if}
 </li>

@@ -5,7 +5,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { accordionFixtures } from "../match-govuk-mappings.js";
 import FixtureAccordion from "../examples/FixtureAccordion.astro";
 
-describe("Accordion — Astro matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Accordion", () => {
     for (const fixture of accordionFixtures()) {
         it(fixture.name, async () => {
             const html = await renderAstro(FixtureAccordion as never, {

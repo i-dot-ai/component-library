@@ -5,7 +5,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { textareaFixtures } from "../match-govuk-mappings.js";
 import TextareaField from "../examples/TextareaField.astro";
 
-describe("Textarea — Astro matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Textarea", () => {
     for (const field of textareaFixtures()) {
         it(field.name, async () => {
             const html = await renderAstro(TextareaField as never, { field });

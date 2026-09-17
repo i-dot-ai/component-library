@@ -6,18 +6,21 @@ import type { JSX } from "solid-js";
 type HeaderProps = {
     href?: string;
     class?: string;
+    containerClasses?: string;
     children?: JSX.Element;
     [key: string]: unknown;
 };
 
 export default function Header(props: HeaderProps) {
-    const [local, rest] = splitProps(props, ["href", "class", "children"]);
+    const [local, rest] = splitProps(props, ["href", "class", "containerClasses", "children"]);
     const classes = () =>
         ["govuk-generic-header", local.class ?? ""].filter(Boolean).join(" ");
+    const container = () =>
+        ["govuk-generic-header__container", local.containerClasses || "govuk-width-container"].join(" ");
 
     return (
         <div class={classes()} {...rest}>
-            <div class="govuk-generic-header__container govuk-width-container">
+            <div class={container()}>
                 <div class="govuk-generic-header__logo">
                     <a class="govuk-generic-header__homepage-link" href={local.href}>
                         {local.children ?? ""}

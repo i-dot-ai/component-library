@@ -8,7 +8,7 @@ import { renderRadios } from "../examples/radios.solid.js";
 
 const REPRESENTATIVE_CONDITIONAL = "with conditional items";
 
-describe("Radios — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Radios", () => {
     for (const data of radiosFixtures()) {
         if (data.hasHtmlLabel) continue;
         if (data.hasConditional && data.name !== REPRESENTATIVE_CONDITIONAL) continue;

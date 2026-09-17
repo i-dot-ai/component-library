@@ -5,7 +5,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { checkboxesFixtures } from "../match-govuk-mappings.js";
 import CheckboxesField from "../examples/CheckboxesField.svelte";
 
-describe("Checkboxes — Svelte matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Checkboxes", () => {
     for (const data of checkboxesFixtures()) {
         it(data.name, () => {
             const html = renderSvelte(CheckboxesField as never, { data });

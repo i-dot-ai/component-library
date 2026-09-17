@@ -1,5 +1,5 @@
 <script>
-    let { width = "2", class: className = "", ...rest } = $props();
+    let { width, class: className = "", ...rest } = $props();
 
     let classes = $derived(
         [

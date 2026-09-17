@@ -6,7 +6,7 @@ import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { selectFixtures } from "../match-govuk-mappings.js";
 import { renderSelect } from "../examples/select.solid.js";
 
-describe("Select — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Select", () => {
     for (const field of selectFixtures()) {
         it(field.name, () => {
             const html = renderSolid(() => renderSelect(field), {});

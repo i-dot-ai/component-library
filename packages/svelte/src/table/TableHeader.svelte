@@ -1,5 +1,5 @@
 <script>
-    let { numeric = false, class: className = "", children, ...rest } = $props();
+    let { numeric = false, scope = "col", class: className = "", children, ...rest } = $props();
 
     let classes = $derived(
         [
@@ -12,6 +12,6 @@
     );
 </script>
 
-<th class={classes} scope="col" {...rest}>
+<th class={classes} {scope} {...rest}>
     {@render children?.()}
 </th>

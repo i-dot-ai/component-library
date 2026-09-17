@@ -6,4 +6,4 @@ const classes = ["govuk-textarea govuk-js-character-count", className ?? ""]
     .join(" ");
 ---
 
-<textarea class={classes} {...rest}></textarea>
+<textarea class={classes} {...rest}><slot /></textarea>

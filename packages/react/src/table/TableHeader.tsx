@@ -4,12 +4,13 @@ import { ReactNode } from 'react';
 
 type TableHeaderProps = {
     numeric?: boolean;
+    scope?: "col" | "row" | "colgroup" | "rowgroup";
     class?: string;
     children?: ReactNode;
     [key: string]: unknown;
 };
 
-export default function TableHeader({ numeric, class: className, children, ...rest }: TableHeaderProps) {
+export default function TableHeader({ numeric, scope = "col", class: className, children, ...rest }: TableHeaderProps) {
     const classes = [
         "govuk-table__header",
         numeric ? "govuk-table__header--numeric" : "",
@@ -19,7 +20,7 @@ export default function TableHeader({ numeric, class: className, children, ...re
         .join(" ");
 
     return (
-        <th className={classes} scope="col" {...rest}>
+        <th className={classes} scope={scope} {...rest}>
             {children ?? ""}
         </th>
     );

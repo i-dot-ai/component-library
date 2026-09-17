@@ -1,5 +1,5 @@
 ---
-const { numeric = false, class: className, ...rest } = Astro.props;
+const { numeric = false, scope = "col", class: className, ...rest } = Astro.props;
 
 const classes = [
     "govuk-table__header",
@@ -10,6 +10,6 @@ const classes = [
     .join(" ");
 ---
 
-<th class={classes} scope="col" {...rest}>
+<th class={classes} scope={scope} {...rest}>
     <slot />
 </th>

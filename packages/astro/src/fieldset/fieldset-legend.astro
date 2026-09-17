@@ -1,5 +1,5 @@
 ---
-const { size, class: className, ...rest } = Astro.props;
+const { size, isPageHeading, class: className, ...rest } = Astro.props;
 
 const classes = [
     "govuk-fieldset__legend",
@@ -16,5 +16,13 @@ const classes = [
 ---
 
 <legend class={classes} {...rest}>
-    <slot />
+    {
+        isPageHeading ? (
+            <h1 class="govuk-fieldset__heading">
+                <slot />
+            </h1>
+        ) : (
+            <slot />
+        )
+    }
 </legend>

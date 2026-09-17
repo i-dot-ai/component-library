@@ -2,17 +2,15 @@
   "name": "@i-dot-ai-npm/component-library",
   "version": "0.0.1",
   "private": true,
-  "description": "i.AI GOV.UK component library — HTML specs generated into per-framework packages.",
+  "description": "i.AI GOV.UK component library — hand-written per-framework components verified against govuk-frontend.",
   "type": "module",
   "packageManager": "pnpm@11.21.0",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "generate": "node generator/index.mjs",
     "build": "pnpm --filter @i-dot-ai-npm/component-library-frontend build",
-    "typecheck": "tsc --noEmit",
-    "release": "npm run generate && npm run build && npm publish --workspaces --access public"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

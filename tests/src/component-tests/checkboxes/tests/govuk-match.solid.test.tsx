@@ -8,7 +8,7 @@ import { renderCheckboxes } from "../examples/checkboxes.solid.js";
 
 const REPRESENTATIVE_CONDITIONAL = "with conditional items";
 
-describe("Checkboxes — Solid matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Checkboxes", () => {
     for (const data of checkboxesFixtures()) {
         if (data.hasHtmlLabel) continue;
         if (data.hasConditional && data.name !== REPRESENTATIVE_CONDITIONAL) continue;

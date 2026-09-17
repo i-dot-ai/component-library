@@ -4,7 +4,7 @@ import { renderAstro } from "../../../render/astro.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { hintMapping } from "../match-govuk-mappings.js";
 
-describe("Hint — Astro matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - Hint", () => {
     for (const testCase of casesFor("hint", hintMapping)) {
         it(testCase.name, async () => {
             const html = await renderAstro(Hint, testCase.input.props, testCase.input.text);

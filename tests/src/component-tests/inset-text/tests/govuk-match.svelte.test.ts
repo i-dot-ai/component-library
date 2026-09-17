@@ -4,7 +4,7 @@ import { renderSvelte } from "../../../render/svelte.js";
 import { casesFor, toShape } from "../../../matches-govuk-helpers/cases.js";
 import { insetTextMapping } from "../match-govuk-mappings.js";
 
-describe("InsetText — Svelte matches govuk fixture shape", () => {
+describe("Matches govuk fixture shape - InsetText", () => {
     for (const testCase of casesFor("inset-text", insetTextMapping)) {
         it(testCase.name, () => {
             const html = renderSvelte(InsetText, testCase.input.props, testCase.input.text);

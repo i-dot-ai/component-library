@@ -6,7 +6,8 @@
   "description": "Cross-framework shape/equivalence tests for the i.AI component library.",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "scaffold": "node scripts/scaffold.mjs"
   },
   "dependencies": {
     "@i-dot-ai-npm/component-library-astro": "workspace:*",

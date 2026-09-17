@@ -1,9 +1,18 @@
 ---
-const { class: className, ...rest } = Astro.props;
+const { block = false, labelText, class: className, ...rest } = Astro.props;
 
 const classes = ["govuk-link govuk-pagination__link", className ?? ""]
     .filter(Boolean)
     .join(" ");
+
+const titleClasses = [
+    "govuk-pagination__link-title",
+    block && !labelText ? "govuk-pagination__link-title--decorated" : "",
+]
+    .filter(Boolean)
+    .join(" ");
+
+const hasTitle = Astro.slots.has("default");
 ---
 
 <div class="govuk-pagination__prev">
@@ -21,9 +30,14 @@ const classes = ["govuk-link govuk-pagination__link", className ?? ""]
                 d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"
             ></path>
         </svg>
-        <span class="govuk-pagination__link-title">
-            <slot>Previous</slot>
-            <span class="govuk-visually-hidden"> page </span>
+        <span class={titleClasses}>
+            {hasTitle ? <slot /> : <>Previous<span class="govuk-visually-hidden"> page</span></>}
         </span>
+        {labelText && block && (
+            <>
+                <span class="govuk-visually-hidden">:</span>
+                <span class="govuk-pagination__link-label">{labelText}</span>
+            </>
+        )}
     </a>
 </div>
