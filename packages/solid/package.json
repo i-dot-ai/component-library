@@ -1,6 +1,6 @@
 {
   "name": "@i-dot-ai-npm/component-library-solid",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Solid.js components for i.AI GOV.UK (auto-generated from HTML specs).",
   "type": "module",
   "exports": {
