@@ -6,12 +6,13 @@ import type { JSX } from "solid-js";
 type TextareaProps = {
     error?: boolean;
     subtle?: boolean;
+    value?: string;
     class?: string;
     [key: string]: unknown;
 };
 
 export default function Textarea(props: TextareaProps) {
-    const [local, rest] = splitProps(props, ["error", "subtle", "class"]);
+    const [local, rest] = splitProps(props, ["error", "subtle", "value", "class"]);
     const classes = () =>
         [
             "govuk-textarea",
@@ -23,6 +24,6 @@ export default function Textarea(props: TextareaProps) {
             .join(" ");
 
     return (
-        <textarea class={classes()} {...rest}></textarea>
+        <textarea class={classes()} {...rest}>{local.value ?? ""}</textarea>
     );
 }

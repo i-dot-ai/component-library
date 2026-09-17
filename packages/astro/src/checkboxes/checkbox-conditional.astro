@@ -1,0 +1,15 @@
+---
+const { hidden = true, class: className, ...rest } = Astro.props;
+
+const classes = [
+    "govuk-checkboxes__conditional",
+    hidden ? "govuk-checkboxes__conditional--hidden" : "",
+    className ?? "",
+]
+    .filter(Boolean)
+    .join(" ");
+---
+
+<div class={classes} {...rest}>
+    <slot />
+</div>
