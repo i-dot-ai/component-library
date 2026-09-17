@@ -1,3 +1,5 @@
+@use "pkg:govuk-frontend/base" as *;
+
 // Card (i.AI component).
 
 .iai-card-group {
@@ -23,13 +25,13 @@
     height: 100%;
     box-sizing: border-box;
     padding: 20px;
-    background-color: var(--card-surface, #ffffff);
-    border: var(--card-border-width, 2px) solid var(--card-border, #b1b4b6);
+    background-color: govuk-colour("white");
+    border: 2px solid govuk-colour("black", $variant: "tint-80");
 }
 
 .iai-card__icon {
     margin-bottom: 15px;
-    color: var(--card-icon, #505a5f);
+    color: govuk-colour("black", $variant: "tint-25");
 }
 
 .iai-card__icon svg {
@@ -37,11 +39,11 @@
 }
 
 .iai-card:hover .iai-card__icon {
-    color: var(--card-text-hover, #ffffff);
+    color: govuk-colour("white");
 }
 
 .iai-card:hover {
-    background-color: var(--card-surface-hover, #0b0c0c);
+    background-color: govuk-colour("black");
 }
 
 .iai-card__heading {
@@ -51,7 +53,7 @@
 }
 
 .iai-card__link {
-    color: var(--govuk-link-colour, var(--grey-400));
+    color: govuk-functional-colour("link");
     text-decoration: underline;
 }
 
@@ -63,16 +65,16 @@
 
 .iai-card__content {
     margin: 0;
-    color: var(--govuk-text-colour, #0b0c0c);
+    color: govuk-functional-colour("text");
 }
 
 .iai-card:hover .iai-card__link,
 .iai-card:hover .iai-card__content {
-    color: var(--card-text-hover, #ffffff) !important;
+    color: govuk-colour("white") !important;
 }
 
 .iai-card--secondary {
     padding: 15px 20px;
-    background-color: var(--card-surface-secondary, #f3f2f1);
+    background-color: govuk-colour("black", $variant: "tint-95");
     border: none;
 }

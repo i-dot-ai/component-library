@@ -1,23 +1,25 @@
+@use "pkg:govuk-frontend/base" as *;
+
 // Button overrides.
 
 .govuk-button.govuk-button--tertiary {
-    background-color: #ffffff;
-    border: 1px solid var(--govuk-border-colour);
+    background-color: govuk-colour("white");
+    border: 1px solid govuk-functional-colour("border");
     border-bottom: 3px solid transparent;
-    box-shadow: 0 2px 0 #858686;
-    color: var(--govuk-link-colour);
+    box-shadow: 0 2px 0 govuk-colour("black", $variant: "tint-50");
+    color: govuk-functional-colour("link");
 }
 
 .govuk-button.govuk-button--tertiary:hover {
-    background-color: #f4f8fb;
-    color: var(--govuk-link-colour);
+    background-color: govuk-colour("blue", $variant: "tint-95");
+    color: govuk-functional-colour("link");
 }
 
 .govuk-button.govuk-button--small {
     padding: 6px 8px 4px;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    box-shadow: 0 1px 0 #858686;
+    box-shadow: 0 1px 0 govuk-colour("black", $variant: "tint-50");
 }
 
 .govuk-button-group:has(.govuk-button--small) {

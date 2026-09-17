@@ -1,11 +1,13 @@
+@use "pkg:govuk-frontend/base" as *;
+
 // Link overrides.
 
 .govuk-link--warning {
-    color: #ca3535 !important;
+    color: govuk-functional-colour("error") !important;
 }
 
 .govuk-link:focus {
-    color: var(--govuk-link-colour);
+    color: govuk-functional-colour("link");
     outline: 3px solid transparent;
     background-color: transparent;
     box-shadow: none;
@@ -14,10 +16,10 @@
 
 .govuk-link:focus-visible {
     outline: 3px solid transparent;
-    background-color: var(--govuk-focus-colour, #fd0);
+    background-color: $govuk-focus-colour;
     box-shadow:
-        0 -2px var(--govuk-focus-colour, #fd0),
-        0 4px var(--govuk-focus-text-colour, #0b0c0c);
+        0 -2px $govuk-focus-colour,
+        0 4px $govuk-focus-text-colour;
     text-decoration: none;
 }
 

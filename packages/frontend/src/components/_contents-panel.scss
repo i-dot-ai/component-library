@@ -1,23 +1,5 @@
 @use "pkg:govuk-frontend/base" as *;
 
-// Contents panel (i.AI component).
-//
-// A left-hand "pages in this section" navigation, modelled on the GOV.UK
-// Design System's own app-subnav. Pure HTML + CSS, no JavaScript.
-//
-//   <nav class="contents-panel" aria-labelledby="contents-panel-heading">
-//     <h2 class="govuk-visually-hidden" id="contents-panel-heading">Pages in this section</h2>
-//     <h3 class="contents-panel__theme">Group title</h3>
-//     <ul class="contents-panel__section">
-//       <li class="contents-panel__section-item contents-panel__section-item--current">
-//         <a class="contents-panel__link govuk-link ..." href="#" aria-current="page">Current page</a>
-//       </li>
-//       <li class="contents-panel__section-item">
-//         <a class="contents-panel__link govuk-link ..." href="#">Another page</a>
-//       </li>
-//     </ul>
-//   </nav>
-
 .contents-panel {
     padding-right: govuk-spacing(3);
     @include govuk-font(16);
