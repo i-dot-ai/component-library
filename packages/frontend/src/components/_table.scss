@@ -1,7 +1,9 @@
+@use "pkg:govuk-frontend/base" as *;
+
 // Table overrides.
 .govuk-table--subtle .govuk-table__header {
-    font-size: 1rem;
-    color: #484949;
+    @include govuk-font-size(16);
+    color: govuk-colour("black", $variant: "tint-25");
 }
 
 .govuk-table__cell--stretch {

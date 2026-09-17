@@ -10,7 +10,7 @@ export default function ToggleItem({ class: className, children, ...rest }: Togg
     const classes = ["iai-toggle__item", className ?? ""].filter(Boolean).join(" ");
 
     return (
-        <div className={classes} data-module="govuk-toggle" {...rest}>
+        <div className={classes} {...rest}>
             {children ?? ""}
         </div>
     );

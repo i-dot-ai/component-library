@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
 import { splitProps } from "solid-js";
-import type { JSX } from "solid-js";
 
 type ToggleProps = {
     class?: string;
@@ -13,9 +12,5 @@ export default function Toggle(props: ToggleProps) {
     const classes = () =>
         ["iai-toggle__input", local.class ?? ""].filter(Boolean).join(" ");
 
-    return (
-        <div class="iai-toggle">
-            <input class={classes()} type="checkbox" {...rest} />
-        </div>
-    );
+    return <input class={classes()} type="checkbox" role="switch" {...rest} />;
 }

@@ -1,8 +1,8 @@
-// @import "../utils/mixins";
+@use "pkg:govuk-frontend/base" as *;
 
 .govuk-checkboxes--subtle .govuk-checkboxes__label::before {
-    border: 1px solid #858686;
-    background-color: #fff;
+    border: 1px solid govuk-colour("black", $variant: "tint-50");
+    background-color: govuk-colour("white");
 }
 
 // table summary pattern

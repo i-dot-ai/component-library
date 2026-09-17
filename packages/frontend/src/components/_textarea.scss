@@ -1,5 +1,7 @@
+@use "pkg:govuk-frontend/base" as *;
+
 // Textarea overrides.
 
 .govuk-textarea--subtle {
-    border: 1px solid #858686;
+    border: 1px solid govuk-colour("black", $variant: "tint-50");
 }

@@ -4,6 +4,6 @@ const { class: className, ...rest } = Astro.props;
 const classes = ["iai-toggle__item", className ?? ""].filter(Boolean).join(" ");
 ---
 
-<div class={classes} data-module="govuk-toggle" {...rest}>
+<div class={classes} {...rest}>
     <slot />
 </div>

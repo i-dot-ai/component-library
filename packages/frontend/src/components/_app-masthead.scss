@@ -1,0 +1,5 @@
+@use "pkg:govuk-frontend/base" as *;
+
+.app-masthead {
+    background-color: govuk-colour("blue", $variant: "tint-80");
+}

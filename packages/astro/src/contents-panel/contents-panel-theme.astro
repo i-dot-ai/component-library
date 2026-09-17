@@ -1,0 +1,9 @@
+---
+const { class: className, ...rest } = Astro.props;
+
+const classes = ["contents-panel__theme", className ?? ""].filter(Boolean).join(" ");
+---
+
+<h3 class={classes} {...rest}>
+    <slot />
+</h3>
