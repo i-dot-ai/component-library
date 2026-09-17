@@ -4,7 +4,7 @@
 // to GOV.UK components; it has no base layout or typography of its own.
 //
 // Each component (GOV.UK override or i.AI-new) lives in its own module.
-
+@forward "components/app-masthead";
 @forward "components/button";
 @forward "components/link";
 @forward "components/radios";
@@ -17,3 +17,4 @@
 @forward "components/header";
 @forward "components/toggle";
 @forward "components/card";
+@forward "components/contents-panel";
