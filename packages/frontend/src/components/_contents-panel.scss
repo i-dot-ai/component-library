@@ -5,7 +5,7 @@
     @include govuk-font(16);
 }
 
-.contents-panel__theme {
+.contents-panel__list-heading {
     @include govuk-font-size($size: 19);
     @include govuk-typography-weight-regular;
     margin: 0;
@@ -17,13 +17,13 @@
     }
 }
 
-.contents-panel__section {
+.contents-panel__list {
     margin: 0 0 govuk-spacing(4);
     padding: 0;
     list-style-type: none;
 }
 
-.contents-panel__section-item {
+.contents-panel__list-item {
     margin-bottom: govuk-spacing(1);
     padding-top: govuk-spacing(1);
     padding-bottom: govuk-spacing(1);
@@ -33,7 +33,7 @@
     padding: 2px 0;
 }
 
-.contents-panel__section-item--current {
+.contents-panel__list-item--current {
     $_current-indicator-width: 4px;
 
     margin-left: -(govuk-spacing(2) + $_current-indicator-width);
@@ -42,6 +42,6 @@
     background-color: govuk-colour("white");
 }
 
-.contents-panel__section-item--current .contents-panel__link[aria-current="page"] {
+.contents-panel__list-item--current .contents-panel__link[aria-current="page"] {
     @include govuk-typography-weight-bold;
 }

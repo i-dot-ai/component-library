@@ -15,8 +15,8 @@ export default function ContentsPanelItem(props: ContentsPanelItemProps) {
     const [local, rest] = splitProps(props, ["href", "current", "class", "children"]);
     const itemClasses = () =>
         [
-            "contents-panel__section-item",
-            local.current ? "contents-panel__section-item--current" : "",
+            "contents-panel__list-item",
+            local.current ? "contents-panel__list-item--current" : "",
             local.class ?? "",
         ]
             .filter(Boolean)

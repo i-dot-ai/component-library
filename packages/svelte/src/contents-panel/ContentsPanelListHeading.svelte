@@ -1,7 +1,7 @@
 <script>
     let { class: className = "", children, ...rest } = $props();
 
-    let classes = $derived(["contents-panel__theme", className].filter(Boolean).join(" "));
+    let classes = $derived(["contents-panel__list-heading", className].filter(Boolean).join(" "));
 </script>
 
 <h3 class={classes} {...rest}>
