@@ -6,9 +6,5 @@ type ToggleProps = {
 export default function Toggle({ class: className, ...rest }: ToggleProps) {
     const classes = ["iai-toggle__input", className ?? ""].filter(Boolean).join(" ");
 
-    return (
-        <div className="iai-toggle">
-            <input className={classes} type="checkbox" {...rest} />
-        </div>
-    );
+    return <input className={classes} type="checkbox" role="switch" {...rest} />;
 }

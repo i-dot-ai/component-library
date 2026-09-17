@@ -6,6 +6,4 @@
     );
 </script>
 
-<div class="iai-toggle">
-    <input class={classes} type="checkbox" {...rest} />
-</div>
+<input class={classes} type="checkbox" role="switch" {...rest} />

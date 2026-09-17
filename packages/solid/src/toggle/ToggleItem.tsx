@@ -15,7 +15,7 @@ export default function ToggleItem(props: ToggleItemProps) {
         ["iai-toggle__item", local.class ?? ""].filter(Boolean).join(" ");
 
     return (
-        <div class={classes()} data-module="govuk-toggle" {...rest}>
+        <div class={classes()} {...rest}>
             {local.children ?? ""}
         </div>
     );
