@@ -2,6 +2,7 @@
 const {
     error = false,
     subtle = false,
+    value = "",
     class: className,
     ...rest
 } = Astro.props;
@@ -16,4 +17,4 @@ const classes = [
     .join(" ");
 ---
 
-<textarea class={classes} {...rest}></textarea>
+<textarea class={classes} {...rest}>{value}</textarea>

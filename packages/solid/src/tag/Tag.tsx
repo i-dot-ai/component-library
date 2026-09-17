@@ -4,7 +4,7 @@ import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
 type TagProps = {
-    colour?: "grey" | "green" | "turquoise" | "blue" | "light-blue" | "purple" | "pink" | "red" | "orange" | "yellow";
+    colour?: "grey" | "green" | "teal" | "turquoise" | "blue" | "light-blue" | "purple" | "magenta" | "pink" | "red" | "orange" | "yellow";
     class?: string;
     children?: JSX.Element;
     [key: string]: unknown;
@@ -15,7 +15,7 @@ export default function Tag(props: TagProps) {
     const classes = () =>
         [
             "govuk-tag",
-            ({ "grey": "govuk-tag--grey", "green": "govuk-tag--green", "turquoise": "govuk-tag--turquoise", "blue": "govuk-tag--blue", "light-blue": "govuk-tag--light-blue", "purple": "govuk-tag--purple", "pink": "govuk-tag--pink", "red": "govuk-tag--red", "orange": "govuk-tag--orange", "yellow": "govuk-tag--yellow" }[local.colour] ?? ""),
+            ({ "grey": "govuk-tag--grey", "green": "govuk-tag--green", "teal": "govuk-tag--teal", "turquoise": "govuk-tag--turquoise", "blue": "govuk-tag--blue", "light-blue": "govuk-tag--light-blue", "purple": "govuk-tag--purple", "magenta": "govuk-tag--magenta", "pink": "govuk-tag--pink", "red": "govuk-tag--red", "orange": "govuk-tag--orange", "yellow": "govuk-tag--yellow" }[local.colour] ?? ""),
             local.class ?? "",
         ]
             .filter(Boolean)

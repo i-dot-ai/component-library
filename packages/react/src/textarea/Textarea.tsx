@@ -1,11 +1,12 @@
 type TextareaProps = {
     error?: boolean;
     subtle?: boolean;
+    value?: string;
     class?: string;
     [key: string]: unknown;
 };
 
-export default function Textarea({ error, subtle, class: className, ...rest }: TextareaProps) {
+export default function Textarea({ error, subtle, value, class: className, ...rest }: TextareaProps) {
     const classes = [
         "govuk-textarea",
         error ? "govuk-textarea--error" : "",
@@ -16,6 +17,6 @@ export default function Textarea({ error, subtle, class: className, ...rest }: T
         .join(" ");
 
     return (
-        <textarea className={classes} {...rest}></textarea>
+        <textarea className={classes} defaultValue={value} {...rest}></textarea>
     );
 }

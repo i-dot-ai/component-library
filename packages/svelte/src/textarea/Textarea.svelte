@@ -2,6 +2,7 @@
     let {
         error = false,
         subtle = false,
+        value = "",
         class: className = "",
         ...rest
     } = $props();
@@ -18,4 +19,4 @@
     );
 </script>
 
-<textarea class={classes} {...rest}></textarea>
+<textarea class={classes} {...rest}>{value}</textarea>
