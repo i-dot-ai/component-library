@@ -1,170 +1,120 @@
 # Contributing
 
-This document describes how to add a component to the cross-framework test
-suite in `tests/`.
+This is a pnpm monorepo for the component library where each module under packages/ is published as an independent package on npmjs. This guide covers local setup, the day-to-day workflow, our code and commit conventions, and how to add a new package.
 
-## What the tests check
+## Table of contents
 
-Every component is implemented four times — React, Solid, Svelte and Astro
-(`packages/{react,solid,svelte,astro}`). The test suite renders each
-implementation to HTML and asserts it matches **govuk-frontend's own output**
-for the same inputs.
+- [Repo structure and where to work](#repo-structure-and-where-to-work)
+- [Adding to the Component Library](#adding-to-the-component-library)
+  - [Things to consider before you build your component](#things-to-consider-before-you-build-your-component)
+  - [Design principles to follow](#design-principles-to-follow)
+  - [tests](#tests)
+  - [Techincal requirements](#technical-requirements)
+- [Releases](#releases)
 
-The oracle is govuk-frontend's shipped `fixtures.json` (`tests/src/oracle.ts`),
-so the suite answers exactly one question: **does our output match
-govuk-frontend?** It does not test:
+## Repo structure and where to work
 
-- i.AI-only components (no govuk fixture exists — see "Out of scope" below)
-- i.AI-only props on govuk components (e.g. `tertiary`, `small` on Button)
-- behaviour / interactivity (JS-driven state — a separate layer, not yet built)
+This repo has been set up to have a central frontend package which holds all the CSS and JS needed for the components to work. Each framework then has it's own package which holds light wrappers to make authoring components in each framework as straight forward as possible.
 
-## How comparison works
+There is also the gallery folder which has been set up for building your components in and testing.
 
-Rendered HTML and the govuk fixture HTML are both reduced to a normalised
-"shape" (`tests/src/reduce.ts`): tag, sorted class list, attribute map, text and
-children. Framework noise (hydration markers, attribute order, etc.) is stripped
-by `tests/src/normalise.ts`. Two outputs that reduce to the same shape are
-considered equal, so byte-level differences between frameworks don't matter —
-only semantic structure does.
+You should split your work across the following repos
 
-## Layout
+- [Gallery](/gallery/) - A frontend repo to test and build your components, draft your work here.
+- [Frontend package](/packages/frontend/) - You should put your final central CSS and js files here
+- Framework packages - where the final wrapper components should live.
+  - [Svelte packages](/packages/svelte)
+  - [React packages](/packages/react)
+  - [Solid packages](/packages/solid)
+  - [Astro packages](/packages/astro)
 
-```
-tests/src/
-  oracle.ts            loads govuk fixtures.json (skips hidden + visual-state)
-  reduce.ts            HTML string -> normalised shape
-  normalise.ts         strips framework noise from a shape
-  mapping.ts           ComponentMapping type + mapOptions (govuk options -> props)
-  cases.ts             casesFor(component, mapping) + toShape
-  render/              per-framework render adapters
-  env.d.ts             ambient *.svelte / *.astro module declarations
+## Adding to the Component Library
 
-  <component>/
-    mapping.ts         per-component: how govuk options map to our inputs
-    tests/
-      govuk-match.react.test.tsx
-      govuk-match.solid.test.tsx
-      govuk-match.svelte.test.ts
-      govuk-match.astro.test.ts
-```
+This repo has been built so that your agent can help you add components to this library. In order to add to this library you should consider the following:
 
-Test files are discovered by the `*.<framework>.test.*` suffix
-(`tests/vitest.config.ts`, `tests/vitest.astro.config.ts`). The prefix
-(`govuk-match`) signals intent; the component comes from the folder path.
+### Things to consider before you build your component
 
-Run everything with `make run_unit_tests` (or `pnpm test` inside `tests/`).
+1. There should be a real need for the component:
+  - Check that it is not already present in the i.AI component library
+2. Check if another government department has already designed this component
+  - If so, you can use this as a basis for your component
 
-## Scaffolding a new component's tests
+### Design principles to follow
 
-The four per-framework test files are near-identical boilerplate (they differ
-only by framework). Generate them instead of copy-pasting:
+Your component should look and feel like a government component. This means using the colour palette set out in the [i.AI Design Kit][https://i-ai-design-system.internal.i.ai.gov.uk/styles/colour-palette].
 
-```
-pnpm --filter @i-dot-ai-npm/component-library-tests scaffold <component>
-```
+It should be fully accessible, at least passing [WCAG 2.0 criteria](https://www.w3.org/TR/WCAG20/).
 
-`<component>` is the kebab-case folder name (matching `packages/*/src/<component>`
-and the govuk fixtures.json name), e.g. `phase-banner`.
+### Tests
 
-This writes, under `tests/src/component-tests/<component>/`:
+Your component should be testing lead. Depending on your use case you will need to ensure that the following tests fully cover your component and all pass:
 
-- `match-govuk-mappings.ts` — a starter `ComponentMapping` to fill in
-- `tests/govuk-match.{react,solid,svelte,astro}.test.*` — the four test files
+Unique to GOV.UK components:
 
-Useful flags:
+- Match GOV.UK Fixtures tests
 
-- `--dry-run` — print what would be written without touching disk
-- `--export=<Name>` — set the imported component export (defaults to the
-  PascalCase of the folder name, e.g. `phase-banner` -> `PhaseBanner`)
-- `--force` — overwrite existing files
+  These check to see if it matches the expected output given by GOV.UK Frontend. You will have to write a matching function which matches the variant prop to the expected class or attribute output.
 
-After scaffolding you still fill in the mapping by hand (below), and composite
-(Tier 2) components need their `examples/`/`content/` files authored manually.
-The scaffold only produces the Tier 1 skeleton.
+  If it is a simple component where the only check is to match attributes, html structure and classes you can follow the example of the [details component tests](/tests/src/component-tests/details/). 
+  
+  If you have a more complex fixture list where tests rely on children being rendered or more complex behaviour you can follow the example of the [Accordion component tests](/tests/src/component-tests/accordion/).
 
-## Two kinds of component
+If the component has variant classes:
 
+- Matches i.AI variant classes
 
-### Tier 1 — single-element components (e.g. Button)
+  This should only be for variants which do not exist in normal GOV.UK as GOV.UK variants such as `govuk-checkboxes--small` will have been covered in the above matching gov.uk fixture tests.
+  
+  For new components which are not in GOV.UK Frontend you will need to add all the variant classes for these tests.
 
-The govuk fixture's `options` map directly to props, and one fixture renders as
-one component. These are fully driven by the fixtures — no hand-authored markup.
+  You can follow the example of the [Link component variant tests](/tests/src/component-tests/link) to see how to format your tests. You will have to write a `iai-variants.ts` file which maps the props to the expected classes
 
-Add:
+New components which are not in GOV.UK
 
-1. `tests/src/<component>/mapping.ts` — a `ComponentMapping` describing only
-   where our prop API diverges from govuk's macro options. `mapOptions`
-   (`tests/src/mapping.ts`) already handles the common cases by default
-   (`text`/`html` -> children, `attributes` -> props, and passthrough of
-   `id`/`name`/`type`/`value`/`href`), so most components only need a
-   `classesToProps` and/or a small `transform`.
+- Matches i.AI expected HTML
 
-   Only map classes/options that appear in **govuk** fixtures. Do not map
-   i.AI-only variants (they are never in the oracle, so the mapping would be
-   dead code — see `tests/src/button/mapping.ts`).
+  These are to check that the html rendered in each framework match the expected html structure
 
-2. Four thin test files under `tests/src/<component>/tests/`, one per framework,
-   each following this shape:
+  You will need to write an expected.html file and then assert that each component matches that output. You can see the example of the [Toggle test folder](/tests/src/component-tests/toggle/) to see how to structure your tests
 
-   ```ts
-   import { describe, it, expect } from "vitest";
-   import { Button } from "@i-dot-ai-npm/component-library-react";
-   import { renderReact } from "../../../matches-govuk-helpers/render/react.js";
-   import { casesFor, toShape } from "../../cases.js";
-   import { buttonMapping } from "../mapping.js";
+### Technical requirements
 
-   describe("Button — Matches govuk fixture shape", () => {
-       for (const testCase of casesFor("button", buttonMapping)) {
-           it(testCase.name, () => {
-               const html = renderReact(Button, testCase.input.props, testCase.input.text);
-               expect(toShape(html)).toEqual(testCase.expected);
-           });
-       }
-   });
-   ```
+- Progressive enhancements
+  Your component should follow the progressive enhancement priniple of GOV.UK
+- SCSS mixins - should use the govuk mixins where possible
+- Variant classes should follow BEM structure e.g.`iai-card--secondary` or `govuk-button--tertiary` where extending a GOV.UK component
+- Output - Components should all be broken down to behave in a way that children can be passed in a intuitive way. E.g. the table component should be consumed like the following:
 
-### Tier 2 — composite components (e.g. Accordion)
+  ```
+      <Table>
+          <TableCaption size="medium">Monthly energy costs</TableCaption>
+          <TableHead>
+              <TableRow>
+                  <TableHeader>Month</TableHeader>
+                  <TableHeader numeric>Gas</TableHeader>
+                  <TableHeader numeric>Electricity</TableHeader>
+              </TableRow>
+          </TableHead>
+          <TableBody>
+              <TableRow>
+                  <TableCell>January</TableCell>
+                  <TableCell numeric>£85</TableCell>
+                  <TableCell numeric>£95</TableCell>
+              </TableRow>
+              <TableRow>
+                  <TableCell>February</TableCell>
+                  <TableCell numeric>£75</TableCell>
+                  <TableCell numeric>£55</TableCell>
+              </TableRow>
+              <TableRow>
+                  <TableCell>March</TableCell>
+                  <TableCell numeric>£165</TableCell>
+                  <TableCell numeric>£125</TableCell>
+              </TableRow>
+          </TableBody>
+      </Table>
+  ```
 
-The govuk fixture describes a tree (e.g. an `items` array), which our library
-splits into multiple sub-components. One fixture no longer maps to a single
-render, and the section content is stored by govuk as opaque HTML strings.
+## Releases
 
-Add:
-
-1. `tests/src/<component>/mapping.ts` — a function that reads the fixtures and
-   returns structured data: the ids, headings, flags and content for each part,
-   plus the raw `expectedHtml`. See `tests/src/accordion/mapping.ts`
-   (`accordionFixtures()`).
-
-2. Per-framework rendering, which differs by capability:
-
-   - **Svelte / Astro** can inject raw HTML (`{@html}` / `<Fragment set:html>`),
-     so a single `examples/FixtureAccordion.{svelte,astro}` renders any fixture
-     directly from the data — no hand-authored content.
-
-   - **React / Solid** cannot inject a raw HTML string as unwrapped content, so
-     the opaque section content is re-authored as real elements in
-     `content/govuk-matched-content.{react,solid}.tsx`, and an
-     `examples/accordion.{react,solid}.tsx` renderer combines the scaffold
-     (from `mapping.ts`) with that content. The React and Solid content files
-     are near-identical (only `className` vs `class` and imports differ); this
-     duplication is accepted for readability.
-
-3. Four test files under `tests/src/<component>/tests/` that render each
-   framework's output and compare to `fixture.expectedHtml` via
-   `normalise(reduce(...))`. See `tests/src/accordion/tests/`.
-
-## Deciding which tier
-
-- One element, no children structure beyond text/simple content → **Tier 1**.
-- Multiple sub-components / an `items`-style tree in the fixture → **Tier 2**.
-
-## Out of scope (for now)
-
-- **i.AI-only components** (no govuk equivalent) and **i.AI-only props** on govuk
-  components have no govuk oracle. They would need an authored-fixtures loader
-  that produces the same `{ name, options, html }` shape as `oracle.ts`. Not yet
-  built.
-- **Behaviour** (accordion collapse, character-count updates, etc.) is not tested
-  — these are shape tests only. A behavioural (Playwright) layer is a separate,
-  future addition; it would sit alongside as `behaviour.<framework>.test.*`.
+If you up the version number in the package.json of any package it will be released on a merge to main
