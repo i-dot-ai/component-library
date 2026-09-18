@@ -1,42 +1,13 @@
 ---
-import React from "react";
 import Layout from "@layouts/Layout.astro";
-import {
-  Accordion,
-  AccordionSection,
-  AccordionSectionHeader,
-  AccordionSectionHeading,
-  AccordionSectionContent,
-} from "@i-dot-ai-npm/component-library-react";
-
 ---
 
 <Layout>
-  <h1 class="govuk-heading-xl">Starter App</h1>
-  <p class="govuk-body">
-    This is working! Edit <code>frontend/src/index.astro</code> to make changes to
-    this page.
+  <h1 class="govuk-heading-xl">i.AI Component Libary Gallery</h1>
+  <p class="govuk-body-l">
+    Use this page to build your components. Read the <a
+      class="govuk-link"
+      href="/contributing">contributing guide</a
+    > for instructions on how to add or amend components in the component library.
   </p>
-  <Accordion id="astro-accordion">
-    <AccordionSection>
-      <AccordionSectionHeader>
-        <AccordionSectionHeading
-          >Writing well for the web</AccordionSectionHeading
-        >
-      </AccordionSectionHeader>
-      <AccordionSectionContent>
-        <p class="govuk-body">Content for writing well for the web.</p>
-      </AccordionSectionContent>
-    </AccordionSection>
-    <AccordionSection>
-      <AccordionSectionHeader>
-        <AccordionSectionHeading
-          >Writing well for specialists</AccordionSectionHeading
-        >
-      </AccordionSectionHeader>
-      <AccordionSectionContent>
-        <p class="govuk-body">Content for writing well for specialists.</p>
-      </AccordionSectionContent>
-    </AccordionSection>
-  </Accordion>
 </Layout>
