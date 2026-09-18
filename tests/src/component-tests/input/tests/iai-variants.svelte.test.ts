@@ -4,7 +4,7 @@ import { renderSvelte } from "../../../render/svelte";
 import { expectVariantClass } from "../../../iai-variants-helpers/variants";
 import { iaiInputVariants } from "../iai-variants";
 
-describe("i.AI variants - Input", () => {
+describe("Matches i.AI variant classes - Input", () => {
     for (const variant of iaiInputVariants) {
         it(variant.name, () => {
             const html = renderSvelte(Input, variant.props);

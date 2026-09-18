@@ -4,7 +4,7 @@ import { renderSvelte } from "../../../render/svelte";
 import { expectVariantClass } from "../../../iai-variants-helpers/variants";
 import { iaiTableVariants } from "../iai-variants";
 
-describe("i.AI variants - Table", () => {
+describe("Matches i.AI variant classes - Table", () => {
     for (const variant of iaiTableVariants) {
         it(variant.name, () => {
             const html = renderSvelte(Table, variant.props);

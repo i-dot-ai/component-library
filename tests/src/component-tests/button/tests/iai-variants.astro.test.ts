@@ -4,7 +4,7 @@ import { renderAstro } from "../../../render/astro";
 import { expectVariantClass } from "../../../iai-variants-helpers/variants";
 import { iaiButtonVariants } from "../iai-variants";
 
-describe("i.AI variants - Button", () => {
+describe("Matches i.AI variant classes - Button", () => {
     for (const variant of iaiButtonVariants) {
         it(variant.name, async () => {
             const html = await renderAstro(Button, variant.props);
