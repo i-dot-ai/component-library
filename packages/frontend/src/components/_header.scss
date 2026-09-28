@@ -1,5 +1,14 @@
-// Header overrides.
+@use "pkg:govuk-frontend/base" as *;
+
+.govuk-generic-header {
+    background-color: govuk-functional-colour("surface-background");
+    color: #0b0c0c; // hard coded value because generic header updates variable to be white
+}
 
 .govuk-generic-header__homepage-link svg {
     display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin-top: -15px;
+    margin-right: 10px;
 }
