@@ -1,5 +1,15 @@
 @use "pkg:govuk-frontend/base" as *;
 
 .app-masthead {
-    background-color: govuk-colour("magenta");
+    background-color: govuk-functional-colour("brand")
+}
+
+.app-masthead .govuk-heading-xl,
+.app-masthead .govuk-heading-l,
+.app-masthead .govuk-heading-m,
+.app-masthead .govuk-heading-s,
+.app-masthead .govuk-body,
+.app-masthead .govuk-body-l,
+.app-masthead .govuk-body-s {
+    color: govuk-functional-colour("inverse-text")
 }
