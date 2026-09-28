@@ -4,12 +4,7 @@
     background-color: govuk-functional-colour("brand")
 }
 
-.app-masthead .govuk-heading-xl,
-.app-masthead .govuk-heading-l,
-.app-masthead .govuk-heading-m,
-.app-masthead .govuk-heading-s,
-.app-masthead .govuk-body,
-.app-masthead .govuk-body-l,
-.app-masthead .govuk-body-s {
+.app-masthead--title,
+.app-masthead--body {
     color: govuk-functional-colour("inverse-text")
 }
