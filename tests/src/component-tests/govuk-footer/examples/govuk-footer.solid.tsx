@@ -1,27 +1,29 @@
-import type { ReactNode } from "react";
-import { Footer } from "@i-dot-ai-npm/component-library-react";
+/** @jsxImportSource solid-js */
+
+import type { JSX } from "solid-js";
+import { GovukFooter } from "@i-dot-ai-npm/component-library-solid";
 import type { FooterData } from "../match-govuk-mappings.js";
 
 // Raw-HTML fixture fields re-authored as elements (see accordion pattern).
-const metaContent: Record<string, ReactNode> = {
+const metaContent: Record<string, JSX.Element> = {
     "with meta links and meta content": (
         <>
-            Built by the <a href="#" className="govuk-footer__link">Department of Magical Law Enforcement</a>
+            Built by the <a href="#" class="govuk-footer__link">Department of Magical Law Enforcement</a>
         </>
     ),
     "Full GDS example": (
         <>
-            Built by the <a className="govuk-footer__link" href="#">Government Digital Service</a>
+            Built by the <a class="govuk-footer__link" href="#">Government Digital Service</a>
         </>
     ),
 };
 
-const licenceContent: Record<string, ReactNode> = {
+const licenceContent: Record<string, JSX.Element> = {
     "with custom HTML content licence and copyright notice": (
         <>
             Mae’r holl gynnwys ar gael dan{" "}
             <a
-                className="govuk-footer__link"
+                class="govuk-footer__link"
                 href="https://www.nationalarchives.gov.uk/doc/open-government-licence-cymraeg/version/3/"
                 rel="license"
             >
@@ -32,11 +34,11 @@ const licenceContent: Record<string, ReactNode> = {
     ),
 };
 
-const copyrightContent: Record<string, ReactNode> = {
+const copyrightContent: Record<string, JSX.Element> = {
     "with custom HTML content licence and copyright notice": <span>Hawlfraint y Goron</span>,
 };
 
-export function renderFooter(data: FooterData): ReactNode {
+export function renderFooter(data: FooterData): JSX.Element {
     const meta = data.meta
         ? {
               ...data.meta,
@@ -62,7 +64,7 @@ export function renderFooter(data: FooterData): ReactNode {
         : undefined;
 
     return (
-        <Footer
+        <GovukFooter
             navigation={data.navigation}
             meta={meta}
             contentLicence={contentLicence}

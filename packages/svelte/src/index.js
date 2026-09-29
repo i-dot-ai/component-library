@@ -52,6 +52,7 @@ export { default as Feedback } from "./feedback/Feedback.svelte";
 export { default as FileUpload } from "./file-upload/FileUpload.svelte";
 export { default as Footer } from "./footer/Footer.svelte";
 export { default as FormGroup } from "./form-group/FormGroup.svelte";
+export { default as GovukFooter } from "./govuk-footer/GovukFooter.svelte";
 export { default as GovukHeader } from "./govuk-header/GovukHeader.svelte";
 export { default as Header } from "./header/Header.svelte";
 export { default as Hint } from "./hint/Hint.svelte";
