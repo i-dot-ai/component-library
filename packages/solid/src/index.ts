@@ -51,6 +51,7 @@ export { default as Feedback } from "./feedback/Feedback";
 export { default as FileUpload } from "./file-upload/FileUpload";
 export { default as Footer } from "./footer/Footer";
 export { default as FormGroup } from "./form-group/FormGroup";
+export { default as GovukFooter } from "./govuk-footer/GovukFooter";
 export { default as GovukHeader } from "./govuk-header/GovukHeader";
 export { default as Header } from "./header/Header";
 export { default as Hint } from "./hint/Hint";

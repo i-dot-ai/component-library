@@ -59,6 +59,7 @@ export const Feedback: SvelteComponent;
 export const FileUpload: SvelteComponent;
 export const Footer: SvelteComponent;
 export const FormGroup: SvelteComponent;
+export const GovukFooter: SvelteComponent;
 export const GovukHeader: SvelteComponent;
 export const Header: SvelteComponent;
 export const Hint: SvelteComponent;

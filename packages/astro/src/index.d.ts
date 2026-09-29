@@ -55,6 +55,7 @@ export const Feedback: AstroComponent;
 export const FileUpload: AstroComponent;
 export const Footer: AstroComponent;
 export const FormGroup: AstroComponent;
+export const GovukFooter: AstroComponent;
 export const GovukHeader: AstroComponent;
 export const Header: AstroComponent;
 export const Hint: AstroComponent;

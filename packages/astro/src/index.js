@@ -52,6 +52,7 @@ export { default as Feedback } from "./feedback/feedback.astro";
 export { default as FileUpload } from "./file-upload/file-upload.astro";
 export { default as Footer } from "./footer/footer.astro";
 export { default as FormGroup } from "./form-group/form-group.astro";
+export { default as GovukFooter } from "./govuk-footer/govuk-footer.astro";
 export { default as GovukHeader } from "./govuk-header/govuk-header.astro";
 export { default as Header } from "./header/header.astro";
 export { default as Hint } from "./hint/hint.astro";

@@ -3,12 +3,12 @@ import { renderAstro } from "../../../render/astro.js";
 import { reduce } from "../../../matches-govuk-helpers/reduce.js";
 import { normalise } from "../../../matches-govuk-helpers/normalise.js";
 import { footerFixtures } from "../match-govuk-mappings.js";
-import FixtureFooter from "../examples/FixtureFooter.astro";
+import FixtureGovukFooter from "../examples/FixtureGovukFooter.astro";
 
-describe("Matches govuk fixture shape - Footer", () => {
+describe("Matches govuk fixture shape - GovukFooter", () => {
     for (const fixture of footerFixtures()) {
         it(fixture.name, async () => {
-            const html = await renderAstro(FixtureFooter as never, {
+            const html = await renderAstro(FixtureGovukFooter as never, {
                 navigation: fixture.navigation,
                 meta: fixture.meta,
                 contentLicence: fixture.contentLicence,
