@@ -1,7 +1,10 @@
 ---
 import Layout from "@layouts/Layout.astro";
----
 
+import EXAMPLES from "../../src/examples.ts";
+
+import * as components from "@i-dot-ai-npm/component-library-astro";
+---
 <Layout>
   <h1 class="govuk-heading-xl">i.AI Component Library Gallery</h1>
   <p class="govuk-body-l">
@@ -10,4 +13,47 @@ import Layout from "@layouts/Layout.astro";
       href="/contributing">contributing guide</a
     > for instructions on how to add or amend components in the component library.
   </p>
+
+  <div>
+    {Object.keys(components).map((key, i) => {
+      const Component = components[key];
+      const example = EXAMPLES[key];
+
+      return (
+        <>
+          <section>
+            <button class="section-button">
+              <h2>{key}</h2>
+            </button>
+
+            <p>{example?.description}</p>
+
+            <div>
+              {example?.variations?.map(variation => (
+                <div>
+                  {variation.children
+                  ? <Component {...(variation.props || {})}>
+                      {variation.children}
+                    </Component>
+                  : <Component {...(variation.props || {})} />}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <hr />
+        </>
+      )
+    })}
+  </div>
+
+  <style>
+    .section-button {
+      background: none;
+      border: none;
+    }
+    h2 {
+      margin: 0;
+    }
+  </style>
 </Layout>
