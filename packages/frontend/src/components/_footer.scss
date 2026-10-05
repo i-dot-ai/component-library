@@ -1,8 +1,0 @@
-@use "pkg:govuk-frontend/base" as *;
-
-// i.AI footer.
-//
-// The i.AI footer reuses GOV.UK's `govuk-footer` structure and classes, with
-// an additional `iai-footer` class on the root as a hook for i.AI-specific
-// overrides. No visual overrides are applied yet — add rules under
-// `.iai-footer` here when the design calls for them.
