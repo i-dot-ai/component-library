@@ -1,6 +1,11 @@
 ---
 // govuk-frontend base styles + i.AI override layer.
 import "../styles/i-dot-ai.scss";
+import { Footer } from "@i-dot-ai-npm/component-library-astro";
+import {
+	ServiceNavigation,
+	ServiceNavigationItem,
+} from "@i-dot-ai-npm/component-library-astro";
 ---
 
 <!doctype html>
@@ -15,7 +20,7 @@ import "../styles/i-dot-ai.scss";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>i.AI App</title>
 	</head>
-	<body class="govuk-template__body">
+	<body class="govuk-template__body govuk-template__body--iai-theme">
 		<script is:inline>
 			document.body.className +=
 				" js-enabled" +
@@ -30,11 +35,23 @@ import "../styles/i-dot-ai.scss";
 			data-module="govuk-skip-link">Skip to main content</a
 		>
 
+		<ServiceNavigation navigationId="default-navigation">
+			<ServiceNavigationItem href="#/1" current>
+				Navigation item 1
+			</ServiceNavigationItem>
+			<ServiceNavigationItem href="#/2">
+				Navigation item 2
+			</ServiceNavigationItem>
+			<ServiceNavigationItem href="#/3">
+				Navigation item 3
+			</ServiceNavigationItem>
+		</ServiceNavigation>
 		<div class="govuk-width-container">
 			<main class="govuk-main-wrapper" id="main-content">
 				<slot />
 			</main>
 		</div>
+		<Footer />
 
 		<script>
 			import { initAll } from "govuk-frontend";
