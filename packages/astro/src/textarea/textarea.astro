@@ -1,4 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"textarea"> {
+    error?: boolean;
+    subtle?: boolean;
+    value?: string;
+}
+
 const {
     error = false,
     subtle = false,

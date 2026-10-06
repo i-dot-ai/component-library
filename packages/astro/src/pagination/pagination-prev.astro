@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    block?: boolean;
+    labelText?: string;
+}
+
 const { block = false, labelText, class: className, ...rest } = Astro.props;
 
 const classes = ["govuk-link govuk-pagination__link", className ?? ""]

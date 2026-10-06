@@ -1,4 +1,13 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"td"> {
+    numeric?: boolean;
+    stretch?: boolean;
+    noWrap?: boolean;
+    small?: boolean;
+}
+
 const {
     numeric = false,
     stretch = false,

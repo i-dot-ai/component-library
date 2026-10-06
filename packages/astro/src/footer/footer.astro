@@ -1,4 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    links?: unknown[];
+    visuallyHiddenTitle?: string;
+    containerClasses?: string;
+}
+
 const {
     links,
     visuallyHiddenTitle = "Support links",

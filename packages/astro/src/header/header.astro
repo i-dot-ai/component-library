@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    href?: string;
+    containerClasses?: string;
+}
+
 const { href, class: className, containerClasses, ...rest } = Astro.props;
 
 const classes = ["govuk-generic-header", className ?? ""]

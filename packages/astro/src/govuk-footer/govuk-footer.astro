@@ -1,4 +1,14 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    navigation?: unknown[];
+    meta?: unknown;
+    contentLicence?: string;
+    copyright?: string;
+    containerClasses?: string;
+}
+
 const {
     navigation,
     meta,

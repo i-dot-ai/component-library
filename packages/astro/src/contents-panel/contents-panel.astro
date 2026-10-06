@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"nav"> {
+    heading?: string;
+    headingId?: string;
+}
+
 const {
     heading = "Pages in this section",
     headingId = "contents-panel-heading",

@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    inline?: boolean;
+    small?: boolean;
+}
+
 const {
     inline = false,
     small = false,

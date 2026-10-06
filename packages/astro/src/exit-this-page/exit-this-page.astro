@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    redirectUrl?: string;
+    id?: string;
+}
+
 const {
     redirectUrl = "https://www.bbc.co.uk/weather",
     id,

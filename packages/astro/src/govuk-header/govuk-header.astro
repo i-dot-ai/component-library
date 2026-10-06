@@ -1,4 +1,12 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+    homepageUrl?: string;
+    productName?: string;
+    containerClasses?: string;
+}
+
 const {
     homepageUrl = "//gov.uk",
     productName,
