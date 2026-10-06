@@ -1,4 +1,16 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+    secondary?: boolean;
+    tertiary?: boolean;
+    warning?: boolean;
+    inverse?: boolean;
+    small?: boolean;
+    startButton?: boolean;
+    href?: string;
+}
+
 const {
     secondary = false,
     tertiary = false,

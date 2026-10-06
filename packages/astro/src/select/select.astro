@@ -1,4 +1,11 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"select"> {
+    subtle?: boolean;
+    error?: boolean;
+}
+
 const {
     subtle = false,
     error = false,

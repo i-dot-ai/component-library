@@ -1,4 +1,13 @@
 ---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+    error?: boolean;
+    extraLetterSpacing?: boolean;
+    subtle?: boolean;
+    width?: string;
+}
+
 const {
     error = false,
     extraLetterSpacing = false,
