@@ -14,7 +14,7 @@ export default function Link({ noUnderline, noVisitedState, variant, class: clas
         "govuk-link",
         noUnderline ? "govuk-link--no-underline" : "",
         noVisitedState ? "govuk-link--no-visited-state" : "",
-        ({ "warning": "govuk-link--warning", "inverse": "govuk-link--inverse" }[variant] ?? ""),
+        (variant ? { "warning": "govuk-link--warning", "inverse": "govuk-link--inverse" }[variant] : ""),
         className ?? "",
     ]
         .filter(Boolean)
