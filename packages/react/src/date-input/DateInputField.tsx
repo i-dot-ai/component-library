@@ -7,7 +7,7 @@ type DateInputFieldProps = {
 export default function DateInputField({ width, class: className, ...rest }: DateInputFieldProps) {
     const classes = [
         "govuk-input govuk-date-input__input",
-        ({ "2": "govuk-input--width-2", "3": "govuk-input--width-3", "4": "govuk-input--width-4" }[width ?? ""] ?? ""),
+        (width ? { "2": "govuk-input--width-2", "3": "govuk-input--width-3", "4": "govuk-input--width-4" }[width] : ""),
         className ?? "",
     ]
         .filter(Boolean)

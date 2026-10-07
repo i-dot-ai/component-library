@@ -10,7 +10,7 @@ type InputLabelProps = {
 export default function InputLabel({ size, class: className, children, ...rest }: InputLabelProps) {
     const classes = [
         "govuk-label",
-        ({ "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[size] ?? ""),
+        (size ? { "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[size] : ""),
         className ?? "",
     ]
         .filter(Boolean)
