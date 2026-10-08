@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type AccordionSectionContentProps = {
+type AccordionSectionContentProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function AccordionSectionContent({ class: className, children, ...rest }: AccordionSectionContentProps) {

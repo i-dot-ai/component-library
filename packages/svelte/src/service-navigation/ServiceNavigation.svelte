@@ -1,4 +1,27 @@
-<script>
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLElement> & HTMLAttributes<HTMLDivElement> & {
+        sideNav?: boolean;
+        inverse?: boolean;
+        serviceName?: string;
+        serviceUrl?: string;
+        navigationId?: string;
+        menuButtonText?: string;
+        ariaLabel?: string;
+        /** Whether to render the navigation `<nav>` (omitted when there are no items). */
+        hasNavigation?: boolean;
+        /** Show the mobile menu toggle. Defaults to true when there is >1 item. */
+        collapseNavigationOnMobile?: boolean;
+        /** Raw HTML for the `end` slot (e.g. language navigation). */
+        endSlot?: Snippet;
+        /** Align the end slot inline (adds the inlining container class). */
+        endSlotInline?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
     let {
         sideNav = false,
         inverse = false,
@@ -14,7 +37,7 @@
         class: className = "",
         children,
         ...rest
-    } = $props();
+    }: Props = $props();
 
     let classes = $derived(
         [

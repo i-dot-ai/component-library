@@ -1,5 +1,14 @@
-<script>
-    let { block = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLElement> & {
+        block?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { block = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

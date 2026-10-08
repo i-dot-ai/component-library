@@ -1,10 +1,19 @@
-<script>
-    let { size, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLLabelAttributes } from "svelte/elements";
+
+    type Props = HTMLLabelAttributes & {
+        size?: "small" | "medium" | "large" | "xl";
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { size, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [
             "govuk-label",
-            ({ "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[size] ?? ""),
+            (size ? { "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[size] : ""),
             className,
         ]
             .filter(Boolean)

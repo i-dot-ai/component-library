@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TabsTitleProps = {
+type TabsTitleProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TabsTitle({ class: className, children, ...rest }: TabsTitleProps) {

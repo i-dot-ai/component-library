@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SkipLinkProps = {
+type SkipLinkProps = ComponentPropsWithoutRef<'a'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SkipLink({ class: className, children, ...rest }: SkipLinkProps) {

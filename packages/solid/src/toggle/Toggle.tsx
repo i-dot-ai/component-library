@@ -1,10 +1,10 @@
 /** @jsxImportSource solid-js */
 
 import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
 
-type ToggleProps = {
+type ToggleProps = JSX.IntrinsicElements['input'] & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function Toggle(props: ToggleProps) {

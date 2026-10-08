@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableRowProps = {
+type TableRowProps = JSX.IntrinsicElements['tr'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TableRow(props: TableRowProps) {

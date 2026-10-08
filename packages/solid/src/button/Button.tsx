@@ -3,7 +3,7 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ButtonProps = {
+type ButtonProps = Omit<JSX.IntrinsicElements['a'] & JSX.IntrinsicElements['button'], 'type' | 'href'> & {
     secondary?: boolean;
     tertiary?: boolean;
     warning?: boolean;
@@ -14,7 +14,6 @@ type ButtonProps = {
     type?: "button" | "menu" | "submit" | "reset";
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 const StartIcon = () => (

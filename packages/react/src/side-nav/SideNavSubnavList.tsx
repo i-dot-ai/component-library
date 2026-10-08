@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SideNavSubnavListProps = {
+type SideNavSubnavListProps = ComponentPropsWithoutRef<'ul'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SideNavSubnavList({ class: className, children, ...rest }: SideNavSubnavListProps) {

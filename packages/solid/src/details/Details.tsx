@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type DetailsProps = {
+type DetailsProps = JSX.IntrinsicElements['details'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Details(props: DetailsProps) {

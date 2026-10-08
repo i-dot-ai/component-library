@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type NotificationBannerHeadingProps = {
+type NotificationBannerHeadingProps = ComponentPropsWithoutRef<'p'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function NotificationBannerHeading({ class: className, children, ...rest }: NotificationBannerHeadingProps) {

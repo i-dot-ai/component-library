@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 function FooterCrown() {
     return (
@@ -67,14 +67,13 @@ type FooterCopyright = {
     content?: ReactNode;
 };
 
-type FooterProps = {
+type FooterProps = ComponentPropsWithoutRef<'div'> & {
     navigation?: FooterNav[];
     meta?: FooterMeta;
     contentLicence?: FooterLicence;
     copyright?: FooterCopyright;
     containerClasses?: string;
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function GovukFooter({

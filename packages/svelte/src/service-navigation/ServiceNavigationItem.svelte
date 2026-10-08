@@ -1,5 +1,18 @@
-<script>
-    let { href, current = false, active = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes, HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & HTMLAttributes<HTMLSpanElement> & {
+        href?: string;
+        /** Current page — adds active styling + aria-current="page". */
+        current?: boolean;
+        /** Active section — adds active styling + aria-current="true". */
+        active?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { href, current = false, active = false, class: className = "", children, ...rest }: Props = $props();
 
     let isActive = $derived(current || active);
     let classes = $derived(
@@ -11,7 +24,7 @@
             .filter(Boolean)
             .join(" "),
     );
-    let ariaCurrent = $derived(current ? "page" : active ? "true" : undefined);
+    let ariaCurrent = $derived(current ? ("page" as const) : active ? ("true" as const) : undefined);
 </script>
 
 <li class={classes}>

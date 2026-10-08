@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type RadioLabelProps = {
+type RadioLabelProps = JSX.IntrinsicElements['label'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function RadioLabel(props: RadioLabelProps) {

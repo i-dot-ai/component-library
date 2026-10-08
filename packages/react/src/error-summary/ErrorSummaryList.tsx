@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ErrorSummaryListProps = {
+type ErrorSummaryListProps = ComponentPropsWithoutRef<'ul'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryList({ class: className, children, ...rest }: ErrorSummaryListProps) {

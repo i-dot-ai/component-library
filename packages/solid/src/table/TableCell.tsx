@@ -3,14 +3,13 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableCellProps = {
+type TableCellProps = JSX.IntrinsicElements['td'] & {
     numeric?: boolean;
     stretch?: boolean;
     noWrap?: boolean;
     small?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TableCell(props: TableCellProps) {

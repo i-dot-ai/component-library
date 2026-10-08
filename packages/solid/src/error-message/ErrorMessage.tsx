@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ErrorMessageProps = {
+type ErrorMessageProps = JSX.IntrinsicElements['p'] & {
     visuallyHiddenText?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ErrorMessage(props: ErrorMessageProps) {

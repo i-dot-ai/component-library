@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PaginationItemProps = {
+type PaginationItemProps = ComponentPropsWithoutRef<'a'> & {
     current?: boolean;
     ellipsis?: boolean;
     /** aria-label for the page link (e.g. "Page 2"). */
     ariaLabel?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function PaginationItem({ current, ellipsis, ariaLabel, class: className, children, ...rest }: PaginationItemProps) {

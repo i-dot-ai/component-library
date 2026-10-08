@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PaginationListProps = {
+type PaginationListProps = JSX.IntrinsicElements['ul'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function PaginationList(props: PaginationListProps) {

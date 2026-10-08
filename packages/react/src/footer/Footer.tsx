@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 type FooterLink = { href?: string; text?: string; attributes?: Record<string, string> };
 
-type FooterProps = {
+type FooterProps = ComponentPropsWithoutRef<'div'> & {
     /** Support links shown in the inline list (e.g. Accessibility statement, Cookies, Privacy). */
     links?: FooterLink[];
     /** Visually-hidden heading above the support links. */
@@ -10,7 +10,6 @@ type FooterProps = {
     containerClasses?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Footer({

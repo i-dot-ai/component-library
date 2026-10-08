@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type RadioDividerProps = {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function RadioDivider({ class: className, children }: RadioDividerProps) {

@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type DetailsProps = {
+type DetailsProps = ComponentPropsWithoutRef<'details'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Details({ class: className, children, ...rest }: DetailsProps) {

@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SideNavItemProps = {
+type SideNavItemProps = ComponentPropsWithoutRef<'li'> & {
     href?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SideNavItem({ href, class: className, children, ...rest }: SideNavItemProps) {

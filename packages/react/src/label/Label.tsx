@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type LabelProps = {
+type LabelProps = ComponentPropsWithoutRef<'label'> & {
     size?: "small" | "medium" | "large" | "xl";
     isPageHeading?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Label({ size, isPageHeading = false, class: className, children, ...rest }: LabelProps) {

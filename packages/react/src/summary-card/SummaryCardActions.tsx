@@ -1,12 +1,11 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryCardActionsProps = {
+type SummaryCardActionsProps = ComponentPropsWithoutRef<'div'> & ComponentPropsWithoutRef<'ul'> & {
     /** Render as a single-action wrapper (`<div>`) instead of a list (`<ul>`).
      *  govuk uses a div for exactly one action and a ul for multiple. */
     single?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryCardActions({ single, class: className, children, ...rest }: SummaryCardActionsProps) {

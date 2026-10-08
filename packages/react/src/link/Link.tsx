@@ -1,12 +1,11 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type LinkProps = {
+type LinkProps = ComponentPropsWithoutRef<'a'> & {
     noUnderline?: boolean;
     noVisitedState?: boolean;
     variant?: "warning" | "inverse";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Link({ noUnderline, noVisitedState, variant, class: className, children, ...rest }: LinkProps) {

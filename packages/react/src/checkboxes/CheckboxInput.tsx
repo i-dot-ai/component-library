@@ -1,6 +1,7 @@
-type CheckboxInputProps = {
+import type { ComponentPropsWithoutRef } from 'react';
+
+type CheckboxInputProps = ComponentPropsWithoutRef<'input'> & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function CheckboxInput({ class: className, ...rest }: CheckboxInputProps) {

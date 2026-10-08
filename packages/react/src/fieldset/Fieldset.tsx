@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type FieldsetProps = {
+type FieldsetProps = ComponentPropsWithoutRef<'fieldset'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Fieldset({ class: className, children, ...rest }: FieldsetProps) {

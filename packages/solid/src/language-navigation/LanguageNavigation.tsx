@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type LanguageNavigationProps = {
+type LanguageNavigationProps = JSX.IntrinsicElements['nav'] & {
     ariaLabel?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function LanguageNavigation(props: LanguageNavigationProps) {

@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type BreadcrumbsProps = {
+type BreadcrumbsProps = ComponentPropsWithoutRef<'nav'> & {
     inverse?: boolean;
     collapseOnMobile?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Breadcrumbs({ inverse, collapseOnMobile, class: className, children, ...rest }: BreadcrumbsProps) {

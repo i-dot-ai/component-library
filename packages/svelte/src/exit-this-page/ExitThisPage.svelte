@@ -1,11 +1,21 @@
-<script>
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        redirectUrl?: string;
+        id?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
     let {
         redirectUrl = "https://www.bbc.co.uk/weather",
         id,
         class: className = "",
         children,
         ...rest
-    } = $props();
+    }: Props = $props();
 
     let classes = $derived(
         ["govuk-exit-this-page", className].filter(Boolean).join(" "),

@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type BreadcrumbItemProps = {
+type BreadcrumbItemProps = ComponentPropsWithoutRef<'li'> & {
     href?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function BreadcrumbItem({ href, class: className, children, ...rest }: BreadcrumbItemProps) {

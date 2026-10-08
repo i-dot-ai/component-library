@@ -1,6 +1,7 @@
-type FileUploadProps = {
+import type { ComponentPropsWithoutRef } from 'react';
+
+type FileUploadProps = ComponentPropsWithoutRef<'input'> & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function FileUpload({ class: className, ...rest }: FileUploadProps) {

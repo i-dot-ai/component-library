@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type CheckboxesProps = {
+type CheckboxesProps = JSX.IntrinsicElements['div'] & {
     small?: boolean;
     subtle?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Checkboxes(props: CheckboxesProps) {

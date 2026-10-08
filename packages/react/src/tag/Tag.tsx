@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TagProps = {
+type TagProps = ComponentPropsWithoutRef<'strong'> & {
     colour?: "grey" | "green" | "teal" | "turquoise" | "blue" | "light-blue" | "purple" | "magenta" | "pink" | "red" | "orange" | "yellow";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Tag({ colour, class: className, children, ...rest }: TagProps) {

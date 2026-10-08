@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PhaseBannerTextProps = {
+type PhaseBannerTextProps = ComponentPropsWithoutRef<'span'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function PhaseBannerText({ class: className, children, ...rest }: PhaseBannerTextProps) {

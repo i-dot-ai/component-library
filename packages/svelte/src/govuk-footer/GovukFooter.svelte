@@ -1,4 +1,33 @@
-<script>
+<script lang="ts">
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type FooterNavItem = { href?: string; text?: string; attributes?: Record<string, string> };
+    type FooterNav = { title?: string; columns?: number; width?: string; items?: FooterNavItem[] };
+    type FooterMetaItem = { href?: string; text?: string; attributes?: Record<string, string> };
+    type FooterMeta = {
+        visuallyHiddenTitle?: string;
+        items?: FooterMetaItem[];
+        text?: string;
+        html?: string;
+    };
+    type FooterLicence = {
+        text?: string;
+        html?: string;
+    } | null;
+    type FooterCopyright = {
+        text?: string;
+        html?: string;
+    };
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        navigation?: FooterNav[];
+        meta?: FooterMeta;
+        contentLicence?: FooterLicence;
+        copyright?: FooterCopyright;
+        containerClasses?: string;
+        class?: string;
+    };
+
     let {
         navigation,
         meta,
@@ -7,7 +36,7 @@
         containerClasses,
         class: className = "",
         ...rest
-    } = $props();
+    }: Props = $props();
 
     let classes = $derived(["govuk-footer", className].filter(Boolean).join(" "));
     let containerClass = $derived(

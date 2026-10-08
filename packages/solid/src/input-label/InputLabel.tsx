@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type InputLabelProps = {
+type InputLabelProps = JSX.IntrinsicElements['label'] & {
     size?: "small" | "medium" | "large" | "xl";
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function InputLabel(props: InputLabelProps) {
@@ -15,7 +14,7 @@ export default function InputLabel(props: InputLabelProps) {
     const classes = () =>
         [
             "govuk-label",
-            ({ "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[local.size] ?? ""),
+            (local.size ? { "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[local.size] : ""),
             local.class ?? "",
         ]
             .filter(Boolean)

@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type LabelProps = {
+type LabelProps = JSX.IntrinsicElements['label'] & {
     size?: "small" | "medium" | "large" | "xl";
     isPageHeading?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Label(props: LabelProps) {
@@ -16,7 +15,7 @@ export default function Label(props: LabelProps) {
     const classes = () =>
         [
             "govuk-label",
-            ({ "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[local.size] ?? ""),
+            (local.size ? { "small": "govuk-label--s", "medium": "govuk-label--m", "large": "govuk-label--l", "xl": "govuk-label--xl" }[local.size] : ""),
             local.class ?? "",
         ]
             .filter(Boolean)

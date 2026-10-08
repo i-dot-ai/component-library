@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type LanguageNavigationProps = {
+type LanguageNavigationProps = ComponentPropsWithoutRef<'nav'> & {
     ariaLabel?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function LanguageNavigation({

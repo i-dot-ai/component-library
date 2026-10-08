@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SideNavItemProps = {
+type SideNavItemProps = JSX.IntrinsicElements['li'] & {
     href?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function SideNavItem(props: SideNavItemProps) {

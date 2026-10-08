@@ -1,4 +1,17 @@
-<script>
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type FooterLink = { href?: string; text?: string; attributes?: Record<string, string> };
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        links?: FooterLink[];
+        visuallyHiddenTitle?: string;
+        containerClasses?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
     let {
         links,
         visuallyHiddenTitle = "Support links",
@@ -6,7 +19,7 @@
         class: className = "",
         children,
         ...rest
-    } = $props();
+    }: Props = $props();
 
     let classes = $derived(["govuk-footer", "iai-footer", className].filter(Boolean).join(" "));
     let containerClass = $derived(

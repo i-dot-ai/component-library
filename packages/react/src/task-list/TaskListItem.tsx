@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TaskListItemProps = {
+type TaskListItemProps = ComponentPropsWithoutRef<'li'> & {
     withLink?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TaskListItem({ withLink, class: className, children, ...rest }: TaskListItemProps) {

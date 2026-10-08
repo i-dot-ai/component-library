@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TaskListNameAndHintProps = {
+type TaskListNameAndHintProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TaskListNameAndHint({ class: className, children, ...rest }: TaskListNameAndHintProps) {

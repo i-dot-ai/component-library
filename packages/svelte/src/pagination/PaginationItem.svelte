@@ -1,5 +1,17 @@
-<script>
-    let { current = false, ellipsis = false, ariaLabel, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & {
+        current?: boolean;
+        ellipsis?: boolean;
+        /** aria-label for the page link (e.g. "Page 2"). */
+        ariaLabel?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { current = false, ellipsis = false, ariaLabel, class: className = "", children, ...rest }: Props = $props();
 </script>
 
 {#if ellipsis}

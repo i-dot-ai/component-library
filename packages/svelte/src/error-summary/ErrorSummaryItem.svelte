@@ -1,5 +1,14 @@
-<script>
-    let { href, class: className, children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & {
+        href?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { href, class: className, children, ...rest }: Props = $props();
 </script>
 
 <li>

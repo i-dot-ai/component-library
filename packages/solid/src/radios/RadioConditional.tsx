@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type RadioConditionalProps = {
+type RadioConditionalProps = JSX.IntrinsicElements['div'] & {
     hidden?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function RadioConditional(props: RadioConditionalProps) {

@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ContentsPanelListHeadingProps = {
+type ContentsPanelListHeadingProps = ComponentPropsWithoutRef<'h3'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ContentsPanelListHeading({ class: className, children, ...rest }: ContentsPanelListHeadingProps) {

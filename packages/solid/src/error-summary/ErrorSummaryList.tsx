@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ErrorSummaryListProps = {
+type ErrorSummaryListProps = JSX.IntrinsicElements['ul'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryList(props: ErrorSummaryListProps) {

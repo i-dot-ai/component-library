@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type CharacterCountProps = {
+type CharacterCountProps = JSX.IntrinsicElements['textarea'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function CharacterCount(props: CharacterCountProps) {

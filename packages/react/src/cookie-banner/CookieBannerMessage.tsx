@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CookieBannerMessageProps = {
+type CookieBannerMessageProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CookieBannerMessage({ class: className, children, ...rest }: CookieBannerMessageProps) {

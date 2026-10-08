@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableHeadProps = {
+type TableHeadProps = JSX.IntrinsicElements['thead'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TableHead(props: TableHeadProps) {

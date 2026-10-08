@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CardLinkProps = {
+type CardLinkProps = ComponentPropsWithoutRef<'a'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CardLink({ class: className, children, ...rest }: CardLinkProps) {

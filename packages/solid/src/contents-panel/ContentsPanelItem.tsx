@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ContentsPanelItemProps = {
+type ContentsPanelItemProps = JSX.IntrinsicElements['li'] & {
     href?: string;
     current?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ContentsPanelItem(props: ContentsPanelItemProps) {

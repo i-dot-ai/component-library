@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ExitThisPageProps = {
+type ExitThisPageProps = ComponentPropsWithoutRef<'div'> & {
     redirectUrl?: string;
     id?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ExitThisPage({

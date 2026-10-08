@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SelectProps = {
+type SelectProps = JSX.IntrinsicElements['select'] & {
     subtle?: boolean;
     error?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Select(props: SelectProps) {

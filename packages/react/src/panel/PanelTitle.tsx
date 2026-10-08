@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PanelTitleProps = {
+type PanelTitleProps = ComponentPropsWithoutRef<'h1'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function PanelTitle({ class: className, children, ...rest }: PanelTitleProps) {

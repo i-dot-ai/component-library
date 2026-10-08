@@ -1,11 +1,10 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableRowProps = {
+type TableRowProps = ComponentPropsWithoutRef<'tr'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableRow({ class: className, children, ...rest }: TableRowProps) {

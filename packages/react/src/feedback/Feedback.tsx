@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type FeedbackProps = {
+type FeedbackProps = ComponentPropsWithoutRef<'div'> & {
     title?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Feedback({ title, class: className, children, ...rest }: FeedbackProps) {

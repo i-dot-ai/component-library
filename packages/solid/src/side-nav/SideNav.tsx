@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SideNavProps = {
+type SideNavProps = JSX.IntrinsicElements['nav'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function SideNav(props: SideNavProps) {

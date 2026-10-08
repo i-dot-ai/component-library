@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryListProps = {
+type SummaryListProps = ComponentPropsWithoutRef<'dl'> & {
     noBorder?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryList({ noBorder, class: className, children, ...rest }: SummaryListProps) {

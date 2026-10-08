@@ -1,11 +1,20 @@
-<script>
+<script lang="ts">
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        homepageUrl?: string;
+        productName?: string;
+        containerClasses?: string;
+        class?: string;
+    };
+
     let {
         homepageUrl = "//gov.uk",
         productName,
         containerClasses = "govuk-width-container",
         class: className = "",
         ...rest
-    } = $props();
+    }: Props = $props();
 
     const CROWN_LOGO = `<svg
             focusable="false"

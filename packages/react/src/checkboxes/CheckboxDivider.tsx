@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type CheckboxDividerProps = {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CheckboxDivider({ class: className, children }: CheckboxDividerProps) {

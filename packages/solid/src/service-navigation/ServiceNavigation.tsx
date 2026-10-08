@@ -3,7 +3,7 @@
 import { splitProps, Show, mergeProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ServiceNavigationProps = {
+type ServiceNavigationProps = JSX.IntrinsicElements['section'] & JSX.IntrinsicElements['div'] & {
     sideNav?: boolean;
     inverse?: boolean;
     serviceName?: string;
@@ -17,7 +17,6 @@ type ServiceNavigationProps = {
     endSlotInline?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ServiceNavigation(rawProps: ServiceNavigationProps) {

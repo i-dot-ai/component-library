@@ -1,13 +1,12 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableHeaderProps = {
+type TableHeaderProps = ComponentPropsWithoutRef<'th'> & {
     numeric?: boolean;
     scope?: "col" | "row" | "colgroup" | "rowgroup";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableHeader({ numeric, scope = "col", class: className, children, ...rest }: TableHeaderProps) {

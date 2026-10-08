@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CheckboxLabelProps = {
+type CheckboxLabelProps = ComponentPropsWithoutRef<'label'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CheckboxLabel({ class: className, children, ...rest }: CheckboxLabelProps) {

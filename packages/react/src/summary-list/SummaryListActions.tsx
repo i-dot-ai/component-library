@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryListActionsProps = {
+type SummaryListActionsProps = ComponentPropsWithoutRef<'dd'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryListActions({ class: className, children, ...rest }: SummaryListActionsProps) {

@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PanelTitleProps = {
+type PanelTitleProps = JSX.IntrinsicElements['h1'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function PanelTitle(props: PanelTitleProps) {

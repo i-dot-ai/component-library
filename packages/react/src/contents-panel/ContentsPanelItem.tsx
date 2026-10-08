@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ContentsPanelItemProps = {
+type ContentsPanelItemProps = ComponentPropsWithoutRef<'li'> & {
     href?: string;
     current?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ContentsPanelItem({

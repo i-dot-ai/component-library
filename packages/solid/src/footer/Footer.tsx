@@ -5,7 +5,7 @@ import type { JSX } from "solid-js";
 
 type FooterLink = { href?: string; text?: string; attributes?: Record<string, string> };
 
-type FooterProps = {
+type FooterProps = JSX.IntrinsicElements['div'] & {
     /** Support links shown in the inline list (e.g. Accessibility statement, Cookies, Privacy). */
     links?: FooterLink[];
     /** Visually-hidden heading above the support links. */
@@ -13,7 +13,6 @@ type FooterProps = {
     containerClasses?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Footer(props: FooterProps) {

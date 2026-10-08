@@ -1,12 +1,11 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableCaptionProps = {
+type TableCaptionProps = ComponentPropsWithoutRef<'caption'> & {
     size?: "small" | "medium" | "large" | "xl";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableCaption({ size, class: className, children, ...rest }: TableCaptionProps) {

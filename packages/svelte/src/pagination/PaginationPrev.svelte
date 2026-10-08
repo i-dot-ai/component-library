@@ -1,5 +1,17 @@
-<script>
-    let { block = false, labelText, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & {
+        /** Block-level layout (no numbered items, just prev/next). */
+        block?: boolean;
+        /** Descriptive label shown alongside the title (block layout only). */
+        labelText?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { block = false, labelText, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["govuk-link govuk-pagination__link", className].filter(Boolean).join(" "));
     let titleClasses = $derived(

@@ -3,9 +3,8 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type RadioInputProps = {
+type RadioInputProps = JSX.IntrinsicElements['input'] & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function RadioInput(props: RadioInputProps) {

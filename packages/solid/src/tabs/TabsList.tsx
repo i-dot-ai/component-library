@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TabsListProps = {
+type TabsListProps = JSX.IntrinsicElements['ul'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TabsList(props: TabsListProps) {

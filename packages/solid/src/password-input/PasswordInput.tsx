@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PasswordInputProps = {
+type PasswordInputProps = JSX.IntrinsicElements['input'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function PasswordInput(props: PasswordInputProps) {

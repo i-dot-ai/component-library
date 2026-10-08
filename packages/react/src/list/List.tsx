@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ListProps = {
+type ListProps = ComponentPropsWithoutRef<'ol'> & ComponentPropsWithoutRef<'ul'> & {
     spaced?: boolean;
     numbered?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function List({ spaced, numbered, class: className, children, ...rest }: ListProps) {

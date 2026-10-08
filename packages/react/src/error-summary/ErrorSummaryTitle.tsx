@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ErrorSummaryTitleProps = {
+type ErrorSummaryTitleProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryTitle({ class: className, children, ...rest }: ErrorSummaryTitleProps) {

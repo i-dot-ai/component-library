@@ -3,12 +3,11 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type FieldsetLegendProps = {
+type FieldsetLegendProps = JSX.IntrinsicElements['legend'] & {
     size?: "small" | "medium" | "large" | "xl";
     isPageHeading?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function FieldsetLegend(props: FieldsetLegendProps) {
@@ -16,7 +15,7 @@ export default function FieldsetLegend(props: FieldsetLegendProps) {
     const classes = () =>
         [
             "govuk-fieldset__legend",
-            ({ "small": "govuk-fieldset__legend--s", "medium": "govuk-fieldset__legend--m", "large": "govuk-fieldset__legend--l", "xl": "govuk-fieldset__legend--xl" }[local.size] ?? ""),
+            (local.size ? { "small": "govuk-fieldset__legend--s", "medium": "govuk-fieldset__legend--m", "large": "govuk-fieldset__legend--l", "xl": "govuk-fieldset__legend--xl" }[local.size] : ""),
             local.class ?? "",
         ]
             .filter(Boolean)

@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SummaryListValueProps = {
+type SummaryListValueProps = JSX.IntrinsicElements['dd'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function SummaryListValue(props: SummaryListValueProps) {

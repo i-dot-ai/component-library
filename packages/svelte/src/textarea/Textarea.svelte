@@ -1,11 +1,20 @@
-<script>
+<script lang="ts">
+    import type { HTMLTextareaAttributes } from "svelte/elements";
+
+    type Props = HTMLTextareaAttributes & {
+        error?: boolean;
+        subtle?: boolean;
+        value?: string;
+        class?: string;
+    };
+
     let {
         error = false,
         subtle = false,
         value = "",
         class: className = "",
         ...rest
-    } = $props();
+    }: Props = $props();
 
     let classes = $derived(
         [

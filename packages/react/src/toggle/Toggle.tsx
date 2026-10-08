@@ -1,6 +1,7 @@
-type ToggleProps = {
+import type { ComponentPropsWithoutRef } from 'react';
+
+type ToggleProps = ComponentPropsWithoutRef<'input'> & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function Toggle({ class: className, ...rest }: ToggleProps) {

@@ -1,5 +1,16 @@
-<script>
-    let { smallTextUntilTablet = false, subtle = false, summary = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLTableAttributes } from "svelte/elements";
+
+    type Props = Omit<HTMLTableAttributes, "summary"> & {
+        smallTextUntilTablet?: boolean;
+        subtle?: boolean;
+        summary?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { smallTextUntilTablet = false, subtle = false, summary = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

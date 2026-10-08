@@ -1,5 +1,14 @@
-<script>
-    let { selected = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & {
+        selected?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { selected = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["govuk-tabs__tab", className].filter(Boolean).join(" "));
 </script>

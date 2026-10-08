@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type InputLabelProps = {
+type InputLabelProps = ComponentPropsWithoutRef<'label'> & {
     size?: "small" | "medium" | "large" | "xl";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function InputLabel({ size, class: className, children, ...rest }: InputLabelProps) {

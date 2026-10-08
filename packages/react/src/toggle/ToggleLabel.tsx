@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ToggleLabelProps = {
+type ToggleLabelProps = ComponentPropsWithoutRef<'label'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ToggleLabel({ class: className, children, ...rest }: ToggleLabelProps) {

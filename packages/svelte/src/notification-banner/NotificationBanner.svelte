@@ -1,5 +1,14 @@
-<script>
-    let { success, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        success?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { success, class: className = "", children, ...rest }: Props = $props();
 </script>
 
 {#if success}

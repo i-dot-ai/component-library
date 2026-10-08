@@ -1,7 +1,7 @@
 {
   "name": "@i-dot-ai-npm/component-library-astro",
-  "version": "0.0.7",
-  "description": "Astro components for i.AI GOV.UK (auto-generated from HTML specs).",
+  "version": "0.0.8",
+  "description": "Astro components for i.AI GOV.UK",
   "type": "module",
   "exports": {
     ".": {

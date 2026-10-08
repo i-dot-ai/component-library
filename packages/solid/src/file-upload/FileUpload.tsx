@@ -3,9 +3,8 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type FileUploadProps = {
+type FileUploadProps = JSX.IntrinsicElements['input'] & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function FileUpload(props: FileUploadProps) {

@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type AccordionSectionHeaderProps = {
+type AccordionSectionHeaderProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function AccordionSectionHeader({ class: className, children, ...rest }: AccordionSectionHeaderProps) {

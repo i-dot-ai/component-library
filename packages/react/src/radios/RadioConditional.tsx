@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type RadioConditionalProps = {
+type RadioConditionalProps = ComponentPropsWithoutRef<'div'> & {
     hidden?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function RadioConditional({ hidden = true, class: className, children, ...rest }: RadioConditionalProps) {

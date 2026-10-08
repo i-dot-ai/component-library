@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type BreadcrumbsProps = {
+type BreadcrumbsProps = JSX.IntrinsicElements['nav'] & {
     inverse?: boolean;
     collapseOnMobile?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Breadcrumbs(props: BreadcrumbsProps) {

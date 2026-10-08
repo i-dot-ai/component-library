@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type FieldsetLegendProps = {
+type FieldsetLegendProps = ComponentPropsWithoutRef<'legend'> & {
     size?: "small" | "medium" | "large" | "xl";
     isPageHeading?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function FieldsetLegend({ size, isPageHeading, class: className, children, ...rest }: FieldsetLegendProps) {

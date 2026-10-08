@@ -3,11 +3,10 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ErrorSummaryItemProps = {
+type ErrorSummaryItemProps = JSX.IntrinsicElements['a'] & {
     href?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryItem(props: ErrorSummaryItemProps) {

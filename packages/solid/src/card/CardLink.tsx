@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type CardLinkProps = {
+type CardLinkProps = JSX.IntrinsicElements['a'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function CardLink(props: CardLinkProps) {

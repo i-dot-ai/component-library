@@ -1,11 +1,10 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableHeadProps = {
+type TableHeadProps = ComponentPropsWithoutRef<'thead'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableHead({ class: className, children, ...rest }: TableHeadProps) {
