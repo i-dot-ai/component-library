@@ -3,11 +3,10 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type FeedbackProps = {
+type FeedbackProps = JSX.IntrinsicElements['div'] & {
     title?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Feedback(props: FeedbackProps) {

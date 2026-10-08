@@ -1,5 +1,14 @@
-<script>
-    let { hidden = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLDivElement> & {
+        hidden?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { hidden = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

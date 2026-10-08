@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableHeaderProps = {
+type TableHeaderProps = JSX.IntrinsicElements['th'] & {
     numeric?: boolean;
     scope?: "col" | "row" | "colgroup" | "rowgroup";
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TableHeader(props: TableHeaderProps) {

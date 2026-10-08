@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TabProps = {
+type TabProps = ComponentPropsWithoutRef<'a'> & {
     selected?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Tab({ selected, class: className, children, ...rest }: TabProps) {

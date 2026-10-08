@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type NotificationBannerTitleProps = {
+type NotificationBannerTitleProps = JSX.IntrinsicElements['h2'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function NotificationBannerTitle(props: NotificationBannerTitleProps) {

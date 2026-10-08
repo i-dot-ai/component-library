@@ -3,12 +3,11 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ExitThisPageProps = {
+type ExitThisPageProps = JSX.IntrinsicElements['div'] & {
     redirectUrl?: string;
     id?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ExitThisPage(props: ExitThisPageProps) {

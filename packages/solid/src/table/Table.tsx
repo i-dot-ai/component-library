@@ -3,13 +3,12 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableProps = {
+type TableProps = JSX.IntrinsicElements['table'] & {
     smallTextUntilTablet?: boolean;
     subtle?: boolean;
     summary?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Table(props: TableProps) {

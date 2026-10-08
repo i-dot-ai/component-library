@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SelectProps = {
+type SelectProps = ComponentPropsWithoutRef<'select'> & {
     subtle?: boolean;
     error?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Select({ subtle, error, class: className, children, ...rest }: SelectProps) {

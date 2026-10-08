@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { useEffect, useRef } from "react";
 
-type TabsProps = {
+type TabsProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Tabs({ class: className, children, ...rest }: TabsProps) {

@@ -1,5 +1,13 @@
-<script>
-    let { class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLLabelAttributes } from "svelte/elements";
+
+    type Props = HTMLLabelAttributes & {
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["govuk-label govuk-checkboxes__label", className].filter(Boolean).join(" "));
 </script>

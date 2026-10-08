@@ -3,10 +3,9 @@
 import { splitProps, onMount } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TabsProps = {
+type TabsProps = JSX.IntrinsicElements['div'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Tabs(props: TabsProps) {

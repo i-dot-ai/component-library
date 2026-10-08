@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TabProps = {
+type TabProps = JSX.IntrinsicElements['a'] & {
     selected?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Tab(props: TabProps) {

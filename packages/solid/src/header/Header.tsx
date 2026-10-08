@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type HeaderProps = {
+type HeaderProps = JSX.IntrinsicElements['div'] & {
     href?: string;
     class?: string;
     containerClasses?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Header(props: HeaderProps) {

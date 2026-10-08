@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ErrorMessageProps = {
+type ErrorMessageProps = ComponentPropsWithoutRef<'p'> & {
     visuallyHiddenText?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ErrorMessage({ visuallyHiddenText = "Error", class: className, children, ...rest }: ErrorMessageProps) {

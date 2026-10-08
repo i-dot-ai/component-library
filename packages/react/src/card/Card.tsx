@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CardProps = {
+type CardProps = ComponentPropsWithoutRef<'div'> & {
     secondary?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Card({ secondary, class: className, children, ...rest }: CardProps) {

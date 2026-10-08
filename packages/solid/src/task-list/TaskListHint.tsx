@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TaskListHintProps = {
+type TaskListHintProps = JSX.IntrinsicElements['div'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TaskListHint(props: TaskListHintProps) {

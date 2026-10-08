@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ListItemProps = {
+type ListItemProps = JSX.IntrinsicElements['li'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ListItem(props: ListItemProps) {

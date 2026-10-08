@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CheckboxesProps = {
+type CheckboxesProps = ComponentPropsWithoutRef<'div'> & {
     small?: boolean;
     subtle?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Checkboxes({ small, subtle, class: className, children, ...rest }: CheckboxesProps) {

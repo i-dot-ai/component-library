@@ -1,5 +1,11 @@
-<script>
-    let { class: className = "", value, ...rest } = $props();
+<script lang="ts">
+    import type { HTMLTextareaAttributes } from "svelte/elements";
+
+    type Props = HTMLTextareaAttributes & {
+        class?: string;
+    };
+
+    let { class: className = "", value, ...rest }: Props = $props();
 
     let classes = $derived(
         ["govuk-textarea govuk-js-character-count", className]

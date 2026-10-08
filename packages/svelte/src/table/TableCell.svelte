@@ -1,5 +1,17 @@
-<script>
-    let { numeric = false, stretch = false, noWrap = false, small = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLTdAttributes } from "svelte/elements";
+
+    type Props = HTMLTdAttributes & {
+        numeric?: boolean;
+        stretch?: boolean;
+        noWrap?: boolean;
+        small?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { numeric = false, stretch = false, noWrap = false, small = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

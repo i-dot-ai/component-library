@@ -1,16 +1,13 @@
 {
     "compilerOptions": {
         "strict": true,
-        "jsx": "react-jsx",
         "moduleResolution": "bundler",
         "module": "esnext",
         "target": "esnext",
-        "lib": ["esnext", "dom", "dom.iterable"],
         "skipLibCheck": true,
-        "noEmit": true,
         "verbatimModuleSyntax": true,
         "isolatedModules": true,
-        "types": ["react"]
+        "types": []
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx"]
+    "include": ["src/**/*.svelte", "src/**/*.ts", "src/**/*.js"]
 }

@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type FormGroupProps = {
+type FormGroupProps = ComponentPropsWithoutRef<'div'> & {
     inline?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function FormGroup({ inline, class: className, children, ...rest }: FormGroupProps) {

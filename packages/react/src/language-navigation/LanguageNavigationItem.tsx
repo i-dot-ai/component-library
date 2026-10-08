@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type LanguageNavigationItemProps = {
+type LanguageNavigationItemProps = Omit<ComponentPropsWithoutRef<'span'> & ComponentPropsWithoutRef<'a'>, 'href' | 'dir'> & {
     href?: string;
     current?: boolean;
     lang?: string;
@@ -10,7 +10,6 @@ type LanguageNavigationItemProps = {
     /** Visually-hidden description appended to a link item. */
     languageDescriptionText?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function LanguageNavigationItem({

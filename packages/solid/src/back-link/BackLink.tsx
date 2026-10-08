@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type BackLinkProps = {
+type BackLinkProps = JSX.IntrinsicElements['a'] & {
     inverse?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function BackLink(props: BackLinkProps) {

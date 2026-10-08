@@ -3,13 +3,12 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type LinkProps = {
+type LinkProps = JSX.IntrinsicElements['a'] & {
     noUnderline?: boolean;
     noVisitedState?: boolean;
     variant?: "warning" | "inverse";
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Link(props: LinkProps) {
@@ -19,7 +18,7 @@ export default function Link(props: LinkProps) {
             "govuk-link",
             local.noUnderline ? "govuk-link--no-underline" : "",
             local.noVisitedState ? "govuk-link--no-visited-state" : "",
-            ({ "warning": "govuk-link--warning", "inverse": "govuk-link--inverse" }[local.variant] ?? ""),
+            (local.variant ? { "warning": "govuk-link--warning", "inverse": "govuk-link--inverse" }[local.variant] : ""),
             local.class ?? "",
         ]
             .filter(Boolean)

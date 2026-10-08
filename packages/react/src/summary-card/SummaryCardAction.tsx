@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryCardActionProps = {
+type SummaryCardActionProps = ComponentPropsWithoutRef<'li'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryCardAction({ class: className, children, ...rest }: SummaryCardActionProps) {

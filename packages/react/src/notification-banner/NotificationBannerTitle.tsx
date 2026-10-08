@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type NotificationBannerTitleProps = {
+type NotificationBannerTitleProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function NotificationBannerTitle({ class: className, children, ...rest }: NotificationBannerTitleProps) {

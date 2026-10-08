@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type FormGroupProps = {
+type FormGroupProps = JSX.IntrinsicElements['div'] & {
     inline?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function FormGroup(props: FormGroupProps) {

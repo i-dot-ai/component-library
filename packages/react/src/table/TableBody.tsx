@@ -1,11 +1,10 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableBodyProps = {
+type TableBodyProps = ComponentPropsWithoutRef<'tbody'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableBody({ class: className, children, ...rest }: TableBodyProps) {

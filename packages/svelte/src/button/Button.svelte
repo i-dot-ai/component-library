@@ -1,5 +1,21 @@
-<script>
-    let { secondary = false, tertiary = false, warning = false, inverse = false, small = false, startButton = false, href, type, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes, HTMLButtonAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & HTMLButtonAttributes & {
+        secondary?: boolean;
+        tertiary?: boolean;
+        warning?: boolean;
+        inverse?: boolean;
+        small?: boolean;
+        startButton?: boolean;
+        href?: string;
+        type?: "button" | "reset" | "submit";
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { secondary = false, tertiary = false, warning = false, inverse = false, small = false, startButton = false, href, type, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["govuk-button", secondary ? "govuk-button--secondary" : "", warning ? "govuk-button--warning" : "", inverse ? "govuk-button--inverse" : "", tertiary ? "govuk-button--tertiary" : "", small ? "govuk-button--small" : "", startButton ? "govuk-button--start" : "", className].filter(Boolean).join(" "));
 </script>

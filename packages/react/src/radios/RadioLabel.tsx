@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type RadioLabelProps = {
+type RadioLabelProps = ComponentPropsWithoutRef<'label'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function RadioLabel({ class: className, children, ...rest }: RadioLabelProps) {

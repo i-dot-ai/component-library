@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TaskListProps = {
+type TaskListProps = ComponentPropsWithoutRef<'ul'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TaskList({ class: className, children, ...rest }: TaskListProps) {

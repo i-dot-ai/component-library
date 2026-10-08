@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type RadiosProps = {
+type RadiosProps = JSX.IntrinsicElements['div'] & {
     inline?: boolean;
     small?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Radios(props: RadiosProps) {

@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type CookieBannerActionsProps = {
+type CookieBannerActionsProps = JSX.IntrinsicElements['div'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function CookieBannerActions(props: CookieBannerActionsProps) {

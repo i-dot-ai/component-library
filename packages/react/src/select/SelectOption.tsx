@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SelectOptionProps = {
+type SelectOptionProps = ComponentPropsWithoutRef<'option'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SelectOption({ class: className, children, ...rest }: SelectOptionProps) {

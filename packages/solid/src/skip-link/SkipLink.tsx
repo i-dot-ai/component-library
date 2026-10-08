@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SkipLinkProps = {
+type SkipLinkProps = JSX.IntrinsicElements['a'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function SkipLink(props: SkipLinkProps) {

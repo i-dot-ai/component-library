@@ -1,5 +1,13 @@
-<script>
-    let { class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLInputAttributes } from "svelte/elements";
+
+    type Props = HTMLInputAttributes & {
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["govuk-input govuk-password-input__input govuk-js-password-input-input", className].filter(Boolean).join(" "));
 </script>

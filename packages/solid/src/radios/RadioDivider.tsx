@@ -6,7 +6,6 @@ import type { JSX } from "solid-js";
 type RadioDividerProps = {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function RadioDivider(props: RadioDividerProps) {

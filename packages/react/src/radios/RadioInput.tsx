@@ -1,6 +1,7 @@
-type RadioInputProps = {
+import type { ComponentPropsWithoutRef } from 'react';
+
+type RadioInputProps = ComponentPropsWithoutRef<'input'> & {
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function RadioInput({ class: className, ...rest }: RadioInputProps) {

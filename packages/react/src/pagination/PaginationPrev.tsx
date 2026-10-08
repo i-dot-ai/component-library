@@ -1,13 +1,12 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PaginationPrevProps = {
+type PaginationPrevProps = ComponentPropsWithoutRef<'a'> & {
     /** Block-level layout (no numbered items, just prev/next). */
     block?: boolean;
     /** Descriptive label shown alongside the title (block layout only). */
     labelText?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 const arrow = (

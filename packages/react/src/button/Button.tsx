@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ButtonProps = {
+type ButtonProps = Omit<ComponentPropsWithoutRef<'a'> & ComponentPropsWithoutRef<'button'>, 'type' | 'href'> & {
     secondary?: boolean;
     tertiary?: boolean;
     warning?: boolean;
@@ -11,7 +11,6 @@ type ButtonProps = {
     type?: "button" | "reset" | "submit";
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 const StartIcon = () => (

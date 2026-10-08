@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ServiceNavigationProps = {
+type ServiceNavigationProps = ComponentPropsWithoutRef<'section'> & ComponentPropsWithoutRef<'div'> & {
     sideNav?: boolean;
     inverse?: boolean;
     serviceName?: string;
@@ -18,7 +18,6 @@ type ServiceNavigationProps = {
     endSlotInline?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ServiceNavigation({

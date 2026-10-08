@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type SummaryCardActionProps = {
+type SummaryCardActionProps = JSX.IntrinsicElements['li'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function SummaryCardAction(props: SummaryCardActionProps) {

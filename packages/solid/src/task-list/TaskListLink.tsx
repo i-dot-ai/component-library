@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TaskListLinkProps = {
+type TaskListLinkProps = JSX.IntrinsicElements['a'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TaskListLink(props: TaskListLinkProps) {

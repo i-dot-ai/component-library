@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryListRowProps = {
+type SummaryListRowProps = ComponentPropsWithoutRef<'div'> & {
     noActions?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryListRow({ noActions, class: className, children, ...rest }: SummaryListRowProps) {

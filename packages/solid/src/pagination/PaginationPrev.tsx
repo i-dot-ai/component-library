@@ -3,12 +3,11 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PaginationPrevProps = {
+type PaginationPrevProps = JSX.IntrinsicElements['a'] & {
     block?: boolean;
     labelText?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 const arrow = (

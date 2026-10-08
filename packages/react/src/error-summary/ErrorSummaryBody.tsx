@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ErrorSummaryBodyProps = {
+type ErrorSummaryBodyProps = ComponentPropsWithoutRef<'div'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryBody({ class: className, children, ...rest }: ErrorSummaryBodyProps) {

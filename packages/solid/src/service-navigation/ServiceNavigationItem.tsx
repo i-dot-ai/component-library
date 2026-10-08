@@ -3,13 +3,12 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ServiceNavigationItemProps = {
+type ServiceNavigationItemProps = JSX.IntrinsicElements['a'] & JSX.IntrinsicElements['span'] & {
     href?: string;
     current?: boolean;
     active?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ServiceNavigationItem(props: ServiceNavigationItemProps) {

@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type RadiosProps = {
+type RadiosProps = ComponentPropsWithoutRef<'div'> & {
     inline?: boolean;
     small?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Radios({ inline, small, class: className, children, ...rest }: RadiosProps) {

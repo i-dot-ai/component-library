@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ContentsPanelListProps = {
+type ContentsPanelListProps = ComponentPropsWithoutRef<'ul'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ContentsPanelList({ class: className, children, ...rest }: ContentsPanelListProps) {

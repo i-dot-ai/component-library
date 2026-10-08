@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PhaseBannerTextProps = {
+type PhaseBannerTextProps = JSX.IntrinsicElements['span'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function PhaseBannerText(props: PhaseBannerTextProps) {

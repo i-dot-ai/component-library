@@ -1,15 +1,14 @@
 /** @jsxImportSource react */
 
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableCellProps = {
+type TableCellProps = ComponentPropsWithoutRef<'td'> & {
     numeric?: boolean;
     stretch?: boolean;
     noWrap?: boolean;
     small?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TableCell({ numeric, stretch, noWrap, small, class: className, children, ...rest }: TableCellProps) {

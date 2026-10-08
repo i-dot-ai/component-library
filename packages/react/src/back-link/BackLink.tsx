@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type BackLinkProps = {
+type BackLinkProps = ComponentPropsWithoutRef<'a'> & {
     inverse?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function BackLink({ inverse, class: className, children, ...rest }: BackLinkProps) {

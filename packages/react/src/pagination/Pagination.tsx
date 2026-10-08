@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PaginationProps = {
+type PaginationProps = ComponentPropsWithoutRef<'nav'> & {
     block?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Pagination({ block, class: className, children, ...rest }: PaginationProps) {

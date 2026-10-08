@@ -3,13 +3,12 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PaginationItemProps = {
+type PaginationItemProps = JSX.IntrinsicElements['a'] & {
     current?: boolean;
     ellipsis?: boolean;
     ariaLabel?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function PaginationItem(props: PaginationItemProps) {

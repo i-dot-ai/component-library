@@ -1,9 +1,10 @@
-type TextareaProps = {
+import type { ComponentPropsWithoutRef } from 'react';
+
+type TextareaProps = Omit<ComponentPropsWithoutRef<'textarea'>, 'value'> & {
     error?: boolean;
     subtle?: boolean;
     value?: string;
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function Textarea({ error, subtle, value, class: className, ...rest }: TextareaProps) {

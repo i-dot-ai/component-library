@@ -1,5 +1,14 @@
-<script>
-    let { href, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLLiAttributes } from "svelte/elements";
+
+    type Props = HTMLLiAttributes & {
+        href?: string;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { href, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(["side-nav__item", className].filter(Boolean).join(" "));
 </script>

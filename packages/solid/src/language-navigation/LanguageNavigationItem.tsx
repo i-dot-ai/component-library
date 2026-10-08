@@ -3,7 +3,7 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type LanguageNavigationItemProps = {
+type LanguageNavigationItemProps = JSX.IntrinsicElements['span'] & JSX.IntrinsicElements['a'] & {
     href?: string;
     current?: boolean;
     lang?: string;
@@ -11,7 +11,6 @@ type LanguageNavigationItemProps = {
     hreflang?: string;
     languageDescriptionText?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function LanguageNavigationItem(props: LanguageNavigationItemProps) {

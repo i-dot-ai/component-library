@@ -1,4 +1,17 @@
-<script>
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes, HTMLAttributes } from "svelte/elements";
+
+    type Props = HTMLAttributes<HTMLSpanElement> & HTMLAnchorAttributes & {
+        href?: string;
+        current?: boolean;
+        lang?: string;
+        dir?: "ltr" | "rtl" | "auto" | null | undefined;
+        hreflang?: string;
+        languageDescriptionText?: string;
+        children?: Snippet;
+    };
+
     let {
         href,
         current = false,
@@ -8,7 +21,7 @@
         languageDescriptionText,
         children,
         ...rest
-    } = $props();
+    }: Props = $props();
 </script>
 
 <li class="govuk-language-navigation__list-item">

@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type PasswordInputProps = {
+type PasswordInputProps = ComponentPropsWithoutRef<'input'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function PasswordInput({ class: className, children, ...rest }: PasswordInputProps) {

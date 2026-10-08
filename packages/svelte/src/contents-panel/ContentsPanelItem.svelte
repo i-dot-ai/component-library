@@ -1,5 +1,15 @@
-<script>
-    let { href, current = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLLiAttributes } from "svelte/elements";
+
+    type Props = HTMLLiAttributes & {
+        href?: string;
+        current?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { href, current = false, class: className = "", children, ...rest }: Props = $props();
 
     let itemClasses = $derived(
         [

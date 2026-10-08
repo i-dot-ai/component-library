@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TableCaptionProps = {
+type TableCaptionProps = JSX.IntrinsicElements['caption'] & {
     size?: "small" | "medium" | "large" | "xl";
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function TableCaption(props: TableCaptionProps) {
@@ -15,7 +14,7 @@ export default function TableCaption(props: TableCaptionProps) {
     const classes = () =>
         [
             "govuk-table__caption",
-            ({ "small": "govuk-table__caption--s", "medium": "govuk-table__caption--m", "large": "govuk-table__caption--l", "xl": "govuk-table__caption--xl" }[local.size] ?? ""),
+            (local.size ? { "small": "govuk-table__caption--s", "medium": "govuk-table__caption--m", "large": "govuk-table__caption--l", "xl": "govuk-table__caption--xl" }[local.size] : ""),
             local.class ?? "",
         ]
             .filter(Boolean)

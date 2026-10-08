@@ -62,14 +62,13 @@ type FooterMeta = {
 type FooterLicence = { text?: string; content?: JSX.Element } | null;
 type FooterCopyright = { text?: string; content?: JSX.Element };
 
-type FooterProps = {
+type FooterProps = JSX.IntrinsicElements['div'] & {
     navigation?: FooterNav[];
     meta?: FooterMeta;
     contentLicence?: FooterLicence;
     copyright?: FooterCopyright;
     containerClasses?: string;
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function GovukFooter(props: FooterProps) {

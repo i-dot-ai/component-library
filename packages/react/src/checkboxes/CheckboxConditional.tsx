@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CheckboxConditionalProps = {
+type CheckboxConditionalProps = ComponentPropsWithoutRef<'div'> & {
     hidden?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CheckboxConditional({ hidden = true, class: className, children, ...rest }: CheckboxConditionalProps) {

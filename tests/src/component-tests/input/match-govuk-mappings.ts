@@ -8,7 +8,7 @@ export type FormFieldData = {
     labelSize?: "small" | "medium" | "large" | "xl";
     hint?: string;
     error?: string;
-    width?: "2" | "3" | "4" | "5" | "10" | "20" | "30";
+    width?: 2 | 3 | 4 | 5 | 10 | 20 | 30;
     extraLetterSpacing?: boolean;
     value?: string;
     describedBy?: string;
@@ -27,11 +27,11 @@ type InputOptions = {
     suffix?: unknown;
 };
 
-const WIDTHS = ["2", "3", "4", "5", "10", "20", "30"] as const;
+const WIDTHS = [2, 3, 4, 5, 10, 20, 30] as const;
 
 function widthFrom(classes: string): FormFieldData["width"] {
     const match = classes.match(/govuk-input--width-(\d+)/);
-    const value = match?.[1];
+    const value = match?.[1] ? Number(match[1]) : undefined;
     return WIDTHS.find((w) => w === value);
 }
 

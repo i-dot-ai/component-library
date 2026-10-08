@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ListItemProps = {
+type ListItemProps = ComponentPropsWithoutRef<'li'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ListItem({ class: className, children, ...rest }: ListItemProps) {

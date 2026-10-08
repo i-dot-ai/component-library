@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SummaryCardTitleProps = {
+type SummaryCardTitleProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SummaryCardTitle({ class: className, children, ...rest }: SummaryCardTitleProps) {

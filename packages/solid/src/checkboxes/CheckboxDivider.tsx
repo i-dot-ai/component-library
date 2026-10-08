@@ -6,7 +6,6 @@ import type { JSX } from "solid-js";
 type CheckboxDividerProps = {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function CheckboxDivider(props: CheckboxDividerProps) {

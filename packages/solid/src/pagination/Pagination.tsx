@@ -3,11 +3,10 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type PaginationProps = {
+type PaginationProps = JSX.IntrinsicElements['nav'] & {
     block?: boolean;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Pagination(props: PaginationProps) {

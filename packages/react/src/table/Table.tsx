@@ -1,13 +1,12 @@
 /** @jsxImportSource react */
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TableProps = {
+type TableProps = ComponentPropsWithoutRef<'table'> & {
     smallTextUntilTablet?: boolean;
     subtle?: boolean;
     summary?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Table({ smallTextUntilTablet, subtle, summary, class: className, children, ...rest }: TableProps) {

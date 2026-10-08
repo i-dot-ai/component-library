@@ -3,11 +3,10 @@
 import { splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
 
-type BreadcrumbItemProps = {
+type BreadcrumbItemProps = JSX.IntrinsicElements['li'] & {
     href?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function BreadcrumbItem(props: BreadcrumbItemProps) {

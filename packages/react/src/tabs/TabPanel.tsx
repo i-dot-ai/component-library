@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type TabPanelProps = {
+type TabPanelProps = ComponentPropsWithoutRef<'div'> & {
     hidden?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function TabPanel({ hidden, class: className, children, ...rest }: TabPanelProps) {

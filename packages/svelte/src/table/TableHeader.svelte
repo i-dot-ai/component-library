@@ -1,5 +1,15 @@
-<script>
-    let { numeric = false, scope = "col", class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLThAttributes } from "svelte/elements";
+
+    type Props = HTMLThAttributes & {
+        numeric?: boolean;
+        scope?: "col" | "row" | "colgroup" | "rowgroup";
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { numeric = false, scope = "col", class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

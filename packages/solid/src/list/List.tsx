@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ListProps = {
+type ListProps = JSX.IntrinsicElements['ol'] & JSX.IntrinsicElements['ul'] & {
     spaced?: boolean;
     numbered?: string;
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function List(props: ListProps) {

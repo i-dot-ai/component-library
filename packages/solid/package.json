@@ -1,8 +1,11 @@
 {
   "name": "@i-dot-ai-npm/component-library-solid",
-  "version": "0.0.6",
-  "description": "Solid.js components for i.AI GOV.UK (auto-generated from HTML specs).",
+  "version": "0.0.8",
+  "description": "Solid.js components for i.AI GOV.UK.",
   "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*"
@@ -26,6 +29,7 @@
   "license": "MIT",
   "devDependencies": {
     "govuk-frontend": "^6.5.0",
-    "solid-js": "^1.9.15"
+    "solid-js": "^1.9.15",
+    "typescript": "^5.9.3"
   }
 }

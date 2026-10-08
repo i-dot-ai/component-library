@@ -1,11 +1,10 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type HeaderProps = {
+type HeaderProps = ComponentPropsWithoutRef<'div'> & {
     href?: string;
     class?: string;
     containerClasses?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function Header({ href, class: className, containerClasses, children, ...rest }: HeaderProps) {

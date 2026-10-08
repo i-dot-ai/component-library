@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type FieldsetProps = {
+type FieldsetProps = JSX.IntrinsicElements['fieldset'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function Fieldset(props: FieldsetProps) {

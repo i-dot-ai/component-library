@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type AccordionSectionHeadingProps = {
+type AccordionSectionHeadingProps = JSX.IntrinsicElements['span'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function AccordionSectionHeading(props: AccordionSectionHeadingProps) {

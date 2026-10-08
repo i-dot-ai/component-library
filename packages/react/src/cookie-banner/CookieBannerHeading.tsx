@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type CookieBannerHeadingProps = {
+type CookieBannerHeadingProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function CookieBannerHeading({ class: className, children, ...rest }: CookieBannerHeadingProps) {

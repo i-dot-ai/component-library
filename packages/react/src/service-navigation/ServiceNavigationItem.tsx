@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ServiceNavigationItemProps = {
+type ServiceNavigationItemProps = ComponentPropsWithoutRef<'a'> & ComponentPropsWithoutRef<'span'> & {
     href?: string;
     /** Current page — adds active styling + aria-current="page". */
     current?: boolean;
@@ -8,7 +8,6 @@ type ServiceNavigationItemProps = {
     active?: boolean;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ServiceNavigationItem({ href, current, active, class: className, children, ...rest }: ServiceNavigationItemProps) {

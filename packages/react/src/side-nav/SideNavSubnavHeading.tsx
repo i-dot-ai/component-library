@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SideNavSubnavHeadingProps = {
+type SideNavSubnavHeadingProps = ComponentPropsWithoutRef<'h3'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SideNavSubnavHeading({ class: className, children, ...rest }: SideNavSubnavHeadingProps) {

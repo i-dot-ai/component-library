@@ -3,12 +3,11 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type TextareaProps = {
+type TextareaProps = JSX.IntrinsicElements['textarea'] & {
     error?: boolean;
     subtle?: boolean;
     value?: string;
     class?: string;
-    [key: string]: unknown;
 };
 
 export default function Textarea(props: TextareaProps) {

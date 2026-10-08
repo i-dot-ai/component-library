@@ -1,5 +1,14 @@
-<script>
-    let { inverse = false, class: className = "", children, ...rest } = $props();
+<script lang="ts">
+    import type { Snippet } from "svelte";
+    import type { HTMLAnchorAttributes } from "svelte/elements";
+
+    type Props = HTMLAnchorAttributes & {
+        inverse?: boolean;
+        class?: string;
+        children?: Snippet;
+    };
+
+    let { inverse = false, class: className = "", children, ...rest }: Props = $props();
 
     let classes = $derived(
         [

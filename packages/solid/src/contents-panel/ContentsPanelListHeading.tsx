@@ -3,10 +3,9 @@
 import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 
-type ContentsPanelListHeadingProps = {
+type ContentsPanelListHeadingProps = JSX.IntrinsicElements['h3'] & {
     class?: string;
     children?: JSX.Element;
-    [key: string]: unknown;
 };
 
 export default function ContentsPanelListHeading(props: ContentsPanelListHeadingProps) {

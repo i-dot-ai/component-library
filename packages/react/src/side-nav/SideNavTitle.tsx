@@ -1,9 +1,8 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type SideNavTitleProps = {
+type SideNavTitleProps = ComponentPropsWithoutRef<'h2'> & {
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function SideNavTitle({ class: className, children, ...rest }: SideNavTitleProps) {

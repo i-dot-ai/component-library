@@ -1,8 +1,11 @@
 {
   "name": "@i-dot-ai-npm/component-library-react",
-  "version": "0.0.7",
-  "description": "React components for i.AI GOV.UK (auto-generated from HTML specs).",
+  "version": "0.0.8",
+  "description": "React components for i.AI GOV.UK.",
   "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -33,6 +36,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "govuk-frontend": "^6.5.0"
+    "@types/react": "^19.3.0",
+    "govuk-frontend": "^6.5.0",
+    "react": "^19.3.0",
+    "typescript": "^5.9.3"
   }
 }

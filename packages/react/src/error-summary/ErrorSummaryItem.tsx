@@ -1,10 +1,9 @@
-import { ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-type ErrorSummaryItemProps = {
+type ErrorSummaryItemProps = ComponentPropsWithoutRef<'a'> & {
     href?: string;
     class?: string;
     children?: ReactNode;
-    [key: string]: unknown;
 };
 
 export default function ErrorSummaryItem({ href, class: className, children, ...rest }: ErrorSummaryItemProps) {
