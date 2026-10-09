@@ -18,6 +18,7 @@
     "src"
   ],
   "peerDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": ">=0.0.9",
     "govuk-frontend": ">=6",
     "svelte": ">=5"
   },
@@ -32,6 +33,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": "workspace:*",
     "govuk-frontend": "^6.5.0",
     "svelte": "^5.57.0",
     "svelte-check": "^4.7.6",

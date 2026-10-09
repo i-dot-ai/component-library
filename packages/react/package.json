@@ -21,6 +21,7 @@
     "src"
   ],
   "peerDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": ">=0.0.9",
     "govuk-frontend": ">=6",
     "react": ">=18",
     "react-dom": ">=18"
@@ -36,6 +37,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": "workspace:*",
     "@types/react": "^19.3.0",
     "govuk-frontend": "^6.5.0",
     "react": "^19.3.0",

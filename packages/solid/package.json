@@ -14,6 +14,7 @@
     "src"
   ],
   "peerDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": ">=0.0.9",
     "govuk-frontend": ">=6",
     "solid-js": ">=1.8"
   },
@@ -28,6 +29,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@i-dot-ai-npm/component-library-frontend": "workspace:*",
     "govuk-frontend": "^6.5.0",
     "solid-js": "^1.9.15",
     "typescript": "^5.9.3"

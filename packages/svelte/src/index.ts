@@ -65,6 +65,10 @@ export { default as LanguageNavigation } from "./language-navigation/LanguageNav
 export { default as Link } from "./link/Link.svelte";
 export { default as ListItem } from "./list/ListItem.svelte";
 export { default as List } from "./list/List.svelte";
+export { default as ModalTitle } from "./modal/ModalTitle.svelte";
+export { default as ModalBody } from "./modal/ModalBody.svelte";
+export { default as ModalFooter } from "./modal/ModalFooter.svelte";
+export { default as Modal } from "./modal/Modal.svelte";
 export { default as NotificationBannerContent } from "./notification-banner/NotificationBannerContent.svelte";
 export { default as NotificationBannerHeader } from "./notification-banner/NotificationBannerHeader.svelte";
 export { default as NotificationBannerHeading } from "./notification-banner/NotificationBannerHeading.svelte";
