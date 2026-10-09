@@ -5,7 +5,7 @@ interface Props extends HTMLAttributes<"input"> {
     width?: 2 | 3 | 4;
 }
 
-const { width, class: className, ...rest } = Astro.props;
+const { width, type = "text", class: className, ...rest } = Astro.props;
 
 const classes = [
     "govuk-input govuk-date-input__input",
@@ -16,4 +16,4 @@ const classes = [
     .join(" ");
 ---
 
-<input class={classes} type="text" inputmode="numeric" {...rest} />
+<input class={classes} type={type} inputmode="numeric" {...rest} />
