@@ -13,6 +13,7 @@ const {
     extraLetterSpacing = false,
     subtle = false,
     width,
+    type = "text",
     class: className,
     ...rest
 } = Astro.props;
@@ -29,4 +30,4 @@ const classes = [
     .join(" ");
 ---
 
-<input class={classes} type="text" {...rest} />
+<input class={classes} type={type} {...rest} />
