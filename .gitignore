@@ -55,3 +55,6 @@ poetry.lock
 gallery/node_modules/
 gallery/dist/
 gallery/.astro/
+
+# Tests
+/tests-e2e/test-results

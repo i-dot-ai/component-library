@@ -1,7 +1,8 @@
 packages:
   - "packages/*"
   - "gallery"
-  - "tests"
+  - "tests-unit"
+  - "tests-e2e"
 
 overrides:
   "@types/react": "19.3.0"

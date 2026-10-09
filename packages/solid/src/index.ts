@@ -64,6 +64,10 @@ export { default as LanguageNavigation } from "./language-navigation/LanguageNav
 export { default as Link } from "./link/Link";
 export { default as ListItem } from "./list/ListItem";
 export { default as List } from "./list/List";
+export { default as ModalTitle } from "./modal/ModalTitle";
+export { default as ModalBody } from "./modal/ModalBody";
+export { default as ModalFooter } from "./modal/ModalFooter";
+export { default as Modal } from "./modal/Modal";
 export { default as NotificationBannerContent } from "./notification-banner/NotificationBannerContent";
 export { default as NotificationBannerHeader } from "./notification-banner/NotificationBannerHeader";
 export { default as NotificationBannerHeading } from "./notification-banner/NotificationBannerHeading";

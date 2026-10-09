@@ -65,6 +65,10 @@ export { default as LanguageNavigation } from "./language-navigation/language-na
 export { default as Link } from "./link/link.astro";
 export { default as ListItem } from "./list/list-item.astro";
 export { default as List } from "./list/list.astro";
+export { default as ModalTitle } from "./modal/modal-title.astro";
+export { default as ModalBody } from "./modal/modal-body.astro";
+export { default as ModalFooter } from "./modal/modal-footer.astro";
+export { default as Modal } from "./modal/modal.astro";
 export { default as NotificationBannerContent } from "./notification-banner/notification-banner-content.astro";
 export { default as NotificationBannerHeader } from "./notification-banner/notification-banner-header.astro";
 export { default as NotificationBannerHeading } from "./notification-banner/notification-banner-heading.astro";
